@@ -1,21 +1,21 @@
-#API Endpoints
+# API Endpoints
 
-##HTML API
+## HTML API
 
-##Root
+## Root
 - GET / - loads React web app
 
-##JSON API
+## JSON API
 
-###Users
+### Users
 - POST /api/users
 - PATCH /api/users
 
-###Session
+### Session
 - POST /api/session
 - DELETE /api/session
 
-###Videos
+### Videos
 - POST /api/videos
 - GET /api/videos
   - video index with search with potential search query
@@ -23,7 +23,7 @@
 - PATCH /api/videos/:videoId
 - DELETE /api/videos/:videoId
 
-###Comments
+### Comments
 - POST /api/videos/:videoId/comments
   - post comment on particular video
 - GET /api/videos/:videoId/comments
@@ -31,7 +31,7 @@
 - PATCH /api/comments/:commentId
 - DELETE /api/comments/:commentId
 
-###Likes
+### Likes
 - POST /api/videos/:videoId/likes
   - like/dislike a particular video
   - only allow for max 1

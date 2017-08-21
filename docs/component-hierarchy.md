@@ -1,9 +1,9 @@
-Component Hierarchy
+# Component Hierarchy
 
-SessionFormContainer:
+## SessionFormContainer:
   - Session Form (login/signup)
 
-HeaderContainer:
+## HeaderContainer:
   - Header
     - Search bar
       - Search Form
@@ -11,20 +11,20 @@ HeaderContainer:
     - Link to upload
   - Hamburger dropdown
 
-HomeContainer:
+## HomeContainer:
   - Home
     - Video index of "trending", "random", "subscriptions"
 
-SearchContainer:
+## SearchContainer:
   - Search results
     -Video index with search query
 
-VideoFormContainer:
+## VideoFormContainer:
   - VideoForm
     - Video portion
     - Video details portion
 
-VideoShowContainer:
+## VideoShowContainer:
   - Video portion
   - Video index
     - Related videos only
@@ -35,7 +35,7 @@ VideoShowContainer:
   - Comment Index
     - Likes
 
-ChannelContainer:
+## ChannelContainer:
   - User header
   - Video player of most recent video
   - Video Detail
@@ -43,16 +43,17 @@ ChannelContainer:
   - Video index
     - Only videos from this user
 
-Front End Routes
+## Front End Routes
 
-Path                        Component
-/                           HomeContainer
-/signup                     SessionFormContainer
-/login                      SessionFormContainer
-/search                     SearchContainer
-/video/:videoId             VideoShowContainer
-/user/:userId               ChannelContainer
-/upload                     VideoFormContainer
+Path | Component
+---- | ---------
+/ | HomeContainer
+/signup | SessionFormContainer
+/login | SessionFormContainer
+/search | SearchContainer
+/video/:videoId | VideoShowContainer
+/user/:userId | ChannelContainer
+/upload | VideoFormContainer
 
 
 Note: HeaderContainer will always be present.

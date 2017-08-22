@@ -9,66 +9,47 @@
       errors: []
     }
   },
-
-  ui: {
-    viewedUser: {
-      username: "test2"
-    },
-    currentVideo: {
-      title: "title",
-      description: "description",
-      video_url: "video_url",
-      username: "test-username",
-      views: 10,
-      created_date: Aug 20, 2017,
-      likes: {
-        likes: count,
-        dislikes: count
-      }
-      comments: {
-        forms: {
-          newComment: { errors: [] }
-        }
+  entities: {
+    comments: {
+      comments_list: {
         1: {
-          id: 1
-          username: "test-username2",
-          body: "body",
+          id: 1,
+          comment: body,
+          username: test-1,
+          likes: {
+            likes: count,
+            dislikes: count
+          }
+        }
+      },      
+      forms: {
+        errors: []
+      }
+    }
+    videos: {
+      videos_list: {
+        5: {
+          id: 5,
+          username: test-5,
+          title: "sample title",
+          description: "sample description",
+          views: 150,
+          created_date: Aug 20, 2017,
           likes: {
             likes: count,
             dislikes: count
           }
         }
       }
-    }
+      forms: {
+        errors: []
+      }
+    }  
   },
-
-  videos: {
-    forms: {
-      videos: {
-        errors: []
-      },
-      comments: {
-        errors: []
-      }
+  ui: {
+    viewedUser: {
+      username: "test2"
     },
-    videos_list: {
-      5: {
-        id: 5
-        title: "Video 5 Title",
-        description: "Video 5 Description"
-        thumbnail: "pic_url",
-        username: "sample1"
-      }
-    },
-    search: {
-      10: {
-        id: 10
-        title: "Video 10 Title",
-        description: "Video 10 Description"
-        thumbnail: "pic_url",
-        username: "sample2"
-      }
-    }
-  }
+  }    
 }
 ```

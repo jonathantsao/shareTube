@@ -32,4 +32,5 @@ column name | data type | details
 ----------- | --------- | -------
 id | integer | not null, primary key
 user_id | integer | not null, foreign, indexed
-item_id | integer | not null, foreign, indexed
+imageable_id | integer | polymorphic
+imageable_type | string | polymorphic

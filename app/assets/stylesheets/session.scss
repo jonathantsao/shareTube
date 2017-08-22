@@ -12,11 +12,9 @@
 
 .process-form {
   padding: 2px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   width: 80%;
   height: 45%;
+  position: relative;
 }
 
 .process-form button {
@@ -33,9 +31,38 @@
   padding: 12px 20px;
   border: none;
   border-bottom: 1px solid lightgray;
-  transition: width 10s;
+  transition: width 300ms;
   outline: none;
   font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: text;
+  position: absolute;
+}
+
+hr {
+		content: '';
+		display: block;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		margin: 0 auto;
+		padding: 0;
+		width: 30%;
+		height: 2px;
+		border: none;
+		background: #607D8B;
+		font-size: 1px;
+		will-change: transform, visibility;
+		transition: all 200ms ease-out;
+		transform: scaleX(0);
+		visibility: hidden;
+		z-index: 10;
+}
+
+.process-form input:focus ~ hr {
+	transform: scaleX(1);
+	visibility: visible;
 }
 
 
@@ -76,4 +103,62 @@
 .button-list {
   display: flex;
   justify-content: space-around;
+}
+
+
+
+//
+//
+// .label-box {
+//     position: relative;
+//     width: 270px;
+// }
+//
+// .label-box::before,
+// .label-box::after {
+//     content: "";
+//     position: absolute;
+//     height: 2px;
+//     width: 0;
+//     bottom: 1px;
+//     background-color: #757575;
+//     transition-property: width;
+//     transition-duration: 0.2s;
+// }
+//
+// .label-box::before {
+//     left: 50%;
+// }
+//
+// .label-box::after {
+//     right: 50%;
+// }
+//
+// input:focus ~ .label-box::before,
+// input:focus ~ .label-box::after {
+//     width: 50%;
+// }
+//
+// input {
+//     width: 270px;
+    // padding: 5px;
+    // font-size: 18px;
+    // border: none;
+    // border-bottom: 1px solid #757575;
+    // box-sizing: border-box;
+// }
+//
+// label {
+//     position: absolute;
+//     top: -36px;
+//     font-size: 18px;
+//     color: #757575;
+//     transition: 0.2s ease all;
+//     pointer-events: none;
+// }
+//
+input:focus ~ .label-box label,
+input:valid ~ .label-box label {
+    font-size: 14px;
+    transform: translateY(-20px);
 }

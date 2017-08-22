@@ -14,6 +14,11 @@
  *= require_self
  */
 
+a {
+  text-decoration: none;
+  color: #4285f4;
+}
+
 body {
   background-color: #F0F0F0;
 }
@@ -23,7 +28,6 @@ body {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   background-color: white;
   z-index: 1;
@@ -36,17 +40,19 @@ body {
   padding: 2px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   width: 80%;
-  height: 70%;
+  height: 45%;
 }
 
 .process-form button {
   background-color: #4285f4;
-  border-radius: 3px;
-  padding: 7px 28px;
+  border-radius: 4px;
+  padding: 7px 20px;
   font-size: 14px;
   font-weight: 500;
+  color: white;
+  border: 1px solid #4285f4;
 }
 
 .process-form input {
@@ -98,7 +104,7 @@ body {
 }
 
 .process-form-greeting {
-  margin: 70px 0px;
+  margin: 70px 0px 10px;
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -108,5 +114,5 @@ body {
 
 .button-list {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }

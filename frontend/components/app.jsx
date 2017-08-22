@@ -6,10 +6,10 @@ import { AuthRoute } from '../util/route_util';
 
 const App = () => (
   <div>
-    <header>
+    <nav className="main-nav">
       <h1>ShareTube</h1>
       <GreetingContainer />
-    </header>
+    </nav>
     <AuthRoute path="/signup" component={SessionFormContainer} />
     <AuthRoute path="/login" component={SessionFormContainer} />
   </div>

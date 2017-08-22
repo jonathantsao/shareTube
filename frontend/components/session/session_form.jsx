@@ -10,6 +10,7 @@ class SessionForm extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -27,8 +28,21 @@ class SessionForm extends React.Component {
     this.props.processForm(this.state);
   }
 
+
+  handleDemo(e){
+    e.preventDefault();
+
+    setTimeout(() => {
+      this.setState({
+        username: "demo@demo.com",
+        password: "password",
+      });
+      this.props.processDemo(this.state);
+    }, 100);
+  }
+
   render() {
-    const buttonText = this.props.formType === "login" ? "Login" : "Signup";
+    const buttonText = this.props.formType === "login" ? "Sign In" : "Sign Up";
     const otherLink = this.props.formType === "login" ?
     <Link to="/signup">Create Account</Link> :
     <Link to="/login">Already Have an Account? Login Here</Link>;
@@ -37,27 +51,30 @@ class SessionForm extends React.Component {
       return (<h5>{error}</h5>);
     });
 
+
+
     return(
-      <div className="process-form">
-        <h2>{ buttonText }</h2>
-        { errors }
-        <form>
-          <label>Username
+      <div className="process-form-container">
+        <div className="process-form-greeting">
+          <h1>{ buttonText }</h1>
+          <p>to continue to ShareTube</p>
+        </div>
+        <form className="process-form">
+          { errors }
           <br />
-            <input
-             onChange={this.handleChange("username")} value={this.state.username}
-             type="text" />
-          </label>
+          <input
+           onChange={this.handleChange("username")} value={this.state.username}
+           type="text"
+           placeholder="Username" />
           <br />
-
-          <label>Password
+          <input onChange={this.handleChange("password")} value={this.state.password}
+          type="password"
+          placeholder="Password" />
           <br />
-            <input onChange={this.handleChange("password")} value={this.state.password}
-            type="password" />
-          </label>
-          <br />
-
-          <button onClick={this.handleSubmit}>{buttonText}</button>
+          <div className="button-list">
+            <button onClick={this.handleSubmit}>{buttonText}</button>
+            <button onClick={this.handleDemo}>Demo Account</button>
+          </div>
         </form>
         <br />
         <br />

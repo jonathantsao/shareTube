@@ -5,9 +5,6 @@
       id: 1,
       username: "test"
     },
-    forms: {
-      errors: []
-    }
   },
   entities: {
     comments: {
@@ -16,15 +13,10 @@
           id: 1,
           comment: body,
           username: test-1,
-          likes: {
-            likes: count,
-            dislikes: count
-          }
+          likes: 5,
+          dislikes: 5,
         }
       },      
-      forms: {
-        errors: []
-      }
     }
     videos: {
       videos_list: {
@@ -35,21 +27,18 @@
           description: "sample description",
           views: 150,
           created_date: Aug 20, 2017,
-          likes: {
-            likes: count,
-            dislikes: count
-          }
+          likes: 400,
+          dislikes: 200,
         }
       }
-      forms: {
-        errors: []
-      }
+      videoIds: [3, 5, 10],
     }  
   },
   ui: {
     viewedUser: {
       username: "test2"
     },
+    errors: [],
   }    
 }
 ```

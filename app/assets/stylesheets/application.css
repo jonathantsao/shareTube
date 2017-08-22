@@ -13,3 +13,100 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  background-color: #F0F0F0;
+}
+
+.process-form-container {
+  font-family: 'Roboto', sans-serif;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  z-index: 1;
+  width: 450px;
+  height: 500px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.process-form {
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80%;
+  height: 70%;
+}
+
+.process-form button {
+  background-color: #4285f4;
+  border-radius: 3px;
+  padding: 7px 28px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.process-form input {
+  padding: 12px 20px;
+  border: none;
+  border-bottom: 1px solid lightgray;
+  transition: width 10s;
+  outline: none;
+  font-size: 14px;
+}
+
+.session-links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.greet-user {
+  display: flex;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.process-form input:focus {
+  outline: none;
+  border-bottom: 2px solid #4285f4;
+  width: 89%;
+}
+
+.process-form button:hover {
+  cursor: pointer;
+}
+
+.process-form-greeting p {
+  margin: 0;
+  padding-top: 1px;
+  padding-bottom: 3px;
+  font-size: 14px;
+}
+
+.process-form-greeting h1 {
+  padding-top: 16px;
+  padding-bottom: 0px;
+  font-size: 24px;
+  line-height: 32px;
+  margin: 0;
+}
+
+.process-form-greeting {
+  margin: 70px 0px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.button-list {
+  display: flex;
+  justify-content: space-between;
+}

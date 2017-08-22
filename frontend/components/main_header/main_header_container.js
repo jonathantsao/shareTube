@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Greeting from './greeting';
+import MainHeader from './main_header';
 import { logout } from '../../actions/session_actions';
 import { withRouter } from 'react-router-dom';
 
@@ -15,4 +15,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Greeting));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainHeader));

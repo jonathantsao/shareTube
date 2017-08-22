@@ -1,0 +1,79 @@
+.process-form-container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  z-index: 1;
+  width: 450px;
+  height: 500px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.process-form {
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+  height: 45%;
+}
+
+.process-form button {
+  background-color: #4285f4;
+  border-radius: 4px;
+  padding: 7px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  border: 1px solid #4285f4;
+}
+
+.process-form input {
+  padding: 12px 20px;
+  border: none;
+  border-bottom: 1px solid lightgray;
+  transition: width 10s;
+  outline: none;
+  font-size: 14px;
+}
+
+
+.process-form input:focus {
+  outline: none;
+  border-bottom: 2px solid #4285f4;
+  width: 89%;
+}
+
+.process-form button:hover {
+  cursor: pointer;
+}
+
+.process-form-greeting p {
+  margin: 0;
+  padding-top: 1px;
+  padding-bottom: 3px;
+  font-size: 14px;
+}
+
+.process-form-greeting h1 {
+  padding-top: 16px;
+  padding-bottom: 0px;
+  font-size: 24px;
+  line-height: 32px;
+  margin: 0;
+}
+
+.process-form-greeting {
+  margin: 70px 0px 10px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.button-list {
+  display: flex;
+  justify-content: space-around;
+}

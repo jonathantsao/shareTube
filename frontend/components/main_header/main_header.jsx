@@ -10,15 +10,19 @@ const greetings = (currentUser, logout) => (
 
 const links = () => (
   <div className="session-links">
-    <Link to="/login">Login</Link>
-    <br />
-    <Link to="/signup">Signup</Link>
+    <Link to="/login">Sign In</Link>
   </div>
 );
 
-const Greeting = ({ currentUser, logout }) => {
+const MainHeader = ({ currentUser, logout }) => {
   const greeting = currentUser ? greetings(currentUser, logout) : links();
-  return greeting;
+  return (
+    <div className="main-nav-list">
+      <div id="hamburger-menu"></div>
+      <Link className="logo-text" to="/">ShareTube</Link>
+      { greeting }
+    </div>
+  );
 };
 
-export default Greeting;
+export default MainHeader;

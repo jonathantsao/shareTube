@@ -44,7 +44,7 @@ class SessionForm extends React.Component {
   render() {
     const buttonText = this.props.formType === "login" ? "Sign In" : "Sign Up";
     const otherLink = this.props.formType === "login" ?
-    <Link to="/signup">Create Account</Link> :
+    <Link to="/signup">Don't Have an Account? Create One Here</Link> :
     <Link to="/login">Already Have an Account? Login Here</Link>;
 
     const errors = this.props.errors.map((error) => {

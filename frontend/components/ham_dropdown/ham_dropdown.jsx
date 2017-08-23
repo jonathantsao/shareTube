@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const HamDropdown = ({ currentUser, hamDropdown}) => {
+const HamDropdown = ({ currentUser, hamDropdown, location}) => {
   let channel;
   let hamSubs;
 
@@ -9,24 +9,45 @@ const HamDropdown = ({ currentUser, hamDropdown}) => {
     channel = (
       <li>
         <Link to={`/users/${currentUser.id}`} >
-          <div id="channel-icon"></div> My channel
+          <div id="channel-icon"></div> <p>My channel</p>
         </Link>
       </li>
     );
   }
+
+
+
+
   if (hamDropdown) {
+    let home;
+    if (location === "/") {
+      home = (
+        <li id="home-page-hover">
+          <Link to="/">
+            <div id="home-icon"></div>
+            <p>Home</p>
+          </Link>
+        </li>
+      );
+    } else {
+      home = (
+        <li>
+          <Link to="/">
+            <div id="home-icon"></div>
+            <p>Home</p>
+          </Link>
+        </li>
+      );
+    }
     return (
       <section className="ham-dropdown-menu">
         <ul className="ham-dropdown-list">
-          <li>
-            <Link to="/">
-              <div id="home-icon"></div> Home
-            </Link>
-          </li>
+          { home }
           { channel }
           <li>
             <Link to="/search/trending">
-              <div id="hot-icon"></div> Hot
+              <div id="hot-icon"></div>
+              <p>Hot</p>
             </Link>
           </li>
         </ul>

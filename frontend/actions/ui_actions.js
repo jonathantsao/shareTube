@@ -1,4 +1,4 @@
-import * as APIUtil from '../session_api_util';
+import * as APIUtil from '../util/session_api_util';
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const RECEIVE_USERNAME = "RECEIVE_USERNAME";
 
@@ -14,6 +14,12 @@ export const receiveUsername = () => {
   return {
     type: RECEIVE_USERNAME,
   };
+};
+
+export const verifyUsername = (username) => (dispatch) => {
+  return APIUtil.verifyUsername(username)
+    .then(() => dispatch(receiveUsername()),
+    (errors) => dispatch(receiveErrors(errors.responseJSON)));
 };
 
 export const checkUsername = (username) => (dispatch) => {

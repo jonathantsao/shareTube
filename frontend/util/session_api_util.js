@@ -21,10 +21,18 @@ export const logout = () => {
   });
 };
 
+export const verifyUsername = (username) => {
+  return $.ajax({
+    method: "GET",
+    url: "/api/users",
+    data: { user: { username, action: "verify" } },
+  });
+};
+
 export const checkUsername = (username) => {
   return $.ajax({
     method: "GET",
     url: "/api/users",
-    data: { username },
+    data: { user: { username, action: "check" } },
   });
 };

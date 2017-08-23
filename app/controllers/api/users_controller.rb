@@ -13,6 +13,18 @@ class Api::UsersController < ApplicationController
   def show
   end
 
+  def find
+    user = User.find_by(username: params[:user][:username])
+    verify = params[:user][:action]
+    if (user && verify == "verify") || (!user && verify == "check")
+      render json: {}
+    elsif (user && verify == "check")
+      render json: ["Username already exists"], status: 422
+    elsif (!user && verify == "verify")
+      render json: ["Couldn't find your account"], status: 422
+    end
+  end
+
 
   private
 

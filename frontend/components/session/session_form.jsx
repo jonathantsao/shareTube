@@ -20,6 +20,7 @@ class SessionForm extends React.Component {
   }
 
   handleChange(field) {
+
     return (e) => this.setState({ [field]: e.currentTarget.value });
   }
 
@@ -41,46 +42,83 @@ class SessionForm extends React.Component {
     }, 100);
   }
 
+  input() {
+    return this.props.page === 1 ?
+    (
+      <input
+       onChange={this.handleChange("username")} value={this.state.username}
+       type="text"
+       id="username-input"
+      />
+    ) : (
+      <input
+       onChange={this.handleChange("password")} value={this.state.password}
+       type="password"
+       id="password-input"
+      />
+    );
+  }
+
+  lastButton() {
+    if (this.props.page === 1) {
+      return (
+        <button id="submit-form-button" onClick={() => this.props.sendUsername(this.state.username)}>Next</button>
+      );
+    } else {
+      const buttonText = this.props.formType === "login" ? "Sign In" : "Sign Up";
+      return (
+        <button id="submit-form-button" onClick={this.handleSubmit}>{ buttonText }</button>
+      );
+    }
+  }
+
+
   render() {
     const buttonText = this.props.formType === "login" ? "Sign In" : "Sign Up";
     const otherLink = this.props.formType === "login" ?
     <Link to="/signup">Don't Have an Account? Create One Here</Link> :
     <Link to="/login">Already Have an Account? Login Here</Link>;
 
-    const errors = this.props.errors.map((error) => {
-      return (<h5>{error}</h5>);
+    const errors = this.props.errors.map((error, idx) => {
+      return (<li key={`id-${idx}`}>{error}</li >);
     });
 
+    const input = this.input();
+    const inputText = this.props.page === 1 ? "Username" : "Password";
+    const lastButton = this.lastButton();
 
+    let label = <label>{ inputText }</label>;
+    if (this.props.page === 1 && this.state.username !== "") {
+      label = <label className="label-active" >{ inputText }</label>;
+    } else if (this.props.page === 2 && this.state.password !== "") {
+      label = <label className="label-active" >{ inputText }</label>;
+    }
+
+    const formGreeting = this.props.page === 1 ?
+    (<div className="process-form-greeting">
+      <h1>{ buttonText }</h1>
+      <p>to continue to ShareTube</p>
+    </div>) :
+    (<div className="process-form-greeting">
+      <h1>Welcome</h1>
+      <p>{this.state.username}</p>
+    </div>);
 
     return(
       <div className="process-form-container">
-        <div className="process-form-greeting">
-          <h1>{ buttonText }</h1>
-          <p>to continue to ShareTube</p>
-        </div>
+        { formGreeting }
         <form className="process-form">
-          { errors }
           <br />
-          <input
-           onChange={this.handleChange("username")} value={this.state.username}
-           type="text"
-           id="username-input"
-          />
+          { input }
           <hr />
-          <label>Username</label>
+          { label }
           <br />
-          <input onChange={this.handleChange("password")} value={this.state.password}
-          type="password"
-          id="password-input"
-          placeholder="Password" />
-          <hr />
+          <ul className="errors-list">{ errors }</ul>
 
-          <br />
           <div className="button-list">
             <button id="demo-button"
             onClick={this.handleDemo}>Demo Account</button>
-            <button id="submit-form-button" onClick={this.handleSubmit}>{buttonText}</button>
+          { lastButton }
           </div>
         </form>
         { otherLink }

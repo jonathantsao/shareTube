@@ -1,7 +1,8 @@
 import * as APIUtil from '../util/session_api_util';
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const RECEIVE_USERNAME = "RECEIVE_USERNAME";
-export const RECEIVE_TOGGLE_DROPDOWN = 'RECEIVE_TOGGLE_DROPDOWN';
+export const RECEIVE_TOGGLE_DROPDOWN_HAM = 'RECEIVE_TOGGLE_DROPDOWN_HAM';
+export const RECEIVE_TOGGLE_DROPDOWN_USER = 'RECEIVE_TOGGLE_DROPDOWN_USER';
 
 
 export const receiveErrors = (errors) => {
@@ -17,9 +18,15 @@ export const receiveUsername = () => {
   };
 };
 
-export const receiveToggleDropdown = () => {
+export const receiveHamDropdown = () => {
   return {
-    type: RECEIVE_TOGGLE_DROPDOWN,
+    type: RECEIVE_TOGGLE_DROPDOWN_HAM,
+  };
+};
+
+export const receiveUserDropdown = () => {
+  return {
+    type: RECEIVE_TOGGLE_DROPDOWN_USER,
   };
 };
 

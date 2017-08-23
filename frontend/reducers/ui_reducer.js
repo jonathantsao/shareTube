@@ -1,4 +1,4 @@
-import { RECEIVE_ERRORS, RECEIVE_USERNAME, RECEIVE_TOGGLE_DROPDOWN } from '../actions/ui_actions';
+import { RECEIVE_ERRORS, RECEIVE_USERNAME, RECEIVE_TOGGLE_DROPDOWN_HAM, RECEIVE_TOGGLE_DROPDOWN_USER } from '../actions/ui_actions';
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import merge from 'lodash/merge';
 
@@ -6,7 +6,8 @@ const initialState = {
   viewedUser: {},
   errors: [],
   session_page: 1,
-  dropdown: true
+  hamDropdown: true,
+  userDropdown: false,
 };
 
 const uiReducer = (state = initialState, action) => {
@@ -23,9 +24,14 @@ const uiReducer = (state = initialState, action) => {
       newState = merge({}, state, initialState);
       newState.errors = [];
       return newState;
-    case RECEIVE_TOGGLE_DROPDOWN:
-      const newDropdown = !state.dropdown;
-      newState = merge({}, state, { dropdown: newDropdown });
+    case RECEIVE_TOGGLE_DROPDOWN_HAM:
+      const newHamDropdown = !state.hamDropdown;
+      newState = merge({}, state, { hamDropdown: newHamDropdown });
+      newState.errors = [];
+      return newState;
+    case RECEIVE_TOGGLE_DROPDOWN_USER:
+      const newUserDropdown = !state.userDropdown;
+      newState = merge({}, state, { userDropdown: newUserDropdown });
       newState.errors = [];
       return newState;
     default:

@@ -18,7 +18,7 @@ class MainHeader extends React.Component {
 
   greetings() {
     return (
-      <div class="greet-user">
+      <div className="greeting">
         <h1>{this.props.currentUser.username}</h1>
         <button onClick={this.props.logout}>Logout</button>
       </div>

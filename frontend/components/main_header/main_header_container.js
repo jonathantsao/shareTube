@@ -1,17 +1,20 @@
 import { connect } from 'react-redux';
 import MainHeader from './main_header';
 import { logout } from '../../actions/session_actions';
+import { receiveToggleDropdown } from '../../actions/ui_actions';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state) => {
   return {
     currentUser: state.session.currentUser,
+    dropdown: state.ui.dropdown,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     logout: () => dispatch(logout()),
+    toggleDropdown: () => dispatch(receiveToggleDropdown()),
   };
 };
 

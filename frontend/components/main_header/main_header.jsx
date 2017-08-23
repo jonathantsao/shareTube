@@ -49,7 +49,7 @@ class MainHeader extends React.Component {
     const greeting = this.props.currentUser ? this.greetings() : this.links();
     return (
       <div className="main-nav-list">
-        <div id="hamburger-menu"></div>
+        <button id="hamburger-menu"></button>
         <Link className="logo-text" to="/">ShareTube</Link>
         <form className="search-form">
           <input

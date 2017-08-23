@@ -43,6 +43,12 @@
   opacity: 0.5;
   height: 20px;
   width: 20px;
+  border: none;
+}
+
+#hamburger-menu:hover {
+  cursor: pointer;
+  opacity: 1;
 }
 
 .logo-text {

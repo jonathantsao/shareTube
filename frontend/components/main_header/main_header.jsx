@@ -13,7 +13,7 @@ class MainHeader extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
-    this.toggleMenu = this.toggleMenu.bind(this);
+    // this.toggleMenu = this.toggleMenu.bind(this);
   }
 
   greetings() {

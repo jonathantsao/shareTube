@@ -26,7 +26,7 @@ class MainHeader extends React.Component {
   links() {
     return (
       <div className="session-links">
-        <Link to="/login">Sign In</Link>
+        <Link id="sign-in-button" to="/login">Sign In</Link>
       </div>
     );
   }
@@ -56,9 +56,11 @@ class MainHeader extends React.Component {
             onChange={this.handleChange}
             value={this.state.search}
             placeholder="Search"
+            className="search-bar"
             />
           <button id="search-button" onClick={this.handleSearch} />
         </form>
+        <Link to="/upload" className="upload-link"><scan id="upload-icon"></scan></Link>
         { greeting }
       </div>
     );

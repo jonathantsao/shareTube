@@ -17,7 +17,11 @@
 }
 
 #hamburger-menu {
-  background: image-url("hamburger.png");
+  background: image-url("hamburger.png") no-repeat;
+  background-size: 87%;
+  opacity: 0.5;
+  height: 20px;
+  width: 20px;
 }
 
 .logo-text {
@@ -26,9 +30,69 @@
 
 .session-links {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+}
+
+#sign-in-button {
+  font-size: 11px;
+  height: 12px;
+  padding: 10px;
+  color: #fff;
+  border-radius: 2px;
+  text-decoration: none;
+  font-weight: bolder;
+  background: #169BC6;
+  border-color: #169BC6;
+}
+
+#sign-in-button:hover {
+  background: #1691C6;
+  border-color: #1691C6;
 }
 
 .greet-user {
   display: flex;
+}
+
+#search-button {
+  background: image-url("search.png") no-repeat;
+  background-size: 27%;
+  background-position: center;
+  background-color: #F8F8F8;
+  height: 29px;
+  width: 63px;
+  padding: 2px;
+  border-radius: 2px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border: 1px solid #E7E7E7;
+  border-left: 0;
+  float: right;
+  opacity: 0.7;
+}
+
+#search-button:hover {
+  background-color: #F2F2F2;
+
+  opacity: 1;
+}
+
+.search-bar {
+  width: 570px;
+  height: 23px;
+  padding: 2px 6px;
+  font-size: 16px;
+  border: 1px solid #EDEDED;
+  outline: none;
+  box-shadow: inset 0px 0px 1px #EDEDED;
+}
+
+.search-bar:hover {
+  border: 1px solid lightgray;
+  box-shadow: inset 0px 0px 1px lightgray;
+}
+
+.search-bar:focus {
+  border: 1px solid #167ac6;
 }

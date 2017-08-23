@@ -39,6 +39,7 @@
       username: "test2"
     },
     errors: [],
+    session_form: 1,
   }    
 }
 ```

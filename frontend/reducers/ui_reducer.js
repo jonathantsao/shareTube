@@ -3,7 +3,8 @@ import merge from 'lodash/merge';
 
 const initialState = {
   viewedUser: {},
-  errors: []
+  errors: [],
+  session_page: 1
 };
 
 const uiReducer = (state = initialState, action) => {

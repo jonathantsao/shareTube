@@ -65,17 +65,22 @@ class SessionForm extends React.Component {
           <input
            onChange={this.handleChange("username")} value={this.state.username}
            type="text"
-           required />
+           id="username-input"
+          />
           <hr />
+          <label>Username</label>
           <br />
           <input onChange={this.handleChange("password")} value={this.state.password}
           type="password"
+          id="password-input"
           placeholder="Password" />
+          <hr />
 
           <br />
           <div className="button-list">
-            <button onClick={this.handleSubmit}>{buttonText}</button>
-            <button onClick={this.handleDemo}>Demo Account</button>
+            <button id="demo-button"
+            onClick={this.handleDemo}>Demo Account</button>
+            <button id="submit-form-button" onClick={this.handleSubmit}>{buttonText}</button>
           </div>
         </form>
         { otherLink }

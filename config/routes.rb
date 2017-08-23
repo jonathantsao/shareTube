@@ -7,4 +7,6 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
   end
 
+  get 'api/users', :to => 'api#users_find'
+
 end

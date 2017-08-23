@@ -14,9 +14,5 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     store = configureStore();
   }
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
-  window.checkUsername = checkUsername;
-  window.verifyUsername = verifyUsername;
   ReactDOM.render(<Root store={store}/>, root);
 });

@@ -26,9 +26,62 @@
   opacity: 0.9;
 }
 
+#user-toggle-button {
+  border: none;
+  background-color: #48B2AD;
+  font-size: 18px;
+  text-align: center;
+  color: white;
+  outline: none;
+  border-radius: 50%;
+  width: 27px;
+  height: 27px;
+  position: absolute;
+  top: 10px;
+  right: 5px;
+}
+
+#user-toggle-button:hover {
+  cursor: pointer;
+}
+
+#greet-user {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 13px;
+  height: 80px;
+  background-color: white;
+  border-bottom: 1px solid #DFDFDF;
+}
+
+#logout-button {
+  position: absolute;
+  height: 28px;
+  box-sizing: border-box;
+  bottom: 5px;
+  margin: 9px;
+  right: 5px;
+  font-size: 12px;
+  text-align: center;
+  border-radius: none;
+}
+
+.greeting {
+}
+
+.user-toggle-menu {
+  position: absolute;
+  right: 6px;
+  top: 53px;
+  z-index: 10;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 260px;
+  height: 160px;
+}
+
 .upload-link {
   position: absolute;
-  right: 80px;
+  right: 76px;
   top: 5px;
   height: 40px;
   width: 40px;
@@ -44,12 +97,14 @@
   height: 20px;
   width: 20px;
   border: none;
+  outline: none;
 }
 
 #hamburger-menu:hover {
   cursor: pointer;
   opacity: 1;
 }
+
 
 .logo-text {
   position: absolute;
@@ -66,12 +121,7 @@
   width: 90px;
 }
 
-.greeting {
-  position: absolute;
-  font-size: 12px;
-  top: 9px;
-  right: -20px;
-}
+
 
 #sign-in-button {
   font-size: 11px;

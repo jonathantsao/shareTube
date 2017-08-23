@@ -12,17 +12,33 @@ class MainHeader extends React.Component {
     this.greetings = this.greetings.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
-    this.handleToggle = this.handleToggle.bind(this);
+    this.handleToggleHam = this.handleToggleHam.bind(this);
+    this.handleToggleUser = this.handleToggleUser.bind(this);
     // this.toggleMenu = this.toggleMenu.bind(this);
   }
 
   greetings() {
-    return (
-      <div className="greeting">
-        <h1>{this.props.currentUser.username}</h1>
-        <button onClick={this.props.logout}>Logout</button>
-      </div>
-    );
+    const buttonText = this.props.currentUser.username[0].toUpperCase();
+
+    if (!this.props.userDropdown) {
+      return (
+        <div className="greeting">
+          <button id="user-toggle-button" onClick={this.handleToggleUser}>{buttonText}</button>
+        </div>
+      );
+    } else {
+      return (
+        <div className="greeting">
+          <button id="user-toggle-button" onClick={this.handleToggleUser}>{buttonText}</button>
+          <section className="user-toggle-menu">
+            <h5 id="greet-user">{this.props.currentUser.username}</h5>
+            <button id="logout-button"
+              onClick={this.props.logout}>Sign Out
+            </button>
+          </section>
+        </div>
+      );
+    }
   }
 
   links() {
@@ -46,9 +62,14 @@ class MainHeader extends React.Component {
     });
   }
 
-  handleToggle(e) {
+  handleToggleHam(e) {
     e.preventDefault();
-    this.props.toggleDropdown();
+    this.props.toggleDropdownHam();
+  }
+
+  handleToggleUser(e) {
+    e.preventDefault();
+    this.props.toggleDropdownUser();
   }
   //
   // toggleMenu() {

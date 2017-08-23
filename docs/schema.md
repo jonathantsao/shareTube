@@ -15,7 +15,6 @@ column name | data type | details
 id | integer | not null, primary key
 title | string | not null
 description | string | not null
-video_url | string | not null
 views | integer | not null
 user_id | integer | not null, foreign key, indexed
 

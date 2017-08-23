@@ -31,7 +31,7 @@
           dislikes: 200,
         }
       }
-      videoIds: [3, 5, 10],
+      video_ids: [3, 5, 10],
     }  
   },
   ui: {

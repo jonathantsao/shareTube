@@ -16,7 +16,9 @@ class Api::UsersController < ApplicationController
   def find
     user = User.find_by(username: params[:user][:username])
     verify = params[:user][:action]
-    if (user && verify == "verify") || (!user && verify == "check")
+    if params[:user][:username].length == 0
+      render json: ["Username can't be blank"], status: 422
+    elsif (user && verify == "verify") || (!user && verify == "check")
       render json: {}
     elsif (user && verify == "check")
       render json: ["Username already exists"], status: 422

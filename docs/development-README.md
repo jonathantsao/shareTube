@@ -42,14 +42,14 @@ ShareTube is a web application modeled after YouTube built using Ruby on Rails a
 
 ### Phase 1: Backend Setup and Front End Authentication (1 Day)
 #### Objective: Create functional user authentication
-- [ ] New Rails Project
-- [ ] User Model, Controllers
-- [ ] BackEnd Authentication
-- [ ] Hook to Root View
-- [ ] Redux cycle for frontend authentication
-- [ ] Session Components
-- [ ] Style Session components
-- [ ] User Seed
+- [x] New Rails Project
+- [x] User Model, Controllers
+- [x] BackEnd Authentication
+- [x] Hook to Root View
+- [x] Redux cycle for frontend authentication
+- [x] Session Components
+- [x] Style Session components
+- [x] User Seed
 
 ### Phase 2: Videos Back and Front End(Components) (2 Day)
 #### Objective: Videos can be uploaded and viewed

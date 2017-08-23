@@ -14,7 +14,6 @@ class MainHeader extends React.Component {
     this.handleSearch = this.handleSearch.bind(this);
     this.handleToggleHam = this.handleToggleHam.bind(this);
     this.handleToggleUser = this.handleToggleUser.bind(this);
-    // this.toggleMenu = this.toggleMenu.bind(this);
   }
 
   greetings() {
@@ -71,31 +70,15 @@ class MainHeader extends React.Component {
     e.preventDefault();
     this.props.toggleDropdownUser();
   }
-  //
-  // toggleMenu() {
-  //   if (this.props.currentUser) {
-  //     return (
-  //       <section className="drop-down-nav">
-  //         <ul className="drop-down-list">
-  //           <li><Link to="/" >Home</Link></li>
-  //           <li><Link to={`/users/${this.props.currentUser.id}`}>
-  //             My Channel
-  //           </Link></li>
-  //         </ul>
-  //       </section>
-  //     );
-  //   }
-  // }
 
 
   render() {
     const greeting = this.props.currentUser ? this.greetings() : this.links();
-    // const dropdown = this.props.dropdown ? this.toggleMenu() : <div></div>;
     return (
       <div className="main-nav-list">
         <button
           id="hamburger-menu"
-          onClick={this.handleToggle}>
+          onClick={this.handleToggleHam}>
         </button>
         <Link className="logo-text" to="/">ShareTube</Link>
         <form className="search-form">

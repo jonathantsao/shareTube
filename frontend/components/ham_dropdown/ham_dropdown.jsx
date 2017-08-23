@@ -17,10 +17,10 @@ const HamDropdown = ({ currentUser, hamDropdown, location}) => {
 
 
 
+  let home;
 
   if (hamDropdown) {
-    let home;
-    if (location === "/") {
+    if (location.pathname === "/") {
       home = (
         <li id="home-page-hover">
           <Link to="/">
@@ -55,7 +55,6 @@ const HamDropdown = ({ currentUser, hamDropdown, location}) => {
 
         </ul>
 
-        <hr />
       </section>
     );
   } else {

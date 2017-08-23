@@ -1,4 +1,8 @@
 <script type="text/javascript">
+  window.images = '<%= image_url("hamburger.png") %>'
+</script>
+
+<script type="text/javascript">
 
   <% if logged_in? %>
   window.currentUser = <%= render(
@@ -8,6 +12,8 @@
   <% end %>
 
 </script>
+
+
 
 
 <div id="root">

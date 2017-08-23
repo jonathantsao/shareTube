@@ -4,19 +4,40 @@
   background: #fff;
   padding: 0px 30px;
   border-bottom: 1px solid #e8e8e8;
-  display: flex;
-  align-items: center;
+  // display: flex;
+  // align-items: center;
   margin-bottom: 25px;
 }
 
 .main-nav-list {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  position: relative;
   width: 100%;
 }
 
+#upload-icon {
+  background: image-url("upload.png") no-repeat;
+  background-size: 100%;
+  opacity: 0.7;
+  height: 36px;
+  width: 36px;
+}
+
+#upload-icon:hover {
+  opacity: 0.9;
+}
+
+.upload-link {
+  position: absolute;
+  right: 80px;
+  top: 5px;
+  height: 40px;
+  width: 40px;
+}
+
 #hamburger-menu {
+  position: absolute;
+  left: 3px;
+  top: 16px;
   background: image-url("hamburger.png") no-repeat;
   background-size: 87%;
   opacity: 0.5;
@@ -25,19 +46,24 @@
 }
 
 .logo-text {
+  position: absolute;
+  left: 37px;
+  top: 7px;
   font-size: 30px;
 }
 
 .session-links {
+  position: absolute;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  top: 9px;
+  right: -27px;
+  width: 90px;
 }
 
 #sign-in-button {
   font-size: 11px;
   height: 12px;
-  padding: 10px;
+  padding: 8px 10px;
   color: #fff;
   border-radius: 2px;
   text-decoration: none;
@@ -53,6 +79,12 @@
 
 .greet-user {
   display: flex;
+}
+
+.search-form {
+  position: absolute;
+  left: 200px;
+  top: 9px;
 }
 
 #search-button {

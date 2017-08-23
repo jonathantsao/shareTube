@@ -60,7 +60,7 @@ class MainHeader extends React.Component {
             />
           <button id="search-button" onClick={this.handleSearch} />
         </form>
-        <Link to="/upload" className="upload-link"><scan id="upload-icon"></scan></Link>
+        <Link to="/upload" className="upload-link"><div id="upload-icon"></div></Link>
         { greeting }
       </div>
     );

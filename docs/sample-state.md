@@ -40,6 +40,8 @@
     },
     errors: [],
     session_form: 1,
+    hamDropdown: true,
+    userDropdown: false
   }    
 }
 ```

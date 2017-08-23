@@ -1,4 +1,4 @@
-import { RECEIVE_ERRORS, RECEIVE_USERNAME, RECEIVE_TOGGLE_DROPDOWN_HAM, RECEIVE_TOGGLE_DROPDOWN_USER } from '../actions/ui_actions';
+import { RECEIVE_ERRORS, RECEIVE_USERNAME, RECEIVE_TOGGLE_DROPDOWN_HAM, RECEIVE_TOGGLE_DROPDOWN_USER, CHANGE_FORM } from '../actions/ui_actions';
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import merge from 'lodash/merge';
 
@@ -16,6 +16,10 @@ const uiReducer = (state = initialState, action) => {
   switch(action.type) {
     case RECEIVE_ERRORS:
       return merge({}, state, { errors: action.errors });
+    case CHANGE_FORM:
+      newState = merge({}, state, { session_page: 1 });
+      newState.errors = [];
+      return newState;
     case RECEIVE_USERNAME:
       newState = merge({}, state, { session_page: 2 });
       newState.errors = [];

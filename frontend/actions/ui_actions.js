@@ -3,6 +3,7 @@ export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const RECEIVE_USERNAME = "RECEIVE_USERNAME";
 export const RECEIVE_TOGGLE_DROPDOWN_HAM = 'RECEIVE_TOGGLE_DROPDOWN_HAM';
 export const RECEIVE_TOGGLE_DROPDOWN_USER = 'RECEIVE_TOGGLE_DROPDOWN_USER';
+export const CHANGE_FORM = "CHANGE_FORM";
 
 
 export const receiveErrors = (errors) => {
@@ -27,6 +28,12 @@ export const receiveHamDropdown = () => {
 export const receiveUserDropdown = () => {
   return {
     type: RECEIVE_TOGGLE_DROPDOWN_USER,
+  };
+};
+
+export const changeForm = () => {
+  return {
+    type: CHANGE_FORM,
   };
 };
 

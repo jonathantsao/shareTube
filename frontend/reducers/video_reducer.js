@@ -7,7 +7,7 @@ const initialState = {
   video_ids: [],
 };
 
-const videoReducer = (state = initialState, action) => {
+export const videoReducer = (state = initialState, action) => {
   Object.freeze(state);
   let newState;
   switch(action.type) {

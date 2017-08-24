@@ -13,9 +13,11 @@ class ViewBarIndex extends React.Component {
     const videoList = videoIds.map((id) => {
       return videos[id];
     });
+
+
     return (
       <div className="viewbar-index">
-        <Carousel videos={videos}/>
+        <Carousel videos={videoList}/>
       </div>
     );
 

@@ -14,14 +14,14 @@ class ViewBarCarousel extends React.Component {
 
     const videos = this.props.videos.map((video) => {
       return (
-        <ViewbarIndexItem video={video}/>
+        <ViewbarIndexItem key={`${video.id}`} video={video}/>
       );
     });
 
     return (
       <Carousel
-        slidesToShow={6}
-        slidesToScroll={6}
+        slidesToShow={5}
+        slidesToScroll={5}
         dragging={true}
         decorators={[{
           component: React.createClass({
@@ -55,7 +55,7 @@ class ViewBarCarousel extends React.Component {
             }
           }), position: 'CenterRight' }]}
           >
-          {this.props.videos}
+          {videos}
         </Carousel>
       );
   }

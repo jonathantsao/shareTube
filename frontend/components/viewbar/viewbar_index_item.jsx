@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { viewsParse } from '../../util/functions';
 
 class ViewbarIndexItem extends React.Component {
 
@@ -12,15 +13,15 @@ class ViewbarIndexItem extends React.Component {
     const path = `/videos/${video.id}`;
     return (
       <div className="viewbar-item">
-        <Link to={path}><img src={video.thumbnail_url}/></Link>
+        <Link className="thumbnail" to={path}><img src={video.thumbnail_url}/></Link>
         <div className="viewbar-item-title">
           <Link to={path}>{video.title}</Link>
         </div>
-        <Link to={`/users/${video.user_id}`}>{video.user.username}
+        <Link className="viewbar-user" to={`/users/${video.user_id}`}>{video.user.username}
         </Link>
         <div className="viewbar-item-details">
           <h5 className="item-details">
-            {video.views} views · {video.created_at}
+            {viewsParse(video.views)} views · {video.created_at}
           </h5>
         </div>
       </div>
@@ -29,3 +30,5 @@ class ViewbarIndexItem extends React.Component {
 
 
 }
+
+export default ViewbarIndexItem;

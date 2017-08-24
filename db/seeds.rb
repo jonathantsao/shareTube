@@ -13,28 +13,26 @@ user3 = User.create!(username: "jonathantsao", password: "password")
 
 Video.destroy_all
 
-thumbnail = File.open("../../../seeds/missing.png")
-
 file1 = File.open("../../../seeds/vball.MOV")
-video1 = Video.create!(title: "Volleyball", description: "fun", views: 20, user_id: user1.id, video: file1, thumbnail: thumbnail)
+video1 = Video.create!(title: "Volleyball", description: "fun", views: 20, user_id: user1.id, video: file1)
 
 file2 = File.open("../../../seeds/life.mp4")
-video2 = Video.create!(title: "Cute Cousin", description: "interesting", views: 40, user_id: user1.id, video: file2, thumbnail: thumbnail)
+video2 = Video.create!(title: "Cute Cousin", description: "interesting", views: 40, user_id: user1.id, video: file2)
 
 file3 = File.open("../../../seeds/v6.mp4")
-video3 = Video.create!(title: "what", description: "cool", views: 2120, user_id: user2.id, video: file3, thumbnail: thumbnail)
+video3 = Video.create!(title: "what", description: "cool", views: 2120, user_id: user2.id, video: file3)
 
 file4 = File.open("../../../seeds/video.mov")
-video4 = Video.create!(title: "old video", description: "test", views: 2, user_id: user3.id, video: file4, thumbnail: thumbnail)
+video4 = Video.create!(title: "old video", description: "test", views: 2, user_id: user3.id, video: file4)
 
 file5 = File.open("../../../seeds/volleyball1.mov")
-video5 = Video.create!(title: "Volleyball Again", description: "again..", views: 12452, user_id: user2.id, video: file5, thumbnail: thumbnail)
+video5 = Video.create!(title: "Volleyball Again", description: "again..", views: 12452, user_id: user2.id, video: file5)
 
 file6 = File.open("../../../seeds/biology.mp4")
-video6 = Video.create!(title: "Biology Fun", description: "k..", views: 1252, user_id: user2.id, video: file6, thumbnail: thumbnail)
+video6 = Video.create!(title: "Biology Fun", description: "k..", views: 1252, user_id: user2.id, video: file6)
 
 file7 = File.open("../../../seeds/seaworld.mp4")
-video7 = Video.create!(title: "Seaworld", description: "sea animal", views: 12452, user_id: user3.id, video: file7, thumbnail: thumbnail)
+video7 = Video.create!(title: "Seaworld", description: "sea animal", views: 12452, user_id: user3.id, video: file7)
 
 file8 = File.open("../../../seeds/fireworks.mp4")
-video8 = Video.create!(title: "Fireworks", description: "again..", views: 122, user_id: user1.id, video: file8, thumbnail: thumbnail)
+video8 = Video.create!(title: "Fireworks", description: "again..", views: 122, user_id: user1.id, video: file8)

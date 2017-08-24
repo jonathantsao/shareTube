@@ -16,8 +16,12 @@ class ViewBarIndex extends React.Component {
 
 
     return (
-      <div className="viewbar-index">
-        <Carousel videos={videoList}/>
+      <div className="viewbar">
+        <div className="viewbar-container">
+          <div className="viewbar-index">
+            <Carousel videos={videoList}/>
+          </div>
+        </div>
       </div>
     );
 

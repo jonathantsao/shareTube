@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { viewsParse } from '../../util/functions';
+import { viewsParse, timeParse } from '../../util/functions';
 
 class ViewbarIndexItem extends React.Component {
 
@@ -21,7 +21,7 @@ class ViewbarIndexItem extends React.Component {
         </Link>
         <div className="viewbar-item-details">
           <h5 className="item-details">
-            {viewsParse(video.views)} views · {video.created_at}
+            {viewsParse(video.views)} views · {timeParse(video.created_at)} ago
           </h5>
         </div>
       </div>

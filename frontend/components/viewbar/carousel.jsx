@@ -1,12 +1,46 @@
 import React from 'react';
 import Carousel from 'nuka-carousel';
 import ViewbarIndexItem from './viewbar_index_item';
+import createReactClass from 'create-react-class';
 
 
 class ViewBarCarousel extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      width: $(window).width()
+    };
+
+    this.updateWidth = this.updateWidth.bind(this);
+    this.slidesCount = this.slidesCount.bind(this);
+
+  }
+
+  componentDidMount() {
+    window.addEventListener("resize", this.updateWidth);
+  }
+
+  updateWidth() {
+    this.setState({
+      width: $(window).width()
+    });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateWidth);
+  }
+
+  slidesCount() {
+    let count;
+    if (this.state.width > 1500) {
+      count = 6;
+    } else if (this.state.width > 1350 && this.state.width <= 1500) {
+      count = 5;
+    } else if (this.state.width > 1000 && this.state.width <= 1350) {
+      count = 4;
+    }
+    return count;
   }
 
 
@@ -18,13 +52,15 @@ class ViewBarCarousel extends React.Component {
       );
     });
 
+    const slidesCount = this.slidesCount();
+
     return (
       <Carousel
-        slidesToShow={5}
-        slidesToScroll={5}
+        slidesToShow={slidesCount}
+        slidesToScroll={slidesCount}
         dragging={true}
         decorators={[{
-          component: React.createClass({
+          component: createReactClass({
             render() {
               return (
                 <button className={this.buttonFunction(this.props.currentSlide === 0)}
@@ -40,7 +76,7 @@ class ViewBarCarousel extends React.Component {
           }),
         position: 'CenterLeft'
       }, {
-          component: React.createClass({
+          component: createReactClass({
             render() {
               return (
                 <button className={this.buttonFunction(this.props.currentSlide + this.props.slidesToScroll >= this.props.slideCount)}

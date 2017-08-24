@@ -15,7 +15,7 @@ class ViewBarIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getVideos();
+    this.props.getVideos(this.props.filter);
     window.addEventListener("resize", this.updateWidth);
   }
 
@@ -37,8 +37,20 @@ class ViewBarIndex extends React.Component {
     });
 
     let viewbarIndex;
+    let viewbarTitleText;
+    switch(this.props.filter) {
+      case "all":
+        viewbarTitleText = "All Videos";
+        break;
+      case "recent":
+        viewbarTitleText = "Recently uploaded";
+        break;
+      case "hot":
+        viewbarTitleText = "Hot";
+        break;
+    }
     const viewbarTitle = (
-      <h4 className="viewbar-title">All Videos</h4>
+      <h4 className="viewbar-title">{ viewbarTitleText}</h4>
     );
     switch(slidesCount(this.state.width)) {
       case 6:

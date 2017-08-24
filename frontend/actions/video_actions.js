@@ -11,7 +11,7 @@ export const receiveAllVideos = (res) => {
   };
 };
 
-export const getVideos = () => (dispatch) => {
-  return APIUtil.getVideos()
+export const getVideos = (filter) => (dispatch) => {
+  return APIUtil.getVideos(filter)
     .then((res) => dispatch(receiveAllVideos(res)));
 };

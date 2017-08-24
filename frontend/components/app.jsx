@@ -4,7 +4,7 @@ import HamburgerContainer from './ham_dropdown/ham_dropdown_container';
 import { Route } from 'react-router-dom';
 import SessionFormContainer from './session/session_form_container';
 import { AuthRoute } from '../util/route_util';
-import ViewbarContainer from './viewbar/viewbar_container';
+import HomeContainer from './viewbar/home_container';
 
 const App = () => (
   <div>
@@ -14,7 +14,8 @@ const App = () => (
     <div className="hamburger-nav">
       <HamburgerContainer />
     </div>
-    <Route exact path="/" component={ViewbarContainer} />
+
+    <Route exact path="/" component={HomeContainer} />
     <AuthRoute path="/signup" component={SessionFormContainer} />
     <AuthRoute path="/login" component={SessionFormContainer} />
   </div>

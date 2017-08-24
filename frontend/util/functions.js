@@ -15,7 +15,6 @@ export const timeParse = (time) => {
   const upload = new Date(time);
   const now = new Date(Date.now());
   let diff;
-  debugger;
   if (now.getFullYear() - upload.getFullYear() > 0) {
     diff = now.getFullYear() - upload.getFullYear();
     return diff > 1 ? "${diff} years" : "1 year";

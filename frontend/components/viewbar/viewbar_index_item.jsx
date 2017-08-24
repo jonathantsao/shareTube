@@ -21,7 +21,7 @@ class ViewbarIndexItem extends React.Component {
         </Link>
         <div className="viewbar-item-details">
           <h5 className="item-details">
-            {viewsParse(video.views)} views · {timeParse(video.created_at)} ago
+            {viewsParse(video.views)} views · {timeParse(video.upload_time)} ago
           </h5>
         </div>
       </div>

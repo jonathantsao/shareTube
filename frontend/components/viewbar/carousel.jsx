@@ -2,6 +2,7 @@ import React from 'react';
 import Carousel from 'nuka-carousel';
 import ViewbarIndexItem from './viewbar_index_item';
 import createReactClass from 'create-react-class';
+import { slidesCount } from '../../util/functions';
 
 
 class ViewBarCarousel extends React.Component {
@@ -13,7 +14,7 @@ class ViewBarCarousel extends React.Component {
     };
 
     this.updateWidth = this.updateWidth.bind(this);
-    this.slidesCount = this.slidesCount.bind(this);
+    this.count = this.count.bind(this);
 
   }
 
@@ -31,16 +32,8 @@ class ViewBarCarousel extends React.Component {
     window.removeEventListener("resize", this.updateWidth);
   }
 
-  slidesCount() {
-    let count;
-    if (this.state.width > 1500) {
-      count = 6;
-    } else if (this.state.width > 1350 && this.state.width <= 1500) {
-      count = 5;
-    } else if (this.state.width > 1000 && this.state.width <= 1350) {
-      count = 4;
-    }
-    return count;
+  count() {
+    return slidesCount(this.state.width);
   }
 
 
@@ -52,12 +45,12 @@ class ViewBarCarousel extends React.Component {
       );
     });
 
-    const slidesCount = this.slidesCount();
+    const count = this.count();
 
     return (
       <Carousel
-        slidesToShow={slidesCount}
-        slidesToScroll={slidesCount}
+        slidesToShow={count}
+        slidesToScroll={count}
         dragging={true}
         decorators={[{
           component: createReactClass({

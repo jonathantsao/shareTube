@@ -1,5 +1,6 @@
 .viewbar-item {
-  width: 160px;
+  width: 196px;
+  margin: 0 3px;
 }
 
 .viewbar {
@@ -10,24 +11,46 @@
 .viewbar-container {
   float: right;
   height: 219px;
-  width: 87.9%;
+  width: calc(100% - 231px);
+  display: flex;
+  justify-content: center;
 }
 
 .viewbar-index {
-  float: right;
-  margin: 0 9%;
   background-color: white;
-  width: 80%;
-  height: 189px;
+  width: 73%;
+  height: 205px;
   padding: 15px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.2);
 }
 
-.viewbar-index button {
-  color: #767676;
-  border: none;
-  background-color: transparent;
-  font-weight: 900;
-  outline: none;
+.viewbar-title {
+  margin: 0;
+  margin-left: 3px;
+  padding-bottom: 8px;
+}
+
+.six {
+  width: 1226px;
+}
+
+.five {
+  width: 1030px;
+}
+
+.four {
+  width: 814px;
+}
+
+.three {
+  width: 606px;
+}
+
+.two {
+  width: 402px;
 }
 
 .thumbnail {
@@ -46,8 +69,9 @@
 }
 
 .viewbar-item-title a {
-  font-size: 14px;
+  font-size: 13px;
   color: #167ac6;
+  font-weight: bold;
 }
 
 .viewbar-item a:hover {
@@ -56,16 +80,56 @@
 }
 
 .viewbar-user {
-  font-size: 12px;
+  font-size: 11px;
   color: #767676;
 }
 
 .item-details {
   margin-top: 2px;
-  font-size: 12px;
+  font-size: 11px;
   color: #767676;
 }
 
 .slider-list {
   height: 200px !important;
+}
+
+.viewbar-index button {
+  color: #767676;
+  border: none;
+  background-color: transparent;
+  font-weight: 900;
+  outline: none;
+  font-size: 15px;
+  width: 15px;
+  height: 60px;
+  position: absolute;
+  bottom: 15px;
+}
+
+.viewbar-index button:hover {
+  color: black;
+  z-index: 5;
+  width: 40px;
+  background-color: white;
+}
+
+.slider-decorator-1 button {
+  right: -5px;
+}
+
+.slider-decorator-1 button:hover {
+  right: -34px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.slider-decorator-0 button {
+  left: -15px;
+}
+
+.slider-decorator-0 button:hover {
+  left: -37px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

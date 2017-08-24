@@ -1,11 +1,29 @@
 import * as APIUtil from '../util/video_util';
 
 export const RECEIVE_ALL_VIDEOS = "RECEIVE_ALL_VIDEOS";
+export const RECEIVE_HOT = "RECEIVE_HOT";
+export const RECEIVE_RECENT = "RECEIVE_RECENT";
+export const RECEIVE_UPLOADS = "RECEIVE_UPLOADS";
 
 
 export const receiveAllVideos = (res) => {
+  let type;
+  switch(res.filter) {
+    case "all":
+      type = RECEIVE_ALL_VIDEOS;
+      break;
+    case "recent":
+      type = RECEIVE_RECENT;
+      break;
+    case "hot":
+      type = RECEIVE_HOT;
+      break;
+    case "uploads":
+      type = RECEIVE_UPLOADS;
+      break;
+  }
   return {
-    type: RECEIVE_ALL_VIDEOS,
+    type: type,
     videos_list: res.videos_list,
     video_ids: res.video_ids,
   };

@@ -8,6 +8,9 @@ const initialState = {
   session_page: 1,
   hamDropdown: true,
   userDropdown: false,
+  hot: [],
+  recent: [],
+  all: [],
 };
 
 const uiReducer = (state = initialState, action) => {

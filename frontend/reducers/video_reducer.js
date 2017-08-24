@@ -4,7 +4,6 @@ import union from 'lodash/union';
 
 const initialState = {
   videos_list: {},
-  video_ids: [],
 };
 
 export const videoReducer = (state = initialState, action) => {
@@ -12,7 +11,8 @@ export const videoReducer = (state = initialState, action) => {
   let newState;
   switch(action.type) {
     case RECEIVE_ALL_VIDEOS:
-      newState = { videos_list: action.videos_list, video_ids: action.video_ids };
+      const videos = merge({}, state.videos_list, action.videos_list);
+      newState = { videos_list: videos };
       return newState;
     default:
       return state;

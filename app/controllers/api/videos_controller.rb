@@ -2,7 +2,7 @@ class Api::VideosController < ApplicationController
   # before_action require_logged_in, only: [:create]
 
   def index
-    filter = params[:video][:filter]
+    @filter = params[:video][:filter]
     if filter == "all"
       @videos = Video.all.limit(12)
     elsif filter == "hot"

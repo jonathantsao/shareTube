@@ -3,7 +3,8 @@
   session: {
     currentUser: {
       id: 1,
-      username: "test"
+      username: "test",
+      video_ids: []
     },
   },
   entities: {
@@ -31,7 +32,6 @@
           dislikes: 200,
         }
       }
-      video_ids: [3, 5, 10],
     }  
   },
   ui: {
@@ -41,7 +41,10 @@
     errors: [],
     session_form: 1,
     hamDropdown: true,
-    userDropdown: false
+    userDropdown: false,
+    hot: [],
+    recent: [],
+    all: []
   }    
 }
 ```

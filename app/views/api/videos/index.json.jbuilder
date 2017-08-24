@@ -7,3 +7,5 @@ json.videos_list do
 end
 
 json.video_ids @video_ids
+
+json.filter @filter

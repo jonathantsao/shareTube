@@ -5,8 +5,8 @@ import { receiveHamDropdown } from '../../actions/ui_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    videos: state.entities.videos.videos_list,
-    video_ids: state.entities.videos.video_ids,
+    videoIds: state.ui[ownProps.filter],
+    videoList: state.entities.videos.videos_list,
     dropdown: state.ui.hamDropdown,
     filter: ownProps.filter
   };

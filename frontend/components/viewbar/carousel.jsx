@@ -38,7 +38,6 @@ class ViewBarCarousel extends React.Component {
 
 
   render() {
-
     const videos = this.props.videos.map((video) => {
       return (
         <ViewbarIndexItem key={`${video.id}`} video={video}/>

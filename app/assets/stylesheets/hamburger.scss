@@ -4,12 +4,13 @@
   position: absolute;
   top: 50px;
   width: 186px;
-  height: 400px;
+  height: 100%;
   padding: 0px 22px;
   background-color: white;
   border-top: 1px solid #E8E8E8;
   border-right: 1px solid #E8E8E8;
   border-bottom: 1px solid #E8E8E8;
+
 }
 
 
@@ -47,10 +48,34 @@
   background: image-url("hot.png") no-repeat;
   background-size: contain;
   opacity: 0.6;
-  height: 18px;
-  width: 18px;
+  height: 19px;
+  width: 19px;
+  float: left;
+  margin: 0px 11px 0px 8px;
+}
+
+#hot-icon:hover {
+  filter: invert(100%);
+  opacity: 1;
+}
+
+#recent-icon {
+  background: image-url("recent.png") no-repeat;
+  background-size: contain;
+  opacity: 0.6;
+  height: 16px;
+  width: 16px;
   float: left;
   margin: 0px 10px;
+}
+
+#recent-icon:hover {
+  filter: invert(100%);
+  opacity: 1;
+}
+
+#recent-icon ~ p {
+  margin-left: 2px;
 }
 
 #hot-icon:hover {

@@ -3,11 +3,11 @@ class Api::VideosController < ApplicationController
 
   def index
     @filter = params[:video][:filter]
-    if filter == "all"
+    if @filter == "all"
       @videos = Video.all.limit(12)
-    elsif filter == "hot"
+    elsif @filter == "hot"
       @videos = Video.order(views: :desc).limit(12)
-    elsif filter == "recent"
+    elsif @filter == "recent"
       @videos = Video.order(created_at: :desc).limit(12)
     end
     @video_ids = @videos.map do |video|

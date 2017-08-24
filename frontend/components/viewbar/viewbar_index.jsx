@@ -30,11 +30,20 @@ class ViewBarIndex extends React.Component {
   }
 
   viewbarSize() {
-    const videos = this.props.videos;
-    const videoIds = this.props.video_ids;
-    const videoList = videoIds.map((id) => {
-      return videos[id];
+
+
+    let videoIds = this.props.videoIds.filter((el) => {
+      return el !== undefined;
     });
+
+    let videos = videoIds.map((id) => {
+      return this.props.videoList[id];
+    });
+
+    let videoList = videos.filter((el) => {
+      return el !== undefined;
+    });
+
 
     let viewbarIndex;
     let viewbarTitleText;

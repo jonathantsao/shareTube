@@ -1,6 +1,8 @@
 import { RECEIVE_ERRORS, RECEIVE_USERNAME, RECEIVE_TOGGLE_DROPDOWN_HAM, RECEIVE_TOGGLE_DROPDOWN_USER, CHANGE_FORM } from '../actions/ui_actions';
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
+import { RECEIVE_HOT, RECEIVE_ALL_VIDEOS, RECEIVE_RECENT, RECEIVE_UPLOADS } from '../actions/video_actions';
 import merge from 'lodash/merge';
+import union from 'lodash/union';
 
 const initialState = {
   viewedUser: {},
@@ -15,8 +17,18 @@ const initialState = {
 
 const uiReducer = (state = initialState, action) => {
   Object.freeze(state);
+  let newIds;
   let newState;
   switch(action.type) {
+    case RECEIVE_ALL_VIDEOS:
+      newIds = union(action.video_ids, state.all);
+      return merge({}, state, { all: newIds });
+    case RECEIVE_HOT:
+      newIds = union(action.video_ids, state.all);
+      return merge({}, state, { hot: newIds });
+    case RECEIVE_RECENT:
+      newIds = union(action.video_ids, state.all);
+      return merge({}, state, { recent: newIds });
     case RECEIVE_ERRORS:
       return merge({}, state, { errors: action.errors });
     case CHANGE_FORM:

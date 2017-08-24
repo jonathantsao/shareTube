@@ -45,9 +45,16 @@ const HamDropdown = ({ currentUser, hamDropdown, location}) => {
           { home }
           { channel }
           <li>
-            <Link to="/search/trending">
+            <Link to="/hot">
               <div id="hot-icon"></div>
               <p>Hot</p>
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/recent">
+              <div id="recent-icon"></div>
+              <p>Recently uploaded</p>
             </Link>
           </li>
         </ul>

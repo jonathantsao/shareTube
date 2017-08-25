@@ -8,16 +8,16 @@ import HomeContainer from './viewbar/home_container';
 import VideoFormContainer from './video/form_container';
 
 const App = () => (
-  <div>
+  <div className="page">
     <div className="main-nav">
       <MainHeaderContainer />
     </div>
     <div className="hamburger-nav">
       <HamburgerContainer />
     </div>
-    <ProtectedRoute path="/upload" component={VideoFormContainer} />
     <div className="page-body">
       <Switch>
+        <ProtectedRoute path="/upload" component={VideoFormContainer} />
         <AuthRoute path="/signup" component={SessionFormContainer} />
         <AuthRoute path="/login" component={SessionFormContainer} />
         <Route path="/" component={HomeContainer} />

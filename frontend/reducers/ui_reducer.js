@@ -1,6 +1,6 @@
-import { RECEIVE_ERRORS, RECEIVE_USERNAME, RECEIVE_TOGGLE_DROPDOWN_HAM, RECEIVE_TOGGLE_DROPDOWN_USER, CHANGE_FORM } from '../actions/ui_actions';
+import { RECEIVE_ERRORS, RECEIVE_USERNAME, RECEIVE_TOGGLE_DROPDOWN_HAM, RECEIVE_TOGGLE_DROPDOWN_USER, CHANGE_FORM, CHANGE_UPLOAD_PAGE } from '../actions/ui_actions';
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
-import { RECEIVE_HOT, RECEIVE_ALL_VIDEOS, RECEIVE_RECENT, RECEIVE_UPLOADS } from '../actions/video_actions';
+import { RECEIVE_HOT, RECEIVE_ALL_VIDEOS, RECEIVE_RECENT, RECEIVE_UPLOADS, UPLOAD_VIDEO } from '../actions/video_actions';
 import merge from 'lodash/merge';
 import union from 'lodash/union';
 
@@ -35,6 +35,12 @@ const uiReducer = (state = initialState, action) => {
     case CHANGE_FORM:
       newState = merge({}, state, { session_page: 1 });
       newState.errors = [];
+      return newState;
+    case CHANGE_UPLOAD_PAGE:
+      newState = merge({}, state, { upload_page: 2 });
+      return newState;
+    case UPLOAD_VIDEO:
+      newState = merge({}, state, { upload_page: 1 });
       return newState;
     case RECEIVE_USERNAME:
       newState = merge({}, state, { session_page: 2 });

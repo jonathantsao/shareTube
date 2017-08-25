@@ -1,0 +1,150 @@
+.video-form-one {
+  width: 1000px;
+  height: 500px;
+  background: white;
+  position: relative;
+  top: 0px;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.2);
+}
+
+.video-form-two {
+  width: 800px;
+  height: 400px;
+  background: white;
+  position: relative;
+  top: 0px;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.2);
+}
+
+#upload-title {
+  position: absolute;
+  top: 38%;
+  left: 35%;
+  width: 425px;
+  height: 28px;
+  outline: none;
+  padding-left: 5px;
+  font-size: 13px;
+  border: 1px solid #808080;
+}
+
+#upload-info-text {
+  position: absolute;
+  top: 26%;
+  left: 35%;
+  font-size: 13px;
+  border-bottom: 2px red solid;
+  padding-bottom: 1px;
+}
+
+#upload-description {
+  position: absolute;
+  top: 52%;
+  left: 35%;
+  width: 425px;
+  height: 73px;
+  outline: none;
+  padding-left: 5px;
+  border: 1px solid #808080;
+  font-size: 13px;
+}
+
+.preview-video {
+  background-color: black;
+  width: 200px;
+  height: 120px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+#upload-title:focus {
+  border: 1px solid #167ac6;
+}
+
+#upload-description:focus {
+  border: 1px solid #167ac6;
+}
+
+
+input[type="file"] {
+  width: 1000px;
+  height: 500px;
+  // display: none;
+  border: none;
+  outline: none;
+  z-index: -1;
+  overflow: hidden;
+  opacity: 0;
+}
+
+input[type="file"]:hover {
+  cursor: pointer;
+}
+
+.video-form-container {
+  width: calc(100% - 231px);
+  float: right;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.file-input-label {
+  position: absolute;
+  top: 15%;
+  left: 42%;
+  height: 180px;
+  width: 180px;
+  background: image-url("upload2.png") no-repeat;
+  background-size: 100%;
+}
+
+
+
+#upload-text-1 {
+  position: absolute;
+  top: 46%;
+  left: 43.5%;
+  font-size: 18px;
+}
+
+#upload-text-2 {
+  position: absolute;
+  top: 53%;
+  left: 42%;
+  font-size: 15px;
+  color: #808080;
+}
+
+
+.upload-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 12px;
+  padding: 8px 41px;
+  color: #F5F5F5;
+  background-color: #167ac6;
+  margin: 9px;
+  text-align: center;
+  border-radius: 2px;
+  border: 1px solid #167ac6;
+  font-weight: 500;
+}
+
+.upload-button:hover {
+  cursor: pointer;
+  background-color: #1069AD;
+  border: 1px solid #1069AD;
+}
+
+
+
+
+.next-button:hover {
+  cursor: pointer;
+  background-color: #E3E3E3;
+  border: 1px solid #D3D3D3;
+}

@@ -1,4 +1,5 @@
 import * as APIUtil from '../util/video_util';
+import { receiveErrors } from './ui_actions';
 
 export const RECEIVE_ALL_VIDEOS = "RECEIVE_ALL_VIDEOS";
 export const RECEIVE_HOT = "RECEIVE_HOT";
@@ -44,5 +45,6 @@ export const getVideos = (filter) => (dispatch) => {
 
 export const createVideo = (video) => (dispatch) => {
   return APIUtil.createVideo(video)
-    .then((newVideo) => dispatch(uploadVideo(newVideo)));
+    .then((newVideo) => dispatch(uploadVideo(newVideo)),
+        ((errors) => dispatch(receiveErrors(errors))));
 };

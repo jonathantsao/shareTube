@@ -7,6 +7,15 @@
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.2);
 }
 
+#video-error {
+  position: absolute;
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
+  top: 5%;
+  left: 40%;
+}
+
 .video-form-two {
   width: 800px;
   height: 400px;

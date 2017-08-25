@@ -17,6 +17,7 @@ class VideoForm extends React.Component {
 
     this.updateFile = this.updateFile.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.nextPage = this.nextPage.bind(this);
     this.checkFileType = this.checkFileType.bind(this);
   }
@@ -33,6 +34,12 @@ class VideoForm extends React.Component {
 
   updateFile(e) {
     const file = e.currentTarget.files[0];
+    if (!this.checkFileType(file)) {
+      this.props.provideErrors(["Only video files are allowed"]);
+      return;
+    } else {
+      this.props.clearErrors();
+    }
     const fileReader = new FileReader();
     fileReader.onloadend = function() {
       this.setState({
@@ -41,7 +48,7 @@ class VideoForm extends React.Component {
         videoImageUrl: fileReader.result,
       }, this.nextPage());
     }.bind(this);
-    if (file && this.checkFileType(file)) {
+    if (file) {
       fileReader.readAsDataURL(file);
     }
   }
@@ -56,7 +63,9 @@ class VideoForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createVideo(this.state);
+    this.props.createVideo(this.state).then(
+      (newVideoId) => this.props.history.push(`/videos/${newVideoId}`)
+    );
   }
 
   handleChange(field) {
@@ -64,16 +73,22 @@ class VideoForm extends React.Component {
   }
 
   nextPage() {
-    this.props.nextPage();
+    if (this.props.errors.length === 0) {
+      this.props.nextPage();
+    }
   }
 
   render() {
 
     if (this.props.page === 1) {
+      let errors = this.props.errors.map((error) => {
+        return <h3 key='error' id="video-error">{error}</h3>;
+      });
 
       return (
         <div className="video-form-container">
           <form className="video-form-one">
+            { errors }
               <label htmlFor="input-file"
             className="file-input-label">
             </label>

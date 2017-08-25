@@ -45,6 +45,9 @@ export const getVideos = (filter) => (dispatch) => {
 
 export const createVideo = (video) => (dispatch) => {
   return APIUtil.createVideo(video)
-    .then((newVideo) => dispatch(uploadVideo(newVideo)),
+    .then((newVideo) => {
+      dispatch(uploadVideo(newVideo));
+      return newVideo.id;
+    },
         ((errors) => dispatch(receiveErrors(errors))));
 };

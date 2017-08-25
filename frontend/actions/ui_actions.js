@@ -5,6 +5,13 @@ export const RECEIVE_TOGGLE_DROPDOWN_HAM = 'RECEIVE_TOGGLE_DROPDOWN_HAM';
 export const RECEIVE_TOGGLE_DROPDOWN_USER = 'RECEIVE_TOGGLE_DROPDOWN_USER';
 export const CHANGE_FORM = "CHANGE_FORM";
 export const CHANGE_UPLOAD_PAGE = "CHANGE_UPLOAD_PAGE";
+export const CLEAR_ERRORS = "CLEAR_ERRORS";
+
+export const clearErrors = () => {
+  return {
+    type: CLEAR_ERRORS,
+  };
+};
 
 
 export const toggleVideoForm = () => {

@@ -61,7 +61,9 @@ const uiReducer = (state = initialState, action) => {
       newState.errors = [];
       return newState;
     default:
-      return merge({}, initialState, { viewedUser: action.viewedUser });
+      newState = merge({}, initialState, { viewedUser: action.viewedUser });
+      newState.errors = []
+      return newState;
   }
 };
 

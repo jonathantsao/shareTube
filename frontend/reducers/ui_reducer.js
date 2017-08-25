@@ -31,7 +31,9 @@ const uiReducer = (state = initialState, action) => {
       newIds = union(action.video_ids, state.all);
       return merge({}, state, { recent: newIds });
     case RECEIVE_ERRORS:
-      return merge({}, state, { errors: action.errors });
+      newState = merge({}, state);
+      newState.errors = action.errors;
+      return newState;
     case CHANGE_FORM:
       newState = merge({}, state, { session_page: 1 });
       newState.errors = [];

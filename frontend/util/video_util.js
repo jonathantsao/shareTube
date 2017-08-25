@@ -6,12 +6,12 @@ export const getVideos = (filter) => {
   });
 };
 
-export const createVideo = (video) => {
+export const createVideo = (formData) => {
   return $.ajax({
     method: "POST",
     url: '/api/videos',
     contentType: false,
     processData: false,
-    data: { video },
+    data: formData,
   });
 };

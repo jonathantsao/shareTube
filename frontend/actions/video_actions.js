@@ -48,5 +48,5 @@ export const createVideo = (video) => (dispatch) => {
     .then((newVideo) => {
       dispatch(uploadVideo(newVideo));
       return newVideo.id;
-    }, ((errors) => dispatch(receiveErrors(errors))));
+    }, ((errors) => dispatch(receiveErrors(errors.responseJSON))));
 };

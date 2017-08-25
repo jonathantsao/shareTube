@@ -63,9 +63,13 @@ class VideoForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // const formData = new formData();
-    // formData.append("video[title]", this.state.title);
-    this.props.createVideo(this.state).then(
+    let formData = new FormData();
+    formData.append("video[title]", this.state.title);
+    formData.append("video[description]", this.state.description);
+    formData.append("video[views]", this.state.views);
+    formData.append("video[user_id]", this.state.user_id);
+    formData.append("video[video]", this.state.video);
+    this.props.createVideo(formData).then(
       (newVideoId) => this.props.history.push(`/videos/${newVideoId}`)
     );
   }
@@ -105,6 +109,9 @@ class VideoForm extends React.Component {
       );
     } else if (this.props.page === 2) {
       let preview;
+      let errors = this.props.errors.map((error) => {
+        return <li key={error}>{error}</li>;
+      });
       if (this.state.video) {
         preview = (
           <video className="preview-video"
@@ -121,6 +128,9 @@ class VideoForm extends React.Component {
       return (
         <div className="video-form-container">
           <form className="video-form-two">
+            <ul className="video-errors-list">
+              { errors }
+            </ul>
             <h4 id="upload-info-text">Video Info</h4>
             <input type="text"
               id="upload-title"

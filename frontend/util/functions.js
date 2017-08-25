@@ -1,4 +1,7 @@
 export const viewsParse = (int) => {
+  if (int === 0) {
+    return "0";
+  }
   const result = [];
   while (int >= 1) {
     if (int / 1000 >= 1) {

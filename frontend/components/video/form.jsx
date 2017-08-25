@@ -63,8 +63,8 @@ class VideoForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const formData = new formData();
-    formData.append("video[title]", )
+    // const formData = new formData();
+    // formData.append("video[title]", this.state.title);
     this.props.createVideo(this.state).then(
       (newVideoId) => this.props.history.push(`/videos/${newVideoId}`)
     );

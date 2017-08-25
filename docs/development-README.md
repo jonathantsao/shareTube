@@ -53,11 +53,11 @@ ShareTube is a web application modeled after YouTube built using Ruby on Rails a
 
 ### Phase 2: Videos Back and Front End(Components) (2 Day)
 #### Objective: Videos can be uploaded and viewed
-- [ ] Video Model, Controllers
+- [x] Video Model, Controllers
 - [ ] Video Seed
-- [ ] JBuilder views for videos
-- [ ] Video Components on Front End
-  - [ ] Index
+- [x] JBuilder views for videos
+- [x] Video Components on Front End
+  - [x] Index
   - [ ] Form
   - [ ] Show
 

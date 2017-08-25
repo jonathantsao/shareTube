@@ -8,6 +8,7 @@ const initialState = {
   viewedUser: {},
   errors: [],
   session_page: 1,
+  upload_page: 1,
   hamDropdown: true,
   userDropdown: false,
   hot: [],

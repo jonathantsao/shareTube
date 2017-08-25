@@ -4,7 +4,15 @@ export const RECEIVE_ALL_VIDEOS = "RECEIVE_ALL_VIDEOS";
 export const RECEIVE_HOT = "RECEIVE_HOT";
 export const RECEIVE_RECENT = "RECEIVE_RECENT";
 export const RECEIVE_UPLOADS = "RECEIVE_UPLOADS";
+export const UPLOAD_VIDEO = "UPLOAD_VIDEO";
 
+
+export const uploadVideo = (video) => {
+  return {
+    type: UPLOAD_VIDEO,
+    video
+  };
+};
 
 export const receiveAllVideos = (res) => {
   let type;
@@ -32,4 +40,9 @@ export const receiveAllVideos = (res) => {
 export const getVideos = (filter) => (dispatch) => {
   return APIUtil.getVideos(filter)
     .then((res) => dispatch(receiveAllVideos(res)));
+};
+
+export const createVideo = (video) => (dispatch) => {
+  return APIUtil.createVideo(video)
+    .then((newVideo) => dispatch(uploadVideo(newVideo)));
 };

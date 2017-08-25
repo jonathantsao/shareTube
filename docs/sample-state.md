@@ -40,6 +40,7 @@
     },
     errors: [],
     session_form: 1,
+    upload_page: 1,
     hamDropdown: true,
     userDropdown: false,
     hot: [],

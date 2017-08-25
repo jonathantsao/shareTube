@@ -8,7 +8,7 @@ const mapStateToProps = (state, ownProps) => {
     videoIds: state.ui[ownProps.filter],
     videoList: state.entities.videos.videos_list,
     dropdown: state.ui.hamDropdown,
-    filter: ownProps.filter
+    filter: ownProps.filter,
   };
 };
 

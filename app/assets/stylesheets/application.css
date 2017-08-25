@@ -19,6 +19,10 @@ a {
   color: #4285f4;
 }
 
+.page-body {
+  margin-top: 100px;
+}
+
 body {
   background-color: #F0F0F0;
   font-family: 'Roboto', sans-serif;

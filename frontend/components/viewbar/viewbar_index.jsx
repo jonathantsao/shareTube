@@ -80,9 +80,6 @@ class ViewBarIndex extends React.Component {
             <Carousel videos={videoList}/>
           </div>
         );
-        // if (!this.props.dropdown) {
-        //   this.props.toggleDropdownHam();
-        // }
         break;
       case 5:
         viewbarIndex = (
@@ -91,9 +88,6 @@ class ViewBarIndex extends React.Component {
             <Carousel videos={videoList}/>
           </div>
         );
-        // if (!this.props.dropdown) {
-        //   this.props.toggleDropdownHam();
-        // }
         break;
       case 4:
         viewbarIndex = (
@@ -102,10 +96,6 @@ class ViewBarIndex extends React.Component {
             <Carousel videos={videoList}/>
           </div>
         );
-
-        // if (!this.props.dropdown) {
-        //   this.props.toggleDropdownHam();
-        // }
         break;
       case 3:
         viewbarIndex = (
@@ -114,9 +104,6 @@ class ViewBarIndex extends React.Component {
             <Carousel videos={videoList}/>
           </div>
         );
-        // if (!this.props.dropdown) {
-        //   this.props.toggleDropdownHam();
-        // }
         break;
       case 2:
         viewbarIndex = (
@@ -125,9 +112,6 @@ class ViewBarIndex extends React.Component {
             <Carousel videos={videoList}/>
           </div>
         );
-        // if (this.props.dropdown) {
-        //   this.props.toggleDropdownHam();
-        // }
         break;
       case 1:
         viewbarIndex = (
@@ -136,9 +120,6 @@ class ViewBarIndex extends React.Component {
             <Carousel videos={videoList}/>
           </div>
         );
-        // if (this.props.dropdown) {
-        //   this.props.toggleDropdownHam();
-        // }
     }
     return viewbarIndex;
   }

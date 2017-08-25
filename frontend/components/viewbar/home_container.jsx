@@ -4,11 +4,21 @@ import { withRouter } from 'react-router-dom';
 
 const HomeContainer = ({ location }) => {
   const path = location.pathname;
+  const hot = path === "/hot" ? "first" : "";
+  const recent = path === "/recent" ? "first" : "";
   return (
     <div className="home-index">
-      <ViewbarContainer filter="all" />
-      <ViewbarContainer className={path === "/hot" ? "first" : ""} filter="hot" />
-      <ViewbarContainer className={path === "/recent" ? "first" : ""} filter="recent" />
+      <div>
+        <ViewbarContainer filter="all" />
+      </div>
+
+      <div className={hot}>
+        <ViewbarContainer filter="hot" />
+      </div>
+
+      <div className={recent}>
+        <ViewbarContainer filter="recent" />
+      </div>
     </div>
   );
 };

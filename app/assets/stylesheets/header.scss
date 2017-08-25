@@ -1,11 +1,12 @@
 .main-nav {
   z-index: 5;
   min-height: 50px;
-  background: #fff;
+  background-color: #fff;
+  width: 100%;
   padding: 0px 30px;
   border-bottom: 1px solid #e8e8e8;
-  // display: flex;
-  // align-items: center;
+  position: fixed;
+  top: 0px;
   margin-bottom: 25px;
 }
 
@@ -26,6 +27,33 @@
   opacity: 0.9;
 }
 
+#user-channel-link {
+  position: fixed;
+  top: 91px;
+  right: 215px;
+  background-color: #48B2AD;
+  border-radius: 50%;
+  height: 57px;
+  width: 57px;
+  text-decoration: none;
+  text-align: center;
+  color: white;
+}
+
+#greeting-text {
+  position: fixed;
+  font-size: 16px;
+  top: 88px;
+  right: 40px;
+}
+
+#user-channel-link h5 {
+  font-size: 28px;
+  position: fixed;
+  top: 57px;
+  right: 234px;
+}
+
 #user-toggle-button {
   border: none;
   background-color: #48B2AD;
@@ -38,7 +66,7 @@
   height: 27px;
   position: absolute;
   top: 10px;
-  right: 5px;
+  right: 60px;
 }
 
 #user-toggle-button:hover {
@@ -48,45 +76,59 @@
 #greet-user {
   margin-top: 0;
   margin-bottom: 0;
-  padding: 13px;
-  height: 80px;
-  background-color: white;
+  padding: 8px 0px 6px 13px;
+  height: 17px;
+  width: 247px;
+  color: white;
+  background-color: #999;
   border-bottom: 1px solid #DFDFDF;
+  position: fixed;
+  font-size: 13px;
 }
 
 #logout-button {
   position: absolute;
   height: 28px;
   box-sizing: border-box;
-  bottom: 5px;
+  background-color: #F5F5F5;
   margin: 9px;
   right: 5px;
-  font-size: 12px;
+  font-size: 10px;
   text-align: center;
   border-radius: none;
+  top: 133px;
+  border: 1px solid #E3E3E3;
+  font-weight: 500;
 }
 
 #logout-button:hover {
   cursor: pointer;
+  background-color: #E3E3E3;
+  border: 1px solid #D3D3D3;
 }
 
-.greeting {
+.bar {
+  position: fixed;
+  background-color: #999;
+  height: 23px;
+  width: 260px;
+  top: 160px;
 }
 
 .user-toggle-menu {
   position: absolute;
-  right: 6px;
-  top: 53px;
+  right: 57px;
+  top: 50px;
   z-index: 10;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 260px;
-  height: 160px;
+  height: 180px;
   background-color: #f5f5f5;
 }
 
 .upload-link {
   position: absolute;
-  right: 76px;
+  right: 130px;
   top: 5px;
   height: 40px;
   width: 40px;
@@ -110,6 +152,16 @@
   opacity: 1;
 }
 
+.arrow-up {
+  position: fixed;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #999;
+  right: 34px;
+  top: 40px;
+}
 
 .logo-text {
   position: absolute;
@@ -129,6 +181,8 @@
 
 
 #sign-in-button {
+  position: fixed;
+  right: 16px;
   font-size: 11px;
   height: 12px;
   padding: 8px 10px;

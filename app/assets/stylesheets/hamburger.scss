@@ -1,7 +1,6 @@
-
 .ham-dropdown-menu {
   z-index: 10;
-  position: absolute;
+  position: fixed;
   top: 50px;
   width: 186px;
   height: 100%;
@@ -10,8 +9,9 @@
   border-top: 1px solid #E8E8E8;
   border-right: 1px solid #E8E8E8;
   border-bottom: 1px solid #E8E8E8;
-
+  overflow-y: auto;
 }
+
 
 
 #channel-icon {
@@ -123,6 +123,26 @@
 .ham-dropdown-list li a:hover {
   color: white;
   background-color: #4B4B4B;
+}
+
+#hot-link:hover #hot-icon {
+  filter: invert(100%);
+  opacity: 1;
+}
+
+#recent-link:hover #recent-icon {
+  filter: invert(100%);
+  opacity: 1;
+}
+
+#channel-link:hover #channel-icon {
+  filter: invert(100%);
+  opacity: 1;
+}
+
+#home-link:hover #home-icon {
+  filter: invert(100%);
+  opacity: 1;
 }
 
 #home-page-hover a:hover {

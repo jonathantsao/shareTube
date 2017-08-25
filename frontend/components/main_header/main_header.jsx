@@ -29,8 +29,16 @@ class MainHeader extends React.Component {
       return (
         <div className="greeting">
           <button id="user-toggle-button" onClick={this.handleToggleUser}>{buttonText}</button>
+          <div className="arrow-up"></div>
           <section className="user-toggle-menu">
-            <h5 id="greet-user">{this.props.currentUser.username}</h5>
+            <h5 id="greet-user">{this.props.currentUser.username.toUpperCase()}</h5>
+            <Link
+              to={`/users/${this.props.currentUser.id}`}
+              id="user-channel-link">
+              <h5>{buttonText}</h5>
+            </Link>
+            <h4 id="greeting-text">Welcome to ShareTube</h4>
+            <div className="bar" ></div>
             <button id="logout-button"
               onClick={this.props.logout}>Sign Out
             </button>

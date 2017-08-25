@@ -8,8 +8,13 @@
   height: 219px;
 }
 
+.home-index {
+  display: flex;
+  flex-direction: column;
+}
+
 .first {
-  order: 1;
+  order: -1;
 }
 
 .viewbar-container {

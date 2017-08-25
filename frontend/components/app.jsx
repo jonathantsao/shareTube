@@ -14,11 +14,13 @@ const App = () => (
     <div className="hamburger-nav">
       <HamburgerContainer />
     </div>
-    <Switch>
-      <AuthRoute path="/signup" component={SessionFormContainer} />
-      <AuthRoute path="/login" component={SessionFormContainer} />
-      <Route path="/" component={HomeContainer} />
-    </Switch>
+    <div className="page-body">
+      <Switch>
+        <AuthRoute path="/signup" component={SessionFormContainer} />
+        <AuthRoute path="/login" component={SessionFormContainer} />
+        <Route path="/" component={HomeContainer} />
+      </Switch>
+    </div>
   </div>
 );
 

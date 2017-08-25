@@ -13,6 +13,7 @@ class Api::VideosController < ApplicationController
     @video_ids = @videos.map do |video|
       video.id
     end
+    @video_ids.shuffle!
   end
 
   def create

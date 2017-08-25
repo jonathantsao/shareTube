@@ -71,15 +71,22 @@ class MainHeader extends React.Component {
     this.props.toggleDropdownUser();
   }
 
+  hamDropdown() {
+    return (
+      <button
+        id="hamburger-menu"
+        onClick={this.handleToggleHam.bind(this)}>
+      </button>
+    );
+  }
+
 
   render() {
     const greeting = this.props.currentUser ? this.greetings() : this.links();
+    const hamDropdown = this.hamDropdown();
     return (
       <div className="main-nav-list">
-        <button
-          id="hamburger-menu"
-          onClick={this.handleToggleHam}>
-        </button>
+        { hamDropdown }
         <Link className="logo-text" to="/">ShareTube</Link>
         <form className="search-form">
           <input

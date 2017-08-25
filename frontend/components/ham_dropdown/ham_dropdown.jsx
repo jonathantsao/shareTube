@@ -1,72 +1,149 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const HamDropdown = ({ currentUser, hamDropdown, location}) => {
-  let channel;
-  let hamSubs;
+class HamDropdown extends React.Component {
 
-  if (currentUser) {
-    channel = (
-      <li>
-        <Link to={`/users/${currentUser.id}`} >
-          <div id="channel-icon"></div> <p>My channel</p>
-        </Link>
-      </li>
-    );
+  constructor(props) {
+    super(props);
+
   }
 
+  render() {
+    let channel;
+    let hamSubs;
 
-
-  let home;
-
-  if (hamDropdown) {
-    if (location.pathname === "/") {
-      home = (
-        <li id="home-page-hover">
-          <Link to="/">
-            <div id="home-icon"></div>
-            <p>Home</p>
-          </Link>
-        </li>
-      );
-    } else {
-      home = (
+    if (this.props.currentUser) {
+      channel = (
         <li>
-          <Link to="/">
-            <div id="home-icon"></div>
-            <p>Home</p>
+          <Link to={`/users/${this.props.currentUser.id}`} >
+            <div id="channel-icon"></div> <p>My channel</p>
           </Link>
         </li>
       );
     }
-    return (
-      <section className="ham-dropdown-menu">
-        <ul className="ham-dropdown-list">
-          { home }
-          { channel }
-          <li>
-            <Link to="/hot">
-              <div id="hot-icon"></div>
-              <p>Hot</p>
+
+    let home;
+
+    if (this.props.hamDropdown) {
+      if (this.props.location.pathname === "/") {
+        home = (
+          <li id="home-page-hover">
+            <Link to="/">
+              <div id="home-icon"></div>
+              <p>Home</p>
             </Link>
           </li>
-
+        );
+      } else {
+        home = (
           <li>
-            <Link to="/recent">
-              <div id="recent-icon"></div>
-              <p>Recently uploaded</p>
+            <Link to="/">
+              <div id="home-icon"></div>
+              <p>Home</p>
             </Link>
           </li>
-        </ul>
-        <ul className="ham-dropdown-subscriptions">
+        );
+      }
 
-        </ul>
+      return (
+        <section className="ham-dropdown-menu">
+          <ul className="ham-dropdown-list">
+            { home }
+            { channel }
+            <li>
+              <Link to="/hot">
+                <div id="hot-icon"></div>
+                <p>Hot</p>
+              </Link>
+            </li>
 
-      </section>
-    );
-  } else {
-    return <div></div>;
+            <li>
+              <Link to="/recent">
+                <div id="recent-icon"></div>
+                <p>Recently uploaded</p>
+              </Link>
+            </li>
+          </ul>
+          <ul className="ham-dropdown-subscriptions">
+
+          </ul>
+
+        </section>
+      );
+    } else {
+      return <div></div>;
+    }
+
   }
-};
+
+}
+// ({ currentUser, hamDropdown, location}) => {
+//   let channel;
+//   let hamSubs;
+//
+//   if (currentUser) {
+//     channel = (
+//       <li>
+//         <Link to={`/users/${currentUser.id}`} >
+//           <div id="channel-icon"></div> <p>My channel</p>
+//         </Link>
+//       </li>
+//     );
+//   }
+//
+//
+//
+//   let home;
+//
+//   if (hamDropdown) {
+//     if (location.pathname === "/") {
+//       home = (
+//         <li id="home-page-hover">
+//           <Link to="/">
+//             <div id="home-icon"></div>
+//             <p>Home</p>
+//           </Link>
+//         </li>
+//       );
+//     } else {
+//       home = (
+//         <li>
+//           <Link to="/">
+//             <div id="home-icon"></div>
+//             <p>Home</p>
+//           </Link>
+//         </li>
+//       );
+//     }
+//
+//     return (
+//       <section className="ham-dropdown-menu">
+//         <ul className="ham-dropdown-list">
+//           { home }
+//           { channel }
+//           <li>
+//             <Link to="/hot">
+//               <div id="hot-icon"></div>
+//               <p>Hot</p>
+//             </Link>
+//           </li>
+//
+//           <li>
+//             <Link to="/recent">
+//               <div id="recent-icon"></div>
+//               <p>Recently uploaded</p>
+//             </Link>
+//           </li>
+//         </ul>
+//         <ul className="ham-dropdown-subscriptions">
+//
+//         </ul>
+//
+//       </section>
+//     );
+//   } else {
+//     return <div></div>;
+//   }
+// };
 
 export default HamDropdown;

@@ -11,16 +11,27 @@ class ViewBarIndex extends React.Component {
     };
 
     this.updateWidth = this.updateWidth.bind(this);
+    this.updateHamburger = this.updateHamburger.bind(this);
     this.viewbarSize = this.viewbarSize.bind(this);
   }
 
   componentDidMount() {
     this.props.getVideos(this.props.filter);
     window.addEventListener("resize", this.updateWidth);
+    window.addEventListener("resize", this.updateHamburger);
   }
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateWidth);
+    window.removeEventListener("resize", this.updateHamburger);
+  }
+
+  updateHamburger() {
+    if (slidesCount(this.state.width) >= 3 && !this.props.dropdown) {
+      this.props.toggleDropdownHam();
+    } else if (slidesCount(this.state.width) < 3 && this.props.dropdown) {
+      this.props.toggleDropdownHam();
+    }
   }
 
   updateWidth() {
@@ -69,9 +80,9 @@ class ViewBarIndex extends React.Component {
             <Carousel videos={videoList}/>
           </div>
         );
-        if (!this.props.dropdown) {
-          this.props.toggleDropdownHam();
-        }
+        // if (!this.props.dropdown) {
+        //   this.props.toggleDropdownHam();
+        // }
         break;
       case 5:
         viewbarIndex = (
@@ -80,9 +91,9 @@ class ViewBarIndex extends React.Component {
             <Carousel videos={videoList}/>
           </div>
         );
-        if (!this.props.dropdown) {
-          this.props.toggleDropdownHam();
-        }
+        // if (!this.props.dropdown) {
+        //   this.props.toggleDropdownHam();
+        // }
         break;
       case 4:
         viewbarIndex = (
@@ -92,9 +103,9 @@ class ViewBarIndex extends React.Component {
           </div>
         );
 
-        if (!this.props.dropdown) {
-          this.props.toggleDropdownHam();
-        }
+        // if (!this.props.dropdown) {
+        //   this.props.toggleDropdownHam();
+        // }
         break;
       case 3:
         viewbarIndex = (
@@ -103,9 +114,9 @@ class ViewBarIndex extends React.Component {
             <Carousel videos={videoList}/>
           </div>
         );
-        if (!this.props.dropdown) {
-          this.props.toggleDropdownHam();
-        }
+        // if (!this.props.dropdown) {
+        //   this.props.toggleDropdownHam();
+        // }
         break;
       case 2:
         viewbarIndex = (
@@ -114,9 +125,9 @@ class ViewBarIndex extends React.Component {
             <Carousel videos={videoList}/>
           </div>
         );
-        if (this.props.dropdown) {
-          this.props.toggleDropdownHam();
-        }
+        // if (this.props.dropdown) {
+        //   this.props.toggleDropdownHam();
+        // }
         break;
       case 1:
         viewbarIndex = (
@@ -125,15 +136,14 @@ class ViewBarIndex extends React.Component {
             <Carousel videos={videoList}/>
           </div>
         );
-        if (this.props.dropdown) {
-          this.props.toggleDropdownHam();
-        }
+        // if (this.props.dropdown) {
+        //   this.props.toggleDropdownHam();
+        // }
     }
     return viewbarIndex;
   }
 
   render() {
-
     const viewbarIndex = this.viewbarSize();
 
     return (

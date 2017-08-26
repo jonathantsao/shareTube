@@ -28,6 +28,10 @@ class VideoForm extends React.Component {
     });
   }
 
+  componentWillUnmount() {
+    this.props.clearUpload();
+  }
+
   checkFileType(file) {
     return file.type.split("/")[0] === "video";
   }

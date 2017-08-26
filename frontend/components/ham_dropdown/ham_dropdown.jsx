@@ -22,8 +22,11 @@ class HamDropdown extends React.Component {
     }
 
     let home;
+    const path = this.props.location.pathname;
 
-    if (this.props.hamDropdown) {
+    if (this.props.hamDropdown && (
+      path !== "/login" && path !== "/signup" )
+    ) {
       if (this.props.location.pathname === "/") {
         home = (
           <li id="home-page-hover">

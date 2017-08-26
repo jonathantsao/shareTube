@@ -92,23 +92,23 @@ class MainHeader extends React.Component {
   render() {
     const greeting = this.props.currentUser ? this.greetings() : this.links();
     const hamDropdown = this.hamDropdown();
-    return (
-      <div className="main-nav-list">
-        { hamDropdown }
-        <Link className="logo-text" to="/">ShareTube</Link>
-        <form className="search-form">
-          <input
-            onChange={this.handleChange}
-            value={this.state.search}
-            placeholder="Search"
-            className="search-bar"
-            />
-          <button id="search-button" onClick={this.handleSearch} />
-        </form>
-        <Link to="/upload" className="upload-link"><div id="upload-icon"></div></Link>
-        { greeting }
-      </div>
-    );
+      return (
+        <div className="main-nav-list">
+          { hamDropdown }
+          <Link className="logo-text" to="/">ShareTube</Link>
+          <form className="search-form">
+            <input
+              onChange={this.handleChange}
+              value={this.state.search}
+              placeholder="Search"
+              className="search-bar"
+              />
+            <button id="search-button" onClick={this.handleSearch} />
+          </form>
+          <Link to="/upload" className="upload-link"><div id="upload-icon"></div></Link>
+          { greeting }
+        </div>
+      );
   }
 
 }

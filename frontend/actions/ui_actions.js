@@ -6,6 +6,20 @@ export const RECEIVE_TOGGLE_DROPDOWN_USER = 'RECEIVE_TOGGLE_DROPDOWN_USER';
 export const CHANGE_FORM = "CHANGE_FORM";
 export const CHANGE_UPLOAD_PAGE = "CHANGE_UPLOAD_PAGE";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
+export const CLEAR_SESSION = "CLEAR_SESSION";
+export const CLEAR_UPLOAD = "CLEAR_UPLOAD";
+
+export const clearSession = () => {
+  return {
+    type: CLEAR_SESSION,
+  };
+};
+
+export const clearUpload = () => {
+  return {
+    type: CLEAR_UPLOAD,
+  };
+};
 
 export const clearErrors = () => {
   return {

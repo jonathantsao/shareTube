@@ -126,10 +126,11 @@ class ViewBarIndex extends React.Component {
 
   render() {
     const viewbarIndex = this.viewbarSize();
+    const viewbarSize = this.props.dropdown ? "viewbar-container" : "viewbar-container-full";
 
     return (
       <div className="viewbar">
-        <div className="viewbar-container">
+        <div className={viewbarSize}>
           { viewbarIndex }
         </div>
       </div>

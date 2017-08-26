@@ -7,8 +7,12 @@ class VideoDetail extends React.Component {
 
   constructor(props) {
     super(props);
+  }
 
-
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.videoId !== nextProps.match.params.videoId) {
+      this.props.getVideo(nextProps.match.params.videoId);
+    }
   }
 
   componentDidMount() {
@@ -66,7 +70,7 @@ class VideoDetail extends React.Component {
           <p>{this.props.video.description}</p>
           <h3 id="license">License - Standard Bullshit License</h3>
         </div>
-        
+
           <button id="more-toggle">SHOW MORE</button>
         </div>
       );
@@ -74,16 +78,18 @@ class VideoDetail extends React.Component {
 
     return (
       <div className="video-show-page">
-        <div className="video-player-container">
-          { video }
-        </div>
+        <div className="video-show-page-left">
+          <div className="video-player-container">
+            { video }
+          </div>
 
-        <div className="video-description-container">
-          { description }
-        </div>
+          <div className="video-description-container">
+            { description }
+          </div>
 
-        <div className="video-detail-container">
-          { details }
+          <div className="video-detail-container">
+            { details }
+          </div>
         </div>
 
         <div className="related-videos-container">

@@ -22,13 +22,13 @@ export const timeParse = (time) => {
   let diff;
   if (now.getFullYear() - upload.getFullYear() > 0) {
     diff = now.getFullYear() - upload.getFullYear();
-    return diff > 1 ? "${diff} years" : "1 year";
+    return diff > 1 ? `${diff} years` : "1 year";
   } else if (now.getMonth() - upload.getMonth() > 0) {
     diff = now.getMonth() - upload.getMonth();
-    return diff > 1 ? "${diff} months" : "1 month";
+    return diff > 1 ? `${diff} months` : "1 month";
   } else if (now.getDate() - upload.getDate() > 0) {
     diff = now.getDate() - upload.getDate();
-    return diff > 1 ? "${diff} days" : "1 day";
+    return diff > 1 ? `${diff} days` : "1 day";
   } else if (now.getHours() - upload.getHours() > 0) {
     diff = now.getHours() - upload.getHours();
     return diff > 1 ? `${diff} hours` : "1 hour";
@@ -42,7 +42,7 @@ export const timeParse = (time) => {
 
 export const parseDate = (dateString) => {
   const date = new Date(dateString).toDateString().split(" ").slice(1);
-  return `${date[0]} ${date[1]}, ${date[2]}`; 
+  return `${date[0]} ${date[1]}, ${date[2]}`;
 };
 
 export const slidesCount = (width) => {

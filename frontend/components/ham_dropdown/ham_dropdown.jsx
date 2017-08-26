@@ -7,6 +7,12 @@ class HamDropdown extends React.Component {
     super(props);
   }
 
+  // componentWillReceiveProps() {
+  //   if (this.props.location.pathname =="/" && !this.props.hamDropdown) {
+  //     this.props.toggleHamDropdown;
+  //   }
+  // }
+
   render() {
     let channel;
     let hamSubs;

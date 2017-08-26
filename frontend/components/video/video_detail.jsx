@@ -1,6 +1,7 @@
 import React from 'react';
 import { viewsParse, parseDate } from '../../util/functions';
 import { Link } from 'react-router-dom';
+import RelatedVideosIndexContainer from './related_videos_index_container';
 
 class VideoDetail extends React.Component {
 
@@ -60,10 +61,12 @@ class VideoDetail extends React.Component {
       details = (
         <div className="video-details">
           <h4 id="video-date">Published on {date}</h4>
-          <p id="video-description-text">{this.props.video.description}
 
-            <h3 id="license">License - Standard Bullshit License</h3>
-          </p>
+        <div id="video-description-text">
+          <p>{this.props.video.description}</p>
+          <h3 id="license">License - Standard Bullshit License</h3>
+        </div>
+        
           <button id="more-toggle">SHOW MORE</button>
         </div>
       );
@@ -82,6 +85,11 @@ class VideoDetail extends React.Component {
         <div className="video-detail-container">
           { details }
         </div>
+
+        <div className="related-videos-container">
+          <RelatedVideosIndexContainer filter="all" />
+        </div>
+
 
       </div>
     );

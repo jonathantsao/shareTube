@@ -37,10 +37,10 @@ const uiReducer = (state = initialState, action) => {
       newIds = union(action.video_ids, state.all);
       return merge({}, state, { all: newIds });
     case RECEIVE_HOT:
-      newIds = union(action.video_ids, state.all);
+      newIds = union(action.video_ids, state.hot);
       return merge({}, state, { hot: newIds });
     case RECEIVE_RECENT:
-      newIds = union(action.video_ids, state.all);
+      newIds = union(action.video_ids, state.recent);
       return merge({}, state, { recent: newIds });
     case RECEIVE_ERRORS:
       newState = merge({}, state);

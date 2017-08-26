@@ -40,6 +40,11 @@ export const timeParse = (time) => {
   }
 };
 
+export const parseDate = (dateString) => {
+  const date = new Date(dateString).toDateString().split(" ").slice(1);
+  return `${date[0]} ${date[1]}, ${date[2]}`; 
+};
+
 export const slidesCount = (width) => {
   let count;
   if (width > 1500) {

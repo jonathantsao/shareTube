@@ -1,5 +1,5 @@
 import React from 'react';
-import { viewsParse } from '../../util/functions';
+import { viewsParse, parseDate } from '../../util/functions';
 import { Link } from 'react-router-dom';
 
 class VideoDetail extends React.Component {
@@ -21,6 +21,7 @@ class VideoDetail extends React.Component {
   render() {
     let video = <div></div>;
     let description = <div></div>;
+    let details = <div></div>;
     if (this.props.video) {
       video = (
         <div>
@@ -47,16 +48,23 @@ class VideoDetail extends React.Component {
               <Link to={`/users/${this.props.video.user_id}`} id="video-detail-user">
                 {this.props.video.user.username}
               </Link>
-
             </div>
-
             <div id="video-detail-views"><h3>{views}</h3></div>
           </div>
 
           <div className="video-detail-likes">
-
           </div>
+        </div>
+      );
+      let date = parseDate(this.props.video.upload_time);
+      details = (
+        <div className="video-details">
+          <h4 id="video-date">Published on {date}</h4>
+          <p id="video-description-text">{this.props.video.description}
 
+            <h3 id="license">License - Standard Bullshit License</h3>
+          </p>
+          <button id="more-toggle">SHOW MORE</button>
         </div>
       );
     }
@@ -70,6 +78,11 @@ class VideoDetail extends React.Component {
         <div className="video-description-container">
           { description }
         </div>
+
+        <div className="video-detail-container">
+          { details }
+        </div>
+
       </div>
     );
   }

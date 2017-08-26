@@ -22,3 +22,11 @@ export const getVideo = (videoId) => {
     url: `/api/videos/${videoId}`,
   });
 };
+
+export const addView = (videoId) => {
+  return $.ajax({
+    method: "PATCH",
+    url: `/api/videos/${videoId}`,
+    data: { video: { add_view: true } },
+  });
+};

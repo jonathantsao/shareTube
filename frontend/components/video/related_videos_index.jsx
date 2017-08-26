@@ -9,6 +9,8 @@ class RelatedVideosIndex extends React.Component {
     this.filterVideos = this.filterVideos.bind(this);
   }
 
+
+
   componentDidMount() {
     this.props.getVideos(this.props.filter);
   }

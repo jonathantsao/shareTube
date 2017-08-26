@@ -15,6 +15,7 @@ export const uploadVideo = (video) => {
   };
 };
 
+
 export const receiveAllVideos = (res) => {
   let type;
   switch(res.filter) {
@@ -36,6 +37,10 @@ export const receiveAllVideos = (res) => {
     videos_list: res.videos_list,
     video_ids: res.video_ids,
   };
+};
+
+export const addView = (videoId) => (dispatch) => {
+  return APIUtil.addView(videoId);
 };
 
 export const getVideos = (filter) => (dispatch) => {

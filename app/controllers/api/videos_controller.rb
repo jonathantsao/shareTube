@@ -31,7 +31,11 @@ class Api::VideosController < ApplicationController
 
   def update
     @video = Video.find(params[:id])
-    if @video.update(video_params)
+    if params[:video][:add_view]
+      @video[:views] += 1
+      @video.save!
+      render :show
+    elsif @video.update(video_params)
       render :show
     else
       render json: @video.errors.full_messages, status: 422
@@ -50,7 +54,7 @@ class Api::VideosController < ApplicationController
   private
 
   def video_params
-    params.require(:video).permit(:user_id, :title, :description, :views, :video)
+    params.require(:video).permit(:user_id, :title, :description, :views, :video, :add_view)
   end
 
 

@@ -12,6 +12,9 @@ class VideoDetail extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.videoId !== nextProps.match.params.videoId) {
       this.props.getVideo(nextProps.match.params.videoId);
+      this.props.addView(nextProps.match.params.videoId);
+    } else {
+      this.props.addView(this.props.match.params.videoId);
     }
   }
 

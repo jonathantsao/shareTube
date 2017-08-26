@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { getVideo, receiveHamDropdown } from '../../actions/ui_actions';
+import { addView } from '../../actions/video_actions';
 import { withRouter } from 'react-router-dom';
 import VideoDetail from './video_detail';
 
@@ -15,6 +16,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getVideo: (videoId) => dispatch(getVideo(videoId)),
     toggleHamDropdown: () => dispatch(receiveHamDropdown()),
+    addView: (videoId) => dispatch(addView(videoId)),
   };
 };
 

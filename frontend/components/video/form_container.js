@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
 const mapStateToProps = (state) => {
   return {
     errors: state.ui.errors,
-    page: state.ui.upload_page,
+    page: state.ui.uploadPage,
     currentUserId: state.session.currentUser.id,
   };
 };

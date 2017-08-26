@@ -15,3 +15,10 @@ export const createVideo = (formData) => {
     data: formData,
   });
 };
+
+export const getVideo = (videoId) => {
+  return $.ajax({
+    method: "GET",
+    url: `/api/videos/${videoId}`,
+  });
+};

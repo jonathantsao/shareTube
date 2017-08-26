@@ -6,6 +6,7 @@ import SessionFormContainer from './session/session_form_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import HomeContainer from './viewbar/home_container';
 import VideoFormContainer from './video/form_container';
+import VideoDetailContainer from './video/video_detail_container';
 
 const App = () => (
   <div className="page">
@@ -20,6 +21,7 @@ const App = () => (
         <ProtectedRoute path="/upload" component={VideoFormContainer} />
         <AuthRoute path="/signup" component={SessionFormContainer} />
         <AuthRoute path="/login" component={SessionFormContainer} />
+        <Route path="/videos/:videoId" component={VideoDetailContainer} />
         <Route path="/" component={HomeContainer} />
       </Switch>
     </div>

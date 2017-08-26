@@ -1,6 +1,8 @@
 export const viewsParse = (int) => {
   if (int === 0) {
-    return "0";
+    return "0 views";
+  } else if (int === 1) {
+    return "1 view";
   }
   const result = [];
   while (int >= 1) {
@@ -11,7 +13,7 @@ export const viewsParse = (int) => {
     }
     int = Math.floor(int / 1000);
   }
-  return result.join(",");
+  return result.join(",") + " views";
 };
 
 export const timeParse = (time) => {

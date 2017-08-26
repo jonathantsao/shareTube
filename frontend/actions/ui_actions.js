@@ -1,4 +1,5 @@
 import * as APIUtil from '../util/session_api_util';
+import * as VideoUtil from '../util/video_util';
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const RECEIVE_USERNAME = "RECEIVE_USERNAME";
 export const RECEIVE_TOGGLE_DROPDOWN_HAM = 'RECEIVE_TOGGLE_DROPDOWN_HAM';
@@ -8,10 +9,18 @@ export const CHANGE_UPLOAD_PAGE = "CHANGE_UPLOAD_PAGE";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const CLEAR_SESSION = "CLEAR_SESSION";
 export const CLEAR_UPLOAD = "CLEAR_UPLOAD";
+export const RECEIVE_VIDEO = "RECEIVE_VIDEO";
 
 export const clearSession = () => {
   return {
     type: CLEAR_SESSION,
+  };
+};
+
+export const receiveVideo = (video) => {
+  return {
+    type: RECEIVE_VIDEO,
+    video,
   };
 };
 
@@ -63,6 +72,11 @@ export const changeForm = () => {
   return {
     type: CHANGE_FORM,
   };
+};
+
+export const getVideo = (videoId) => (dispatch) => {
+  return VideoUtil.getVideo(videoId)
+    .then((video) => dispatch(receiveVideo(video)));
 };
 
 export const verifyUsername = (username) => (dispatch) => {

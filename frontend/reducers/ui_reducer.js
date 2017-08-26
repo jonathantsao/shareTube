@@ -1,4 +1,4 @@
-import { RECEIVE_ERRORS, RECEIVE_USERNAME, RECEIVE_TOGGLE_DROPDOWN_HAM, RECEIVE_TOGGLE_DROPDOWN_USER, CHANGE_FORM, CHANGE_UPLOAD_PAGE, CLEAR_SESSION, CLEAR_UPLOAD } from '../actions/ui_actions';
+import { RECEIVE_ERRORS, RECEIVE_USERNAME, RECEIVE_TOGGLE_DROPDOWN_HAM, RECEIVE_TOGGLE_DROPDOWN_USER, CHANGE_FORM, CHANGE_UPLOAD_PAGE, CLEAR_SESSION, CLEAR_UPLOAD, RECEIVE_VIDEO } from '../actions/ui_actions';
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_HOT, RECEIVE_ALL_VIDEOS, RECEIVE_RECENT, RECEIVE_UPLOADS, UPLOAD_VIDEO } from '../actions/video_actions';
 import merge from 'lodash/merge';
@@ -7,10 +7,11 @@ import union from 'lodash/union';
 const initialState = {
   viewedUser: {},
   errors: [],
-  session_page: 1,
-  upload_page: 1,
+  sessionPage: 1,
+  uploadPage: 1,
   hamDropdown: true,
   userDropdown: false,
+  video: null,
   hot: [],
   recent: [],
   all: [],
@@ -21,12 +22,15 @@ const uiReducer = (state = initialState, action) => {
   let newIds;
   let newState;
   switch(action.type) {
+    case RECEIVE_VIDEO:
+      newState = merge({}, state, { video: action.video });
+      return newState;
     case CLEAR_SESSION:
-      newState = merge({}, state, { session_page: 1});
+      newState = merge({}, state, { sessionPage: 1});
       newState.errors = [];
       return newState;
     case CLEAR_UPLOAD:
-      newState = merge({}, state, { upload_page: 1});
+      newState = merge({}, state, { uploadPage: 1});
       newState.errors = [];
       return newState;
     case RECEIVE_ALL_VIDEOS:
@@ -43,17 +47,17 @@ const uiReducer = (state = initialState, action) => {
       newState.errors = action.errors;
       return newState;
     case CHANGE_FORM:
-      newState = merge({}, state, { session_page: 1 });
+      newState = merge({}, state, { sessionPage: 1 });
       newState.errors = [];
       return newState;
     case CHANGE_UPLOAD_PAGE:
-      newState = merge({}, state, { upload_page: 2 });
+      newState = merge({}, state, { uploadPage: 2 });
       return newState;
     case UPLOAD_VIDEO:
-      newState = merge({}, state, { upload_page: 1 });
+      newState = merge({}, state, { uploadPage: 1 });
       return newState;
     case RECEIVE_USERNAME:
-      newState = merge({}, state, { session_page: 2 });
+      newState = merge({}, state, { sessionPage: 2 });
       newState.errors = [];
       return newState;
     case RECEIVE_CURRENT_USER:
@@ -72,7 +76,7 @@ const uiReducer = (state = initialState, action) => {
       return newState;
     default:
       newState = merge({}, initialState, { viewedUser: action.viewedUser });
-      newState.errors = []
+      newState.errors = [];
       return newState;
   }
 };

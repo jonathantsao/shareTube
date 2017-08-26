@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => {
     loggedIn: Boolean(state.session.currentUser),
     errors: state.ui.errors,
     formType: ownProps.location.pathname.slice(1),
-    page: state.ui.session_page,
+    page: state.ui.sessionPage,
   };
 };
 

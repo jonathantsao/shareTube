@@ -2,20 +2,35 @@ import React from 'react';
 import { viewsParse, parseDate } from '../../util/functions';
 import { Link } from 'react-router-dom';
 import RelatedVideosIndexContainer from './related_videos_index_container';
+import CommentIndexContainer from '../comment/comment_index_container';
+import CommentFormContainer from '../comment/comment_form_container';
 
 class VideoDetail extends React.Component {
 
   constructor(props) {
     super(props);
+
+
+    let height;
+    if ($(window).height() > 620) {
+      height = $(window).height() * 0.48;
+    } else {
+      height = $(window).height() * 0.56;
+    }
+
+    this.state = {
+      height: height,
+    };
+
+    this.updateHeight = this.updateHeight.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.videoId !== nextProps.match.params.videoId) {
       this.props.getVideo(nextProps.match.params.videoId);
       this.props.addView(nextProps.match.params.videoId);
-    } else {
-      this.props.addView(this.props.match.params.videoId);
-    }
+      this.props.getComments(nextProps.match.params.videoId);
+    } 
   }
 
   componentDidMount() {
@@ -24,21 +39,44 @@ class VideoDetail extends React.Component {
     }
     const videoId = parseInt(this.props.match.params.videoId);
     this.props.getVideo(videoId);
+    window.addEventListener("resize", this.updateHeight);
   }
+
+  updateHeight() {
+    let height;
+    if ($(window).height() > 620 && this.state.height) {
+      height = $(window).height() * 0.48;
+      this.setState({
+        height: height,
+      });
+      document.getElementsByClassName("vsc-controller")[0].style.height = `${height}px`;
+    } else {
+      height = $(window).height() * 0.56;
+      this.setState({
+        height: height,
+      });
+      document.getElementsByClassName("vsc-controller")[0].style.height = `${height}px`;
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateHeight);
+  }
+
 
   render() {
     let video = <div></div>;
     let description = <div></div>;
     let details = <div></div>;
+    let videoHeight = this.state.height;
     if (this.props.video) {
       video = (
-        <div>
-          <video src={this.props.video.video_url}
-            autoPlay="autoPlay" controls className="video-player">
-            Your browser does not support this video.
-          </video>
-        </div>
+        <video src={this.props.video.video_url}
+          autoPlay="autoPlay" controls className="video-player" height={videoHeight}>
+          Your browser does not support this video.
+        </video>
       );
+
       let views = viewsParse(this.props.video.views);
       description = (
         <div className="video-description">
@@ -78,13 +116,17 @@ class VideoDetail extends React.Component {
         </div>
       );
     }
+    let form = <div></div>;
+    if (this.props.video) {
+      form = <CommentFormContainer videoId={this.props.video.id}/>;
+    }
 
     return (
       <div className="video-show-page">
         <div className="video-show-page-left">
-          <div className="video-player-container">
+
             { video }
-          </div>
+
 
           <div className="video-description-container">
             { description }
@@ -93,14 +135,19 @@ class VideoDetail extends React.Component {
           <div className="video-detail-container">
             { details }
           </div>
+
+          <div className="comments-container">
+            { form }
+            <CommentIndexContainer />
+          </div>
+
         </div>
 
-        <div className="related-videos-container">
-          <RelatedVideosIndexContainer filter="all" />
-        </div>
-
-
+      <div className="related-videos-container">
+        <RelatedVideosIndexContainer filter="all" />
       </div>
+
+    </div>
     );
   }
 

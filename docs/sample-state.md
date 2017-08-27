@@ -12,8 +12,8 @@
       comments_list: {
         1: {
           id: 1,
-          comment: body,
-          username: test-1,
+          body: "body",
+          user: user,
           likes: 5,
           dislikes: 5,
         }

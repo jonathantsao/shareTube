@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :show]
     resource :session, only: [:create, :destroy]
     resources :videos, only: [:create, :index, :show, :destroy, :update]
+    resources :videos do
+      resources :comments, only: [:create, :index, :show]
+    end
+    resources :comments, only: [:destroy, :update]
   end
 
   get 'api/users', :to => 'api/users#find'

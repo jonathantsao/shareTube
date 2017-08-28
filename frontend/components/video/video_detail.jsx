@@ -41,6 +41,7 @@ class VideoDetail extends React.Component {
     }
     const videoId = parseInt(this.props.match.params.videoId);
     this.props.getVideo(videoId);
+    this.props.addView(this.props.match.params.videoId);
     window.addEventListener("resize", this.updateHeight);
   }
 

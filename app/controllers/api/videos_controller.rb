@@ -5,6 +5,8 @@ class Api::VideosController < ApplicationController
     @filter = params[:video][:filter]
     if @filter == "all"
       @videos = Video.all.limit(12)
+      @video_ids = @videos.map { |video| video.id }.shuffle!
+      render :index
     elsif @filter == "hot"
       @videos = Video.order(views: :desc).limit(12)
     elsif @filter == "recent"
@@ -13,7 +15,6 @@ class Api::VideosController < ApplicationController
     @video_ids = @videos.map do |video|
       video.id
     end
-    @video_ids.shuffle!
   end
 
   def create

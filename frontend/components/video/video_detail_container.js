@@ -4,6 +4,7 @@ import { addView } from '../../actions/video_actions';
 import { getComments } from '../../actions/comment_actions';
 import { withRouter } from 'react-router-dom';
 import VideoDetail from './video_detail';
+import { likeVideo } from '../../actions/like_actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -19,6 +20,7 @@ const mapDispatchToProps = (dispatch) => {
     toggleHamDropdown: () => dispatch(receiveHamDropdown()),
     addView: (videoId) => dispatch(addView(videoId)),
     getComments: (videoId) => dispatch(getComments(videoId)),
+    likeVideo: (like) => dispatch(likeVideo(like)),
   };
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { viewsParse, parseDate } from '../../util/functions';
+import { viewsParse, parseDate, count } from '../../util/functions';
 import { Link } from 'react-router-dom';
 import RelatedVideosIndexContainer from './related_videos_index_container';
 import CommentIndexContainer from '../comment/comment_index_container';
@@ -23,6 +23,8 @@ class VideoDetail extends React.Component {
     };
 
     this.updateHeight = this.updateHeight.bind(this);
+    this.handleLike = this.handleLike.bind(this);
+    this.handleDislike = this.handleDislike.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -30,7 +32,7 @@ class VideoDetail extends React.Component {
       this.props.getVideo(nextProps.match.params.videoId);
       this.props.addView(nextProps.match.params.videoId);
       this.props.getComments(nextProps.match.params.videoId);
-    } 
+    }
   }
 
   componentDidMount() {
@@ -59,6 +61,32 @@ class VideoDetail extends React.Component {
     }
   }
 
+  handleLike(e) {
+    e.preventDefault();
+    if (!this.props.currentUser) {
+      this.props.history.push("/");
+    } else {
+      const like = {
+        user_id: this.props.currentUser.id,
+        video_id: this.props.video.id,
+      };
+      this.props.likeVideo(like);
+    }
+  }
+
+  handleDislike(e) {
+    e.preventDefault();
+    if (!this.props.currentUser) {
+      this.props.history.push("/");
+    } else {
+      const dislike = {
+        user_id: this.props.currentUser.id,
+        video_id: this.props.video.id,
+      };
+      this.props.dislikeItem(dislike);
+    }
+  }
+
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateHeight);
   }
@@ -78,6 +106,25 @@ class VideoDetail extends React.Component {
       );
 
       let views = viewsParse(this.props.video.views);
+
+      let likeButton = (
+        <button onClick={this.handleLike}
+          id="like-button"></button>
+      );
+      let dislikeButton = (
+        <button onClick={this.handleDislike}
+          id="dislike-button"></button>
+      );
+
+      this.props.video.likes.forEach((like) => {
+        if (like.user_id === this.props.currentUser.id) {
+          likeButton = (
+            <button id="like-button-disabled" disabled></button>
+          );
+        }
+      });
+
+
       description = (
         <div className="video-description">
           <h1 id="video-detail-title">{this.props.video.title}</h1>
@@ -97,8 +144,16 @@ class VideoDetail extends React.Component {
             </div>
             <div id="video-detail-views"><h3>{views}</h3></div>
           </div>
-
-          <div className="video-detail-likes">
+          <div id="video-likes-section">
+            <div className="video-detail-likes">
+            </div>
+            <div className="video-detail-likes-bar">
+              <div className="like-buttons">
+                { likeButton }
+                <h6 id="like-count">{count(this.props.video.likes)}</h6>
+                { dislikeButton }
+              </div>
+            </div>
           </div>
         </div>
       );

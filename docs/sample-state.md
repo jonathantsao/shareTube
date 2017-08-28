@@ -4,7 +4,8 @@
     currentUser: {
       id: 1,
       username: "test",
-      video_ids: []
+      video_ids: [],
+      likes: []
     },
   },
   entities: {

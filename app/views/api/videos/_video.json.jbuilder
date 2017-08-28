@@ -7,3 +7,4 @@ json.user_id video.user_id
 json.video_url asset_path(video.video.url)
 json.thumbnail_url asset_path(video.video.url(:thumb))
 json.upload_time video.created_at
+json.likes video.likes

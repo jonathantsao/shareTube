@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { timeParse } from '../../util/functions';
+import { timeParse, count } from '../../util/functions';
 import CommentFormContainer from './comment_form_container';
 
 class CommentIndexItem extends React.Component {
@@ -79,6 +79,14 @@ class CommentIndexItem extends React.Component {
             </p>
             { deleteButton }
             { editButton }
+          </div>
+
+          <div className="like-buttons-2">
+            <h6 className="like-count-2">{count(this.props.comment.likes)}</h6>
+
+            <button className="like-button-2"></button>
+
+            <button className="dislike-button-2"></button>
           </div>
         </div>
 

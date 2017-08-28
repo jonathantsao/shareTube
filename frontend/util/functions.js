@@ -62,3 +62,7 @@ export const slidesCount = (width) => {
   }
   return count;
 };
+
+export const count = (likes) => {
+  return likes.length;
+};

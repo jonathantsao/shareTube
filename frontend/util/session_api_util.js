@@ -36,3 +36,13 @@ export const checkUsername = (username) => {
     data: { user: { username, action: "check" } },
   });
 };
+
+export const editProfile = (formData, id) => {
+  return $.ajax({
+    method: "PATCH",
+    url: `/api/users/${id}`,
+    contentType: false,
+    processData: false,
+    data: formData,
+  });
+};

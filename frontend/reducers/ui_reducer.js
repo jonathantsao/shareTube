@@ -1,4 +1,4 @@
-import { RECEIVE_ERRORS, RECEIVE_USERNAME, RECEIVE_TOGGLE_DROPDOWN_HAM, RECEIVE_TOGGLE_DROPDOWN_USER, CHANGE_FORM, CHANGE_UPLOAD_PAGE, CLEAR_SESSION, CLEAR_UPLOAD, RECEIVE_VIDEO, REMOVE_VIDEO } from '../actions/ui_actions';
+import { RECEIVE_ERRORS, RECEIVE_USERNAME, RECEIVE_TOGGLE_DROPDOWN_HAM, RECEIVE_TOGGLE_DROPDOWN_USER, CHANGE_FORM, CHANGE_UPLOAD_PAGE, CLEAR_SESSION, CLEAR_UPLOAD, RECEIVE_VIDEO, REMOVE_VIDEO, CLEAR_ERRORS } from '../actions/ui_actions';
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_HOT, RECEIVE_ALL_VIDEOS, RECEIVE_RECENT, RECEIVE_UPLOADS, UPLOAD_VIDEO } from '../actions/video_actions';
 import { RECEIVE_COMMENTS } from '../actions/comment_actions';
@@ -30,6 +30,10 @@ const uiReducer = (state = initialState, action) => {
     case RECEIVE_VIDEO:
       newState = merge({}, state);
       newState.video = action.video;
+      return newState;
+    case CLEAR_ERRORS:
+      newState = merge({}, state);
+      newState.errors = [];
       return newState;
     case CLEAR_SESSION:
       newState = merge({}, state, { sessionPage: 1});

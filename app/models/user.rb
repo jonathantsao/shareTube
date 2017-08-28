@@ -2,6 +2,8 @@ class User < ApplicationRecord
   validates :session_token, :username, :password_digest, presence: true
   validates :username, :session_token, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
+  has_attached_file :image, :styles => { :small => "100x100#"}
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   after_initialize :ensure_session_token
   attr_reader :password

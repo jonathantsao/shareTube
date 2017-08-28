@@ -51,8 +51,10 @@
   font-size: 28px;
   position: fixed;
   top: 57px;
-  right: 234px;
+  right: 231px;
 }
+
+
 
 #user-toggle-button {
   border: none;
@@ -108,6 +110,34 @@
   background-color: #E3E3E3;
   border: 1px solid #D3D3D3;
 }
+
+
+
+#edit-profile-button {
+  position: absolute;
+  height: 28px;
+  box-sizing: border-box;
+  background-color: #F5F5F5;
+  margin: 9px;
+  right: 176px;
+  font-size: 10px;
+  text-align: center;
+  border-radius: none;
+  top: 133px;
+  border: 1px solid #E3E3E3;
+  font-weight: 500;
+  outline: none;
+  padding: 9px 6px 3px 6px;
+  color: black;
+  width: 62px;
+}
+
+#edit-profile-button:hover {
+  cursor: pointer;
+  background-color: #E3E3E3;
+  border: 1px solid #D3D3D3;
+}
+
 
 .bar {
   position: fixed;

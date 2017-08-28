@@ -39,6 +39,10 @@ class MainHeader extends React.Component {
             </Link>
             <h4 id="greeting-text">Welcome to ShareTube</h4>
             <div className="bar" ></div>
+            <Link id="edit-profile-button"
+              to={`/users/${this.props.currentUser.id}/edit`}>
+              Edit Profile
+            </Link>
             <button id="logout-button"
               onClick={this.props.logout}>Sign Out
             </button>

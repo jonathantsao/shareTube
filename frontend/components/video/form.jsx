@@ -26,10 +26,17 @@ class VideoForm extends React.Component {
     this.setState({
       user_id: this.props.currentUserId,
     });
+
+    if (this.props.dropdown) {
+      this.props.toggleDropdown();
+    }
   }
 
   componentWillUnmount() {
     this.props.clearUpload();
+    if (!this.props.dropdown) {
+      this.props.toggleDropdown();
+    }
   }
 
   checkFileType(file) {

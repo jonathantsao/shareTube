@@ -36,3 +36,8 @@ export const logout = () => (dispatch) => {
       return dispatch(receiveCurrentUser(null));
     });
 };
+
+export const editProfile = (formData, id) => (dispatch) => {
+  return APIUtil.editProfile(formData, id)
+    .then((currentUser) => dispatch(receiveCurrentUser(currentUser)));
+};

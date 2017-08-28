@@ -12,6 +12,8 @@ class CommentIndexItem extends React.Component {
     };
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEditDropdown = this.handleEditDropdown.bind(this);
+    this.handleLike = this.handleLike.bind(this);
+    this.handleDislike = this.handleDislike.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -34,6 +36,32 @@ class CommentIndexItem extends React.Component {
     });
   }
 
+  handleLike(e) {
+    e.preventDefault();
+    if (!this.props.currentUser) {
+      this.props.history.push("/login");
+    } else {
+      const like = {
+        user_id: this.props.currentUser.id,
+        comment_id: this.props.comment.id
+      };
+      this.props.likeComment(like);
+    }
+  }
+
+  handleDislike(e) {
+    e.preventDefault();
+    if (!this.props.currentUser) {
+      this.props.history.push("/login");
+    } else {
+      const dislike = {
+        user_id: this.props.currentUser.id,
+        comment_id: this.props.comment.id
+      };
+      this.props.dislikeComment(dislike);
+    }
+  }
+
 
 
   render() {
@@ -52,6 +80,27 @@ class CommentIndexItem extends React.Component {
           comment={this.props.comment}/>
       );
     }
+
+    let likeButton = (
+      <button onClick={this.handleLike}
+        className="like-button-2"></button>
+    );
+
+    let dislikeButton = (
+      <button onClick={this.handleDislike}
+        className="dislike-button-2"></button>
+    );
+
+    this.props.comment.likes.forEach((like) => {
+      if (like.user_id === this.props.currentUser.id) {{
+        likeButton = (
+          <button disabled className="like-button-2-disabled"></button>
+        );
+      }}
+    });
+
+
+
 
     const comment = this.props.comment;
     return (
@@ -84,9 +133,9 @@ class CommentIndexItem extends React.Component {
           <div className="like-buttons-2">
             <h6 className="like-count-2">{count(this.props.comment.likes)}</h6>
 
-            <button className="like-button-2"></button>
+            { likeButton }
+            { dislikeButton }
 
-            <button className="dislike-button-2"></button>
           </div>
         </div>
 

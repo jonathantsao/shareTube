@@ -64,7 +64,7 @@ class VideoDetail extends React.Component {
   handleLike(e) {
     e.preventDefault();
     if (!this.props.currentUser) {
-      this.props.history.push("/");
+      this.props.history.push("/login");
     } else {
       const like = {
         user_id: this.props.currentUser.id,
@@ -123,7 +123,6 @@ class VideoDetail extends React.Component {
           );
         }
       });
-
 
       description = (
         <div className="video-description">

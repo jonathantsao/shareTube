@@ -27,7 +27,6 @@ class Api::VideosController < ApplicationController
 
   def show
     @video = Video.find(params[:id])
-    debugger
   end
 
   def update

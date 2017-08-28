@@ -76,7 +76,9 @@ export const changeForm = () => {
 
 export const getVideo = (videoId) => (dispatch) => {
   return VideoUtil.getVideo(videoId)
-    .then((video) => dispatch(receiveVideo(video)));
+    .then((video) => {
+      return dispatch(receiveVideo(video));
+    });
 };
 
 export const verifyUsername = (username) => (dispatch) => {

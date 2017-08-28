@@ -24,7 +24,8 @@ const uiReducer = (state = initialState, action) => {
   let newState;
   switch(action.type) {
     case RECEIVE_VIDEO:
-      newState = merge({}, state, { video: action.video });
+      newState = merge({}, state);
+      newState.video = action.video;
       return newState;
     case CLEAR_SESSION:
       newState = merge({}, state, { sessionPage: 1});

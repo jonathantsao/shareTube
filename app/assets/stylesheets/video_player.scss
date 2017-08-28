@@ -150,6 +150,17 @@
   opacity: 0.6;
 }
 
+.like-button-2-disabled {
+  background: image-url("like.png") no-repeat;
+  background-size: contain;
+  width: 15px;
+  height: 15px;
+  border: none;
+  outline: none;
+  opacity: 0.6;
+  margin: 0px 10px;
+}
+
 .like-button-2 {
   background: image-url("like.png") no-repeat;
   background-size: contain;

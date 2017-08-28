@@ -3,8 +3,10 @@ class Api::LikesController < ApplicationController
   def create
     likeable_set = find_likeable
     likeable = likeable_set[0].find(likeable_set[1])
-    likeable.likes << Like.new(user_id: params[:like][:user_id])
-    @like = Like.last
+    likeable.likes << Like.create(user_id: params[:like][:user_id])
+    likeable.likes.first.save!
+    @like = likeable.likes.first
+
     render :show
   end
 

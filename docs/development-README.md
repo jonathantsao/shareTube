@@ -63,21 +63,21 @@ ShareTube is a web application modeled after YouTube built using Ruby on Rails a
 
 ### Phase 3: Comments Back and Front End(Components) (1 Day)
 #### Objective: Comments can be created and edited
-- [ ] Comment Model, Controllers
-- [ ] Comment Seed
-- [ ] JBuilder views for comments
-- [ ] Comment Components on Front End
-  - [ ] Index
-  - [ ] Form (create and edit)
+- [x] Comment Model, Controllers
+- [x] Comment Seed
+- [x] JBuilder views for comments
+- [x] Comment Components on Front End
+  - [x] Index
+  - [x] Form (create and edit)
 
 ### Phase 4: Likes Back and Front End(Components) (1 Day)
 #### Objective: Likes can be created
-- [ ] Like Model, Controllers
-- [ ] Like Seed
-- [ ] JBuilder views for likes
+- [x] Like Model, Controllers
+- [x] Like Seed
+- [x] JBuilder views for likes
 - [ ] Like Components on Front End
-  - [ ] Video Likes
-  - [ ] Comment Likes
+  - [x] Video Likes
+  - [x] Comment Likes
 
 ### Phase 5: Search (2 Day)
 #### Objective: Videos can be searched by title or description

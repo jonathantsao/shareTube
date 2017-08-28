@@ -5,3 +5,10 @@ export const likeItem = (like) => {
     data: { like }
   });
 };
+
+export const unlikeItem = (likeId) => {
+  return $.ajax({
+    method: "DELETE",
+    url: `/api/likes/${likeId}`,
+  });
+};

@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import { getVideo, receiveHamDropdown } from '../../actions/ui_actions';
+import { getVideo, receiveHamDropdown, removeVideo } from '../../actions/ui_actions';
 import { addView } from '../../actions/video_actions';
 import { getComments } from '../../actions/comment_actions';
 import { withRouter } from 'react-router-dom';
 import VideoDetail from './video_detail';
-import { likeItem } from '../../actions/like_actions';
+import { likeItem, unlikeItem } from '../../actions/like_actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -20,7 +20,9 @@ const mapDispatchToProps = (dispatch) => {
     toggleHamDropdown: () => dispatch(receiveHamDropdown()),
     addView: (videoId) => dispatch(addView(videoId)),
     getComments: (videoId) => dispatch(getComments(videoId)),
-    likeVideo: (like) => dispatch(likeItem(like)),
+    removeVideo: () => dispatch(removeVideo()),
+    emotionVideo: (like) => dispatch(likeItem(like)),
+    unemotionVideo: (likeId) => dispatch(unlikeItem(likeId)),
   };
 };
 

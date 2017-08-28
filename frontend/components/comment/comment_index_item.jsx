@@ -40,26 +40,38 @@ class CommentIndexItem extends React.Component {
     e.preventDefault();
     if (!this.props.currentUser) {
       this.props.history.push("/login");
-    } else {
-      const like = {
-        user_id: this.props.currentUser.id,
-        comment_id: this.props.comment.id
-      };
-      this.props.likeComment(like);
     }
+    let like;
+    for (let i = 0; i < this.props.comment.likes.length; i++) {
+      if ((this.props.comment.likes[i].user_id === this.props.currentUser.id) && this.props.comment.likes[i].value === -1) {
+        return this.props.unemotionComment(this.props.comment.likes[i].id);
+      }
+    }
+    like = {
+      user_id: this.props.currentUser.id,
+      comment_id: this.props.comment.id,
+      value: 1,
+    };
+    this.props.emotionComment(like);
   }
 
   handleDislike(e) {
     e.preventDefault();
     if (!this.props.currentUser) {
-      this.props.history.push("/login");
-    } else {
-      const dislike = {
-        user_id: this.props.currentUser.id,
-        comment_id: this.props.comment.id
-      };
-      this.props.dislikeComment(dislike);
+      this.props.history.push("/");
     }
+    let dislike;
+    for (let i = 0; i < this.props.comment.likes.length; i++) {
+      if ((this.props.comment.likes[i].user_id === this.props.currentUser.id) && this.props.comment.likes[i].value === 1) {
+        return this.props.unemotionComment(this.props.comment.likes[i].id);
+      }
+    }
+    dislike = {
+      user_id: this.props.currentUser.id,
+      comment_id: this.props.comment.id,
+      value: -1,
+    };
+    this.props.emotionComment(dislike);
   }
 
 
@@ -92,14 +104,18 @@ class CommentIndexItem extends React.Component {
     );
 
     this.props.comment.likes.forEach((like) => {
-      if (like.user_id === this.props.currentUser.id) {{
-        likeButton = (
-          <button disabled className="like-button-2-disabled"></button>
-        );
-      }}
+      if (like.user_id === this.props.currentUser.id) {
+        if (like.value === 1) {
+          likeButton = (
+            <button disabled className="like-button-2-disabled"></button>
+          );
+        } else if (like.value === -1) {
+          dislikeButton = (
+            <button disabled className="dislike-button-2-disabled"></button>
+          );
+        }
+      }
     });
-
-
 
 
     const comment = this.props.comment;
@@ -131,7 +147,7 @@ class CommentIndexItem extends React.Component {
           </div>
 
           <div className="like-buttons-2">
-            <h6 className="like-count-2">{count(this.props.comment.likes)}</h6>
+            <h6 className="like-count-2">{count(this.props.comment.likes, 1)}</h6>
 
             { likeButton }
             { dislikeButton }

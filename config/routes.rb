@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :index, :show]
     end
     resources :comments, only: [:destroy, :update]
-    resources :likes, only: [:create]
+    resources :likes, only: [:create, :destroy]
   end
 
   get 'api/users', :to => 'api/users#find'

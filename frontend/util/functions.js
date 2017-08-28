@@ -63,6 +63,21 @@ export const slidesCount = (width) => {
   return count;
 };
 
-export const count = (likes) => {
-  return likes.length;
+export const count = (likes, int) => {
+  let countNum = 0;
+  if (int === 1) {
+    likes.forEach((like) => {
+      if (like.value === 1) {
+        countNum += 1;
+      }
+    });
+    return countNum;
+  } else if (int === -1) {
+    likes.forEach((dislike) => {
+      if (dislike.value === -1) {
+        countNum += 1;
+      }
+    });
+    return countNum;
+  }
 };

@@ -52,13 +52,11 @@ class VideoDetail extends React.Component {
       this.setState({
         height: height,
       });
-      document.getElementsByClassName("vsc-controller")[0].style.height = `${height}px`;
     } else {
       height = $(window).height() * 0.56;
       this.setState({
         height: height,
       });
-      document.getElementsByClassName("vsc-controller")[0].style.height = `${height}px`;
     }
   }
 
@@ -66,30 +64,43 @@ class VideoDetail extends React.Component {
     e.preventDefault();
     if (!this.props.currentUser) {
       this.props.history.push("/login");
-    } else {
-      const like = {
-        user_id: this.props.currentUser.id,
-        video_id: this.props.video.id,
-      };
-      this.props.likeVideo(like);
     }
+    let like;
+    for (let i = 0; i < this.props.video.likes.length; i++) {
+      if ((this.props.video.likes[i].user_id === this.props.currentUser.id) && this.props.video.likes[i].value === -1) {
+        return this.props.unemotionVideo(this.props.video.likes[i].id);
+      }
+    }
+    like = {
+      user_id: this.props.currentUser.id,
+      video_id: this.props.video.id,
+      value: 1,
+    };
+    this.props.emotionVideo(like);
   }
 
   handleDislike(e) {
     e.preventDefault();
     if (!this.props.currentUser) {
       this.props.history.push("/");
-    } else {
-      const dislike = {
-        user_id: this.props.currentUser.id,
-        video_id: this.props.video.id,
-      };
-      this.props.dislikeItem(dislike);
     }
+    let dislike;
+    for (let i = 0; i < this.props.video.likes.length; i++) {
+      if ((this.props.video.likes[i].user_id === this.props.currentUser.id) && this.props.video.likes[i].value === 1) {
+        return this.props.unemotionVideo(this.props.video.likes[i].id);
+      }
+    }
+    dislike = {
+      user_id: this.props.currentUser.id,
+      video_id: this.props.video.id,
+      value: -1,
+    };
+    this.props.emotionVideo(dislike);
   }
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateHeight);
+    this.props.removeVideo();
   }
 
 
@@ -118,9 +129,13 @@ class VideoDetail extends React.Component {
       );
 
       this.props.video.likes.forEach((like) => {
-        if (like.user_id === this.props.currentUser.id) {
+        if (like.user_id === this.props.currentUser.id && like.value === 1) {
           likeButton = (
             <button id="like-button-disabled" disabled></button>
+          );
+        } else if (like.user_id === this.props.currentUser.id && like.value === -1) {
+          dislikeButton = (
+            <button id="dislike-button-disabled" disabled></button>
           );
         }
       });
@@ -150,8 +165,9 @@ class VideoDetail extends React.Component {
             <div className="video-detail-likes-bar">
               <div className="like-buttons">
                 { likeButton }
-                <h6 id="like-count">{count(this.props.video.likes)}</h6>
+                <h6 id="like-count">{count(this.props.video.likes, 1)}</h6>
                 { dislikeButton }
+                <h6 id="dislike-count">{count(this.props.video.likes, -1)}</h6>
               </div>
             </div>
           </div>

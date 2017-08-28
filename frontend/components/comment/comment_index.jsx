@@ -25,7 +25,8 @@ class CommentIndex extends React.Component {
           key={`${commentId}`} deleteComment={this.props.deleteComment}
           currentUser={this.props.currentUser} comment={this.props.comments[commentId]}
           videoId={this.props.match.params.videoId}
-          likeComment={this.props.likeComment} />;
+          emotionComment={this.props.emotionComment}
+          unemotionComment={this.props.unemotionComment} />;
       });
       return (
         <div>

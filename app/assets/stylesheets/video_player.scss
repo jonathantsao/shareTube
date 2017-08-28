@@ -15,21 +15,16 @@
   margin-right: 1%;
 }
 
-.vsc-controller {
-  height: 463px;
-  margin-bottom: 1%;
-}
-
 .video-player-container {
   height: 48%;
   width: 100%;
 }
 
 .video-player {
-  width: 45%;
+  width: 100%;
   background-color: black;
-  position: absolute;
   border-bottom: 1px solid #e8e8e8;
+  margin-bottom: 1%;
 }
 
 .video-description-container {
@@ -150,6 +145,16 @@
   opacity: 0.6;
 }
 
+#dislike-button-disabled {
+  background: image-url("dislike.png") no-repeat;
+  background-size: 100%;
+  width: 18px;
+  height: 18px;
+  border: none;
+  outline: none;
+  opacity: 0.6;
+}
+
 .like-button-2-disabled {
   background: image-url("like.png") no-repeat;
   background-size: contain;
@@ -159,6 +164,16 @@
   outline: none;
   opacity: 0.6;
   margin: 0px 10px;
+}
+
+.dislike-button-2-disabled {
+  background: image-url("dislike.png") no-repeat;
+  background-size: contain;
+  width: 15px;
+  height: 15px;
+  border: none;
+  outline: none;
+  opacity: 0.6;
 }
 
 .like-button-2 {
@@ -183,6 +198,12 @@
 }
 
 #like-count {
+  color: #6F6F6F;
+  margin: 0px 5px;
+  font-size: 14px;
+}
+
+#dislike-count {
   color: #6F6F6F;
   margin: 0px 5px;
   font-size: 14px;

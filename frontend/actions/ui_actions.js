@@ -10,10 +10,17 @@ export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const CLEAR_SESSION = "CLEAR_SESSION";
 export const CLEAR_UPLOAD = "CLEAR_UPLOAD";
 export const RECEIVE_VIDEO = "RECEIVE_VIDEO";
+export const REMOVE_VIDEO = "REMOVE_VIDEO";
 
 export const clearSession = () => {
   return {
     type: CLEAR_SESSION,
+  };
+};
+
+export const removeVideo = () => {
+  return {
+    type: REMOVE_VIDEO,
   };
 };
 

@@ -221,7 +221,7 @@ class VideoDetail extends React.Component {
 
         <div id="video-description-text">
           <p>{this.props.video.description}</p>
-          <h3 id="license">License - Standard Bullshit License</h3>
+          <h3 id="license">License - Standard ShareTube License</h3>
         </div>
 
           <button id="more-toggle">SHOW MORE</button>

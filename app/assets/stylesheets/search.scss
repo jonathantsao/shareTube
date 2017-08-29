@@ -5,12 +5,71 @@
   box-shadow: 0 1px 2px rgba(0,0,0,.1);
 }
 
+#filter-section {
+  border-bottom: 1px solid #EEEEEE;
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #555;
+}
+
+#filter-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #c6c6c6;
+  background-color: #F7F7F7;
+  outline: none;
+}
+
+#filter-toggle:hover {
+  background-color: #F0F0F0;
+  border-color: #B6B6B6;
+  cursor: pointer;
+}
+
+#filter-options {
+  list-style-type: none;
+  padding-left: 16px;
+  margin: 0px 0px 5px 0px;
+}
+
+#filter-options li {
+  font-size: 11px;
+  font-weight: 200;
+  margin-bottom: 10px;
+}
+
+#filter-options li:hover {
+  cursor: pointer;
+}
+
+#sort-by-text {
+  font-weight: 400;
+}
+
+#sort-by-text:hover {
+  cursor: none;
+}
+
+
+#filter-toggle h6 {
+  margin: 0px 5px 0px 0px;
+  font-size: 11px;
+  color: #555;
+  font-weight: 300;
+}
+
 #filter-bar {
   max-height: 165px;
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
-  border-bottom: 1px solid #EEEEEE;
+  align-items: center;
+  padding: 10px 16px;
 }
 
 #filter-bar h4 {

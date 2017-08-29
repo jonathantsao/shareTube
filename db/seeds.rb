@@ -17,7 +17,6 @@ video1 = Video.create!(title: "Volleyball", description: "fun", views: 20, user_
 
 video2 = Video.create!(title: "Cute Cousin", description: "interesting", views: 40, user_id: user1.id, video: "https://s3.us-east-2.amazonaws.com/sharetube-pro/life.mp4")
 
-video3 = Video.create!(title: "what", description: "cool", views: 2120, user_id: user2.id, video: "https://s3.us-east-2.amazonaws.com/sharetube-pro/video.mov")
 
 video4 = Video.create!(title: "old video", description: "test", views: 2, user_id: user3.id, video: "https://s3.us-east-2.amazonaws.com/sharetube-pro/v6.mp4")
 

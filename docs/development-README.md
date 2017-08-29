@@ -3,15 +3,15 @@ Heroku Link ______
 ## Minimum Viable Product
 ShareTube is a web application modeled after YouTube built using Ruby on Rails and React/Redux. By September 1st, ShareTube will at minimum satisfy the following criteria.
 #### Major Features
-- [ ] Hosted on Heroku
+- [x] Hosted on Heroku
 - [x] New Account creation, login, and guest/demo login
-- [ ] Videos
+- [x] Videos
   - Users will have the ability to upload and view videos
-- [ ] Comments
+- [x] Comments
   - Users will have the ability to make comments on videos
-- [ ] Likes
+- [x] Likes
   - Users will have the ability to "like" a video and/or comment
-- [ ] Video Search
+- [x] Video Search
   - Users will have the ability to search for videos based on title/description
 - [ ] Production README
 - [ ] Adequate styling on all pages
@@ -21,7 +21,7 @@ ShareTube is a web application modeled after YouTube built using Ruby on Rails a
 #### Bonus Features
 - [ ] Subscriptions
   - Users should have the ability to subscribe to subscribe to other users
-- [ ] Scrolling
+- [x] Scrolling
   - Lists videos sideways
 - [ ] User specificity
   - Displays videos based on
@@ -75,14 +75,14 @@ ShareTube is a web application modeled after YouTube built using Ruby on Rails a
 - [x] Like Model, Controllers
 - [x] Like Seed
 - [x] JBuilder views for likes
-- [ ] Like Components on Front End
+- [x] Like Components on Front End
   - [x] Video Likes
   - [x] Comment Likes
 
 ### Phase 5: Search (2 Day)
 #### Objective: Videos can be searched by title or description
-- [ ] JBuilder views with search query
-- [ ] Search page with video info
+- [x] JBuilder views with search query
+- [x] Search page with video info
 
 
 ### Bonus Phase: Subscriptions, scrolling, OAuth

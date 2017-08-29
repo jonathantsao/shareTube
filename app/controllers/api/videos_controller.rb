@@ -14,12 +14,11 @@ class Api::VideosController < ApplicationController
     elsif @filter.include?("search")
       @videos = Video.basic_search(params[:video][:search_query])
       if @filter.include?("hot")
-        @videos = @videos.order(views: :desc)
+        @videos = @videos.sort_by { |video| video.views }.reverse
       elsif @filter.include?("recent")
-        @videos = @videos.order(created_at: :desc)
+        @videos = @videos.sort_by { |video| video.created_at }.reverse
       end
     end
-    @videos = @videos.limit(12)
     @video_ids = @videos.map do |video|
       video.id
     end

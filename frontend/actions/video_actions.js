@@ -6,6 +6,7 @@ export const RECEIVE_HOT = "RECEIVE_HOT";
 export const RECEIVE_RECENT = "RECEIVE_RECENT";
 export const RECEIVE_UPLOADS = "RECEIVE_UPLOADS";
 export const UPLOAD_VIDEO = "UPLOAD_VIDEO";
+export const RECEIVE_SEARCH = "RECEIVE_SEARCH";
 
 
 export const uploadVideo = (video) => {
@@ -16,9 +17,10 @@ export const uploadVideo = (video) => {
 };
 
 
+
 export const receiveAllVideos = (res) => {
   let type;
-  switch(res.filter) {
+  switch(res.filter.split(" ")[0]) {
     case "all":
       type = RECEIVE_ALL_VIDEOS;
       break;
@@ -27,6 +29,9 @@ export const receiveAllVideos = (res) => {
       break;
     case "hot":
       type = RECEIVE_HOT;
+      break;
+    case "search":
+      type = RECEIVE_SEARCH;
       break;
     case "uploads":
       type = RECEIVE_UPLOADS;
@@ -48,6 +53,12 @@ export const getVideos = (filter) => (dispatch) => {
     .then((res) => dispatch(receiveAllVideos(res)));
 };
 
+export const searchVideos = (filter, search_query) => (dispatch) => {
+  return APIUtil.searchVideos(filter, search_query)
+    .then((res) => {
+      return dispatch(receiveAllVideos(res));
+    });
+};
 export const createVideo = (video) => (dispatch) => {
   return APIUtil.createVideo(video)
     .then((newVideo) => {

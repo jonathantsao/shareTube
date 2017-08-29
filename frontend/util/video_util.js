@@ -30,3 +30,11 @@ export const addView = (videoId) => {
     data: { video: { add_view: true } },
   });
 };
+
+export const searchVideos = (filter, search_query) => {
+  return $.ajax({
+    method: "GET",
+    url: `/api/videos`,
+    data: { video: { filter, search_query } }
+  });
+};

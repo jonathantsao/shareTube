@@ -8,10 +8,18 @@ class Api::VideosController < ApplicationController
       @video_ids = @videos.map { |video| video.id }.shuffle!
       render :index
     elsif @filter == "hot"
-      @videos = Video.order(views: :desc).limit(12)
+      @videos = Video.order(views: :desc)
     elsif @filter == "recent"
-      @videos = Video.order(created_at: :desc).limit(12)
+      @videos = Video.order(created_at: :desc)
+    elsif @filter.include?("search")
+      @videos = Video.basic_search(params[:video][:search_query])
+      if @filter.include?("hot")
+        @videos = @videos.order(views: :desc)
+      elsif @filter.include?("recent")
+        @videos = @videos.order(created_at: :desc)
+      end
     end
+    @videos = @videos.limit(12)
     @video_ids = @videos.map do |video|
       video.id
     end
@@ -55,9 +63,7 @@ class Api::VideosController < ApplicationController
   private
 
   def video_params
-    params.require(:video).permit(:user_id, :title, :description, :views, :video, :add_view)
+    params.require(:video).permit(:user_id, :title, :description, :views, :video, :add_view, :search_query)
   end
-
-
 
 end

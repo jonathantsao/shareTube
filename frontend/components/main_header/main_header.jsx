@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class MainHeader extends React.Component {
   constructor(props) {
@@ -79,6 +79,8 @@ class MainHeader extends React.Component {
 
   handleSearch(e) {
     e.preventDefault();
+    const searchQuery = encodeURIComponent(this.state.search);
+    this.props.history.push(`/search?query=${searchQuery}`);
     this.setState({
       search: "",
     });
@@ -128,4 +130,4 @@ class MainHeader extends React.Component {
 
 }
 
-export default MainHeader;
+export default withRouter(MainHeader);

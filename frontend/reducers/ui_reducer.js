@@ -1,6 +1,6 @@
-import { RECEIVE_ERRORS, RECEIVE_USERNAME, RECEIVE_TOGGLE_DROPDOWN_HAM, RECEIVE_TOGGLE_DROPDOWN_USER, CHANGE_FORM, CHANGE_UPLOAD_PAGE, CLEAR_SESSION, CLEAR_UPLOAD, RECEIVE_VIDEO, REMOVE_VIDEO, CLEAR_ERRORS } from '../actions/ui_actions';
+import { RECEIVE_ERRORS, RECEIVE_USERNAME, RECEIVE_TOGGLE_DROPDOWN_HAM, RECEIVE_TOGGLE_DROPDOWN_USER, CHANGE_FORM, CHANGE_UPLOAD_PAGE, CLEAR_SESSION, CLEAR_UPLOAD, RECEIVE_VIDEO, REMOVE_VIDEO, CLEAR_ERRORS, CLEAR_SEARCH } from '../actions/ui_actions';
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
-import { RECEIVE_HOT, RECEIVE_ALL_VIDEOS, RECEIVE_RECENT, RECEIVE_UPLOADS, UPLOAD_VIDEO } from '../actions/video_actions';
+import { RECEIVE_HOT, RECEIVE_ALL_VIDEOS, RECEIVE_RECENT, RECEIVE_UPLOADS, UPLOAD_VIDEO, RECEIVE_SEARCH } from '../actions/video_actions';
 import { RECEIVE_COMMENTS } from '../actions/comment_actions';
 import merge from 'lodash/merge';
 import union from 'lodash/union';
@@ -16,6 +16,7 @@ const initialState = {
   hot: [],
   recent: [],
   all: [],
+  search: [],
 };
 
 const uiReducer = (state = initialState, action) => {
@@ -23,6 +24,10 @@ const uiReducer = (state = initialState, action) => {
   let newIds;
   let newState;
   switch(action.type) {
+    case CLEAR_SEARCH:
+      newState = merge({}, state);
+      newState.search = [];
+      return newState;
     case REMOVE_VIDEO:
       newState = merge({}, state);
       newState.video = null;
@@ -56,6 +61,10 @@ const uiReducer = (state = initialState, action) => {
     case RECEIVE_RECENT:
       newIds = union(action.video_ids, state.recent);
       return merge({}, state, { recent: newIds });
+    case RECEIVE_SEARCH:
+      newState = merge({}, state);
+      newState.search = action.video_ids;
+      return newState;
     case RECEIVE_ERRORS:
       newState = merge({}, state);
       newState.errors = action.errors;

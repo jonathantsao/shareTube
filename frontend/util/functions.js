@@ -81,3 +81,14 @@ export const count = (likes, int) => {
     return countNum;
   }
 };
+
+export const filterVideo = (int) => {
+  switch(int) {
+    case 0:
+      return "No results";
+    case 1:
+      return "1 result";
+    default:
+      return `${int} results`;
+  }
+};

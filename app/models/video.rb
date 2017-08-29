@@ -1,4 +1,13 @@
 class Video < ApplicationRecord
+  include PgSearch
+  pg_search_scope :basic_search,
+    against: { title: 'A', description: 'B' },
+    using: {
+      dmetaphone: { any_word:  true },
+      tsearch: { dictionary: "english", any_word: true, prefix: true },
+      trigram: { threshold: 0.1 }
+    }
+
   validates :title, :description, :user_id, :video, :views, presence: true
 
   # has_attached_file :thumbnail, default_url: "/app/assets/images/missing.png"

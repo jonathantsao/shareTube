@@ -49,6 +49,8 @@ class VideoDetail extends React.Component {
     if (!this.props.hamDropdown) {
       this.props.toggleHamDropdown();
     }
+    window.removeEventListener("resize", this.updateHeight);
+    this.props.removeVideo();
   }
 
   updateHeight() {
@@ -104,11 +106,6 @@ class VideoDetail extends React.Component {
     this.props.emotionVideo(dislike);
   }
 
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateHeight);
-    this.props.removeVideo();
-  }
-
 
   render() {
     let video = <div></div>;
@@ -156,6 +153,26 @@ class VideoDetail extends React.Component {
         });
       }
 
+      const totalLikes = this.props.video.likes.length;
+      let dislikeWidth;
+      let likeWidth;
+
+      if (totalLikes > 0) {
+        let likes = 0;
+        this.props.video.likes.forEach((like) => {
+          if (like.value === 1) {
+            likes += 1;
+          }
+        });
+        likes = 100 * likes / totalLikes;
+        likeWidth = { width: `${likes}%` };
+        let dislikes = 100 - likes;
+        dislikeWidth = { width: `${dislikes}%` };
+      } else {
+        likeWidth = { width: "0%" };
+        dislikeWidth = { width: "100%" };
+      }
+
 
       description = (
         <div className="video-description">
@@ -178,6 +195,15 @@ class VideoDetail extends React.Component {
             <div className="video-detail-likes">
             </div>
             <div className="video-detail-likes-bar">
+              <div className="like-bar">
+                <div className="video-detail-likes-bar-percent" style={likeWidth}>
+                </div>
+                <div className="video-detail-likes-bar-total"
+                style={dislikeWidth}>
+                </div>
+              </div>
+
+
               <div className="like-buttons">
                 { likeButton }
                 <h6 id="like-count">{count(this.props.video.likes, 1)}</h6>

@@ -1,4 +1,4 @@
-import { RECEIVE_ALL_VIDEOS, UPLOAD_VIDEO } from '../actions/video_actions';
+import { RECEIVE_ALL_VIDEOS, UPLOAD_VIDEO, RECEIVE_SEARCH } from '../actions/video_actions';
 import merge from 'lodash/merge';
 import union from 'lodash/union';
 
@@ -9,9 +9,14 @@ const initialState = {
 export const videoReducer = (state = initialState, action) => {
   Object.freeze(state);
   let newState;
+  let videos;
   switch(action.type) {
     case RECEIVE_ALL_VIDEOS:
-      const videos = merge({}, state.videos_list, action.videos_list);
+      videos = merge({}, state.videos_list, action.videos_list);
+      newState = { videos_list: videos };
+      return newState;
+    case RECEIVE_SEARCH:
+      videos = merge({}, state.videos_list, action.videos_list);
       newState = { videos_list: videos };
       return newState;
     case UPLOAD_VIDEO:

@@ -45,6 +45,12 @@ class VideoDetail extends React.Component {
     window.addEventListener("resize", this.updateHeight);
   }
 
+  componentWillUnmount() {
+    if (!this.props.hamDropdown) {
+      this.props.toggleHamDropdown();
+    }
+  }
+
   updateHeight() {
     let height;
     if ($(window).height() > 620 && this.state.height) {
@@ -120,25 +126,36 @@ class VideoDetail extends React.Component {
       let views = viewsParse(this.props.video.views);
 
       let likeButton = (
-        <button onClick={this.handleLike}
-          id="like-button"></button>
+        <button disabled
+          id="like-button-disabled"></button>
       );
       let dislikeButton = (
-        <button onClick={this.handleDislike}
-          id="dislike-button"></button>
+        <button disabled
+          id="dislike-button-disabled"></button>
       );
 
-      this.props.video.likes.forEach((like) => {
-        if (like.user_id === this.props.currentUser.id && like.value === 1) {
-          likeButton = (
-            <button id="like-button-disabled" disabled></button>
-          );
-        } else if (like.user_id === this.props.currentUser.id && like.value === -1) {
-          dislikeButton = (
-            <button id="dislike-button-disabled" disabled></button>
-          );
-        }
-      });
+      if (this.props.currentUser) {
+        likeButton = (
+          <button id="like-button" onClick={this.handleLike}></button>
+        );
+
+        dislikeButton = (
+          <button id="dislike-button" onClick={this.handleDislike}></button>
+        );
+
+        this.props.video.likes.forEach((like) => {
+          if (like.user_id === this.props.currentUser.id && like.value === 1) {
+            likeButton = (
+              <button id="like-button-disabled" disabled></button>
+            );
+          } else if (like.user_id === this.props.currentUser.id && like.value === -1) {
+            dislikeButton = (
+              <button id="dislike-button-disabled" disabled></button>
+            );
+          }
+        });
+      }
+
 
       description = (
         <div className="video-description">
@@ -148,9 +165,7 @@ class VideoDetail extends React.Component {
 
               <Link to={`/users/${this.props.video.user_id}`}
                 id="video-detail-user-icon">
-                  <h3>
-                    {this.props.video.user.username[0].toUpperCase()}
-                  </h3>
+                <img id="video-user-icon" src={this.props.video.user.image}/>
               </Link>
 
               <Link to={`/users/${this.props.video.user_id}`} id="video-detail-user">

@@ -125,9 +125,10 @@ class CommentForm extends React.Component {
       }
       if (this.props.currentUser) {
         iconText = (
-          <Link className=".comment-index-user-icon"
+          <Link className="comment-index-user-icon"
             to={`/users/${this.props.currentUser.id}`}>
-            <p id="letter-icon">{this.props.currentUser.username[0].toUpperCase()}</p>
+            <img src={this.props.currentUser.image}
+              id="commenter-icon"/>
           </Link>
         );
         form = (

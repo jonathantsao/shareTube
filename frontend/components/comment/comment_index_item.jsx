@@ -77,12 +77,47 @@ class CommentIndexItem extends React.Component {
 
 
   render() {
+    let likeButton = (
+      <button disabled
+        className="like-button-2-disabled"></button>
+    );
+
+    let dislikeButton = (
+      <button disabled
+        className="dislike-button-2-disabled"></button>
+    );
 
     let deleteButton = <div></div>;
     let editButton = <div></div>;
-    if (this.props.currentUser.id === this.props.comment.user.id) {
-      deleteButton = (<button onClick={this.handleDelete} className="delete-comment"></button>);
-      editButton = (<button onClick={this.handleEditDropdown} className="edit-comment"></button>);
+    if (this.props.currentUser) {
+      if (this.props.currentUser.id === this.props.comment.user.id) {
+        deleteButton = (<button onClick={this.handleDelete} className="delete-comment"></button>);
+        editButton = (<button onClick={this.handleEditDropdown} className="edit-comment"></button>);
+      }
+
+      likeButton = (
+        <button onClick={this.handleLike} className="like-button-2"></button>
+      );
+
+      dislikeButton = (
+        <button onClick={this.handleDislike} className="dislike-button-2"></button>
+      );
+
+
+      this.props.comment.likes.forEach((like) => {
+        if (like.user_id === this.props.currentUser.id) {
+          if (like.value === 1) {
+            likeButton = (
+              <button disabled className="like-button-2-disabled"></button>
+            );
+          } else if (like.value === -1) {
+            dislikeButton = (
+              <button disabled className="dislike-button-2-disabled"></button>
+            );
+          }
+        }
+      });
+
     }
     let editDropdown = <div></div>;
 
@@ -93,29 +128,7 @@ class CommentIndexItem extends React.Component {
       );
     }
 
-    let likeButton = (
-      <button onClick={this.handleLike}
-        className="like-button-2"></button>
-    );
 
-    let dislikeButton = (
-      <button onClick={this.handleDislike}
-        className="dislike-button-2"></button>
-    );
-
-    this.props.comment.likes.forEach((like) => {
-      if (like.user_id === this.props.currentUser.id) {
-        if (like.value === 1) {
-          likeButton = (
-            <button disabled className="like-button-2-disabled"></button>
-          );
-        } else if (like.value === -1) {
-          dislikeButton = (
-            <button disabled className="dislike-button-2-disabled"></button>
-          );
-        }
-      }
-    });
 
 
     const comment = this.props.comment;
@@ -124,7 +137,8 @@ class CommentIndexItem extends React.Component {
 
         <Link to={`/users/${comment.user.id}`}
           className="comment-index-user-icon">
-          <p>{comment.user.username[0].toUpperCase()}</p>
+          <img src={this.props.comment.user.image}
+            id="commenter-icon" />
         </Link>
 
         <div className="comment-index-item-details">

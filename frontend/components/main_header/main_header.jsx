@@ -14,6 +14,15 @@ class MainHeader extends React.Component {
     this.handleSearch = this.handleSearch.bind(this);
     this.handleToggleHam = this.handleToggleHam.bind(this);
     this.handleToggleUser = this.handleToggleUser.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+
+  handleLogout(e) {
+    e.preventDefault();
+    this.props.logout().then(
+      () => {
+        return this.props.history.push("/");
+      });
   }
 
   greetings() {
@@ -22,20 +31,22 @@ class MainHeader extends React.Component {
     if (!this.props.userDropdown) {
       return (
         <div className="greeting">
-          <button id="user-toggle-button" onClick={this.handleToggleUser}>{buttonText}</button>
+          <img id="user-toggle-button"
+            onClick={this.handleToggleUser} src={this.props.currentUser.image}/>
         </div>
       );
     } else {
       return (
         <div className="greeting">
-          <button id="user-toggle-button" onClick={this.handleToggleUser}>{buttonText}</button>
+          <img id="user-toggle-button"
+            onClick={this.handleToggleUser} src={this.props.currentUser.image}/>
           <div className="arrow-up"></div>
           <section className="user-toggle-menu">
             <h5 id="greet-user">{this.props.currentUser.username.toUpperCase()}</h5>
             <Link
               to={`/users/${this.props.currentUser.id}`}
               id="user-channel-link">
-              <h5>{buttonText}</h5>
+              <img id="user-channel-link-image" src={this.props.currentUser.image}/>
             </Link>
             <h4 id="greeting-text">Welcome to ShareTube</h4>
             <div className="bar" ></div>
@@ -44,7 +55,7 @@ class MainHeader extends React.Component {
               Edit Profile
             </Link>
             <button id="logout-button"
-              onClick={this.props.logout}>Sign Out
+              onClick={this.handleLogout}>Sign Out
             </button>
           </section>
         </div>

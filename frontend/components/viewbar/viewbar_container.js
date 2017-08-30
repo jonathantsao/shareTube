@@ -9,12 +9,13 @@ const mapStateToProps = (state, ownProps) => {
     videoList: state.entities.videos.videos_list,
     dropdown: state.ui.hamDropdown,
     filter: ownProps.filter,
+    currentUser: state.session.currentUser,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getVideos: (filter) => dispatch(getVideos(filter)),
+    getVideos: (filter, userId) => dispatch(getVideos(filter, userId)),
     toggleDropdownHam: () => dispatch(receiveHamDropdown()),
   };
 };

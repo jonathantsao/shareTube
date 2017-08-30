@@ -1,5 +1,5 @@
 import * as APIUtil from '../util/video_util';
-import { receiveErrors } from './ui_actions';
+import { receiveErrors, toggleLoading } from './ui_actions';
 
 export const RECEIVE_ALL_VIDEOS = "RECEIVE_ALL_VIDEOS";
 export const RECEIVE_HOT = "RECEIVE_HOT";
@@ -7,6 +7,8 @@ export const RECEIVE_RECENT = "RECEIVE_RECENT";
 export const RECEIVE_UPLOADS = "RECEIVE_UPLOADS";
 export const UPLOAD_VIDEO = "UPLOAD_VIDEO";
 export const RECEIVE_SEARCH = "RECEIVE_SEARCH";
+export const RECEIVE_LIKES = "RECEIVE_LIKES";
+export const RECEIVE_DISLIKES = "RECEIVE_DISLIKES";
 
 
 export const uploadVideo = (video) => {
@@ -23,6 +25,12 @@ export const receiveAllVideos = (res) => {
   switch(res.filter.split(" ")[0]) {
     case "all":
       type = RECEIVE_ALL_VIDEOS;
+      break;
+    case "likes":
+      type = RECEIVE_LIKES;
+      break;
+    case "dislikes":
+      type = RECEIVE_DISLIKES;
       break;
     case "recent":
       type = RECEIVE_RECENT;
@@ -48,8 +56,8 @@ export const addView = (videoId) => (dispatch) => {
   return APIUtil.addView(videoId);
 };
 
-export const getVideos = (filter) => (dispatch) => {
-  return APIUtil.getVideos(filter)
+export const getVideos = (filter, userId) => (dispatch) => {
+  return APIUtil.getVideos(filter, userId)
     .then((res) => dispatch(receiveAllVideos(res)));
 };
 
@@ -60,6 +68,7 @@ export const searchVideos = (filter, search_query) => (dispatch) => {
     });
 };
 export const createVideo = (video) => (dispatch) => {
+  dispatch(toggleLoading());
   return APIUtil.createVideo(video)
     .then((newVideo) => {
       dispatch(uploadVideo(newVideo));

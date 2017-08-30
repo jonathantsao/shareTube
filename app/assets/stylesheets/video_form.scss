@@ -159,7 +159,40 @@ input[type="file"]:hover {
   border: 1px solid #1069AD;
 }
 
+.form-loading .square {
+  animation: tumbling-load 1.5s cubic-bezier(.17,.37,.43,.67) infinite;
+}
 
+.wrap {
+  position: absolute;
+  top: 8px;
+  right: 190px;
+  width: 80px;
+  height: 80px;
+  margin: 0px;
+  padding: 20px 20px 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.form-loading p {
+  color: #BEBEBE;
+  margin-top: 0px;
+}
+
+
+.square {
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
+    background-color: #4b9cdb;
+}
+
+@keyframes tumbling-load {
+    0% {transform: translate(0,0) rotate(0deg);}
+    50% {transform: translate(300px,0) rotate(360deg);}
+    100% {transform: translate(0,0) rotate(0deg);}
+}
 
 
 .next-button:hover {

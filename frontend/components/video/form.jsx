@@ -81,7 +81,9 @@ class VideoForm extends React.Component {
     formData.append("video[user_id]", this.state.user_id);
     formData.append("video[video]", this.state.video);
     this.props.createVideo(formData).then(
-      (newVideoId) => this.props.history.push(`/videos/${newVideoId}`)
+      (newVideoId) => {
+        return this.props.history.push(`/videos/${newVideoId}`);
+      }
     );
   }
 
@@ -126,8 +128,6 @@ class VideoForm extends React.Component {
       if (this.state.video) {
         preview = (
           <video className="preview-video"
-            autoPlay="autoPlay"
-            muted="muted"
             src={window.URL.createObjectURL(this.state.video)}>
             Your browser does not support the video tag.
          </video>
@@ -135,10 +135,24 @@ class VideoForm extends React.Component {
      } else {
        preview = <div></div>;
      }
+     let loading = <div></div>;
+     if (this.props.loading) {
+       loading = (
+         <div className="wrap">
+           <div className="form-loading">
+              <p>Loading</p>
+              <div className="square-holder">
+                <div className="square"></div>
+              </div>
+            </div>
+          </div>
+       );
+     }
 
       return (
         <div className="video-form-container">
           <form className="video-form-two">
+            { loading }
             <ul className="video-errors-list">
               { errors }
             </ul>

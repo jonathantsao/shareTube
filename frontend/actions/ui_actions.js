@@ -12,6 +12,13 @@ export const CLEAR_UPLOAD = "CLEAR_UPLOAD";
 export const RECEIVE_VIDEO = "RECEIVE_VIDEO";
 export const REMOVE_VIDEO = "REMOVE_VIDEO";
 export const CLEAR_SEARCH = "CLEAR_SEARCH";
+export const TOGGLE_LOADING = "TOGGLE_LOADING";
+
+export const toggleLoading = () => {
+  return {
+    type: TOGGLE_LOADING,
+  };
+};
 
 export const clearSession = () => {
   return {

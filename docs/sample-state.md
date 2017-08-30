@@ -44,6 +44,8 @@
     upload_page: 1,
     hamDropdown: true,
     userDropdown: false,
+    loading: false,
+    search: [],
     hot: [],
     recent: [],
     all: []

@@ -201,9 +201,12 @@
 
 .logo-text {
   position: absolute;
+  background: image-url("sharetube_logo.png") no-repeat;
+  background-size: 100%;
   left: 37px;
   top: 7px;
-  font-size: 30px;
+  width: 132px;
+  height: 35px;
 }
 
 .session-links {

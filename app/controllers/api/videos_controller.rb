@@ -3,8 +3,20 @@ class Api::VideosController < ApplicationController
 
   def index
     @filter = params[:video][:filter]
-    if @filter == "all"
-      @videos = Video.all.limit(12)
+    if params[:video][:user_id]
+      user = User.find(params[:video][:user_id])
+      if @filter == "likes"
+        user_video_likes = user.likes.select do |like|
+          like.likeable_type == "Video" && like.value == 1
+        end
+      elsif @filter == "dislikes"
+        user_video_likes = user.likes.select do |like|
+          like.likeable_type == "Video" && like.value == -1
+        end
+      end
+      @videos = user_video_likes.map { |like| like.likeable }
+    elsif @filter == "all"
+      @videos = Video.all
       @video_ids = @videos.map { |video| video.id }.shuffle!
       render :index
     elsif @filter == "hot"
@@ -35,6 +47,8 @@ class Api::VideosController < ApplicationController
 
   def show
     @video = Video.find(params[:id])
+    @video.views += 1
+    @video.save!
   end
 
   def update

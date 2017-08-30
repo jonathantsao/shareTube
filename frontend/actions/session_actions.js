@@ -1,5 +1,5 @@
 import * as APIUtil from '../util/session_api_util';
-import { receiveErrors } from "./ui_actions";
+import { receiveErrors, toggleLoading } from "./ui_actions";
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 
@@ -38,6 +38,7 @@ export const logout = () => (dispatch) => {
 };
 
 export const editProfile = (formData, id) => (dispatch) => {
+  dispatch(toggleLoading());
   return APIUtil.editProfile(formData, id)
     .then((currentUser) => dispatch(receiveCurrentUser(currentUser)));
 };

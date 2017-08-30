@@ -1,9 +1,17 @@
-export const getVideos = (filter) => {
-  return $.ajax({
-    method: 'GET',
-    url: '/api/videos',
-    data: { video: { filter } },
-  });
+export const getVideos = (filter, userId) => {
+  if (!userId) {
+    return $.ajax({
+      method: 'GET',
+      url: '/api/videos',
+      data: { video: { filter } },
+    });
+  } else {
+    return $.ajax({
+      method: 'GET',
+      url: `/api/videos`,
+      data: { video: { filter, user_id: userId } },
+    });
+  }
 };
 
 export const createVideo = (formData) => {

@@ -1,6 +1,6 @@
-import { RECEIVE_ERRORS, RECEIVE_USERNAME, RECEIVE_TOGGLE_DROPDOWN_HAM, RECEIVE_TOGGLE_DROPDOWN_USER, CHANGE_FORM, CHANGE_UPLOAD_PAGE, CLEAR_SESSION, CLEAR_UPLOAD, RECEIVE_VIDEO, REMOVE_VIDEO, CLEAR_ERRORS, CLEAR_SEARCH } from '../actions/ui_actions';
+import { RECEIVE_ERRORS, RECEIVE_USERNAME, RECEIVE_TOGGLE_DROPDOWN_HAM, RECEIVE_TOGGLE_DROPDOWN_USER, CHANGE_FORM, CHANGE_UPLOAD_PAGE, CLEAR_SESSION, CLEAR_UPLOAD, RECEIVE_VIDEO, REMOVE_VIDEO, CLEAR_ERRORS, CLEAR_SEARCH, TOGGLE_LOADING } from '../actions/ui_actions';
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
-import { RECEIVE_HOT, RECEIVE_ALL_VIDEOS, RECEIVE_RECENT, RECEIVE_UPLOADS, UPLOAD_VIDEO, RECEIVE_SEARCH } from '../actions/video_actions';
+import { RECEIVE_HOT, RECEIVE_ALL_VIDEOS, RECEIVE_RECENT, RECEIVE_UPLOADS, UPLOAD_VIDEO, RECEIVE_SEARCH, RECEIVE_LIKES, RECEIVE_DISLIKES } from '../actions/video_actions';
 import { RECEIVE_COMMENTS } from '../actions/comment_actions';
 import merge from 'lodash/merge';
 import union from 'lodash/union';
@@ -17,6 +17,9 @@ const initialState = {
   recent: [],
   all: [],
   search: [],
+  likes: [],
+  dislikes: [],
+  loading: false,
 };
 
 const uiReducer = (state = initialState, action) => {
@@ -24,6 +27,10 @@ const uiReducer = (state = initialState, action) => {
   let newIds;
   let newState;
   switch(action.type) {
+    case TOGGLE_LOADING:
+      newState = merge({}, state);
+      newState.loading = !state.loading;
+      return newState;
     case CLEAR_SEARCH:
       newState = merge({}, state);
       newState.search = [];
@@ -61,6 +68,14 @@ const uiReducer = (state = initialState, action) => {
     case RECEIVE_RECENT:
       newIds = union(action.video_ids, state.recent);
       return merge({}, state, { recent: newIds });
+    case RECEIVE_LIKES:
+      newState = merge({}, state);
+      newState.likes = action.video_ids;
+      return newState;
+    case RECEIVE_DISLIKES:
+      newState = merge({}, state);
+      newState.dislikes = action.video_ids;
+      return newState;
     case RECEIVE_SEARCH:
       newState = merge({}, state);
       newState.search = action.video_ids;
@@ -78,6 +93,7 @@ const uiReducer = (state = initialState, action) => {
       return newState;
     case UPLOAD_VIDEO:
       newState = merge({}, state, { uploadPage: 1 });
+      newState.loading = false;
       return newState;
     case RECEIVE_USERNAME:
       newState = merge({}, state, { sessionPage: 2 });
@@ -86,6 +102,7 @@ const uiReducer = (state = initialState, action) => {
     case RECEIVE_CURRENT_USER:
       newState = merge({}, state, initialState);
       newState.errors = [];
+      newState.loading = false;
       return newState;
     case RECEIVE_TOGGLE_DROPDOWN_HAM:
       const newHamDropdown = !state.hamDropdown;

@@ -16,7 +16,11 @@ class ViewBarIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getVideos(this.props.filter);
+    if (this.props.currentUser && (this.props.filter === "likes" || this.props.filter === "dislikes")) {
+      this.props.getVideos(this.props.filter, this.props.currentUser.id);
+    } else {
+      this.props.getVideos(this.props.filter);
+    }
     window.addEventListener("resize", this.updateWidth);
     window.addEventListener("resize", this.updateHamburger);
   }
@@ -68,9 +72,15 @@ class ViewBarIndex extends React.Component {
       case "hot":
         viewbarTitleText = "Hot";
         break;
+      case "likes":
+        viewbarTitleText = "Liked Videos";
+        break;
+      case "dislikes":
+        viewbarTitleText = "Disliked Videos";
+        break;
     }
     const viewbarTitle = (
-      <h4 className="viewbar-title">{ viewbarTitleText}</h4>
+      <h4 className="viewbar-title">{ viewbarTitleText }</h4>
     );
     switch(slidesCount(this.state.width)) {
       case 6:
@@ -125,9 +135,17 @@ class ViewBarIndex extends React.Component {
   }
 
   render() {
+    if (this.props.filter === "likes" || this.props.filter === "dislikes") {
+      if (!this.props.currentUser) return <div></div>;
+      if (this.props.videoIds) {
+        if (this.props.videoIds.length === 0) {
+          return <div></div>;
+        }
+      }
+    }
+
     const viewbarIndex = this.viewbarSize();
     const viewbarSize = this.props.dropdown ? "viewbar-container" : "viewbar-container-full";
-
     return (
       <div className="viewbar">
         <div className={viewbarSize}>

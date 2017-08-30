@@ -100,6 +100,20 @@ class EditProfile extends React.Component {
       </button>
     );
 
+    let loading = <div></div>;
+    if (this.props.loading) {
+      loading = (
+        <div className="wrap-2">
+          <div className="form-loading">
+             <p>Loading</p>
+             <div className="square-holder">
+               <div className="square"></div>
+             </div>
+           </div>
+         </div>
+      );
+    }
+
     return (
       <div id="edit-form-container">
         <div id="edit-form-greetings">
@@ -122,6 +136,7 @@ class EditProfile extends React.Component {
           <div id="right-user-edit">
             <ul id="user-edit-errors-list">
               <li>{this.props.errors[0]}</li>
+              { loading }
             </ul>
             { submit }
             { cancel }

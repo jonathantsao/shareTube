@@ -6,14 +6,26 @@ class Api::LikesController < ApplicationController
     likeable.likes << Like.create(user_id: params[:like][:user_id], value: params[:like][:value])
     likeable.likes.first.save!
     @like = likeable.likes.first
-
-    render :show
+    if @like.likeable_type == "Video"
+      @video = @like.likeable
+      render "/api/videos/show"
+    else
+      @comment = @like.likeable
+      render "/api/comments/show"
+    end
   end
 
   def destroy
     @like = Like.find(params[:id])
+    @likeable = @like.likeable
     @like.destroy!
-    render :show
+    if @like.likeable_type == "Video"
+      @video = @likeable
+      render "/api/videos/show"
+    else
+      @comment = @likeable
+      render "/api/comments/show"
+    end
   end
 
 

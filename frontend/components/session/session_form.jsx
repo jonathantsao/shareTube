@@ -111,6 +111,7 @@ class SessionForm extends React.Component {
 
     return(
       <div className="process-form-container">
+        <div id="session-logo"></div>
         { formGreeting }
         <form className="process-form">
           <br />

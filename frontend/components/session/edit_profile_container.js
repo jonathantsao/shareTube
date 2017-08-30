@@ -9,6 +9,7 @@ const mapStateToProps = (state) => {
     hamDropdown: state.ui.hamDropdown,
     userDropdown: state.ui.userDropdown,
     errors: state.ui.errors,
+    loading: state.ui.loading,
   };
 };
 

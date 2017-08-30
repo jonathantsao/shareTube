@@ -6,6 +6,8 @@ const HomeContainer = ({ location }) => {
   const path = location.pathname;
   const hot = path === "/hot" ? "first" : "";
   const recent = path === "/recent" ? "first" : "";
+  const likes = path === "/likes" ? "first" : "";
+  const dislikes = path === "/dislikes" ? "first" : "";
   return (
     <div className="home-index">
       <div>
@@ -19,6 +21,15 @@ const HomeContainer = ({ location }) => {
       <div className={recent}>
         <ViewbarContainer filter="recent" />
       </div>
+
+      <div className={likes}>
+        <ViewbarContainer filter="likes" />
+      </div>
+
+      <div className={dislikes}>
+        <ViewbarContainer filter="dislikes" />
+      </div>
+
     </div>
   );
 };

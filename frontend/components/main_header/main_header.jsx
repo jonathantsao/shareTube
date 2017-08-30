@@ -112,7 +112,7 @@ class MainHeader extends React.Component {
       return (
         <div className="main-nav-list">
           { hamDropdown }
-          <Link className="logo-text" to="/">ShareTube</Link>
+          <Link className="logo-text" to="/"></Link>
           <form className="search-form">
             <input
               onChange={this.handleChange}

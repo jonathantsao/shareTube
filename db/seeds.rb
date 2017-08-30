@@ -5,13 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.destroy_all
 
 user1 = User.create!(username: "demo@demo.com", password: "password")
 user2 = User.create!(username: "othertest", password: "password")
 user3 = User.create!(username: "jonathantsao", password: "password")
-
-Video.destroy_all
 
 video1 = Video.create!(title: "Volleyball", description: "fun", views: 20, user_id: user1.id, video: "https://s3.us-east-2.amazonaws.com/sharetube-pro/volleyball1.mov")
 

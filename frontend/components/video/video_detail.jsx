@@ -30,7 +30,6 @@ class VideoDetail extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.videoId !== nextProps.match.params.videoId) {
       this.props.getVideo(nextProps.match.params.videoId);
-      this.props.addView(nextProps.match.params.videoId);
       this.props.getComments(nextProps.match.params.videoId);
     }
   }
@@ -40,8 +39,9 @@ class VideoDetail extends React.Component {
       this.props.toggleHamDropdown();
     }
     const videoId = parseInt(this.props.match.params.videoId);
-    this.props.getVideo(videoId);
-    this.props.addView(this.props.match.params.videoId);
+    this.props.getVideo(videoId).then(() => {
+      document.querySelector("video").controlsList.add("nodownload");
+    });
     window.addEventListener("resize", this.updateHeight);
   }
 
@@ -115,11 +115,10 @@ class VideoDetail extends React.Component {
     if (this.props.video) {
       video = (
         <video src={this.props.video.video_url}
-          autoPlay="autoPlay" controls className="video-player" height={videoHeight}>
+          autoPlay="autoPlay" controls className="video-player" height={videoHeight} >
           Your browser does not support this video.
         </video>
       );
-
       let views = viewsParse(this.props.video.views);
 
       let likeButton = (

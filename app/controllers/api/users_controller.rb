@@ -36,11 +36,51 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def subscribe
+    @subscription = Subscription.new(
+    subscriber_id: params[:id],
+    subscribed_id: params[:user][:subscribed_id]
+  )
+    if @subscription.save!
+      @user = User.find(params[:id])
+      @subscribed_channel = User.find(params[:user][:subscribed_id])
+      @subscriptions = @user.subscribed_channels.map do |sub|
+        sub.id
+      end
+      @new_subscribers = @subscribed_channel.subscribers.map do |sub|
+        sub.id
+      end
+      render "/api/subscriptions/show"
+    else
+      render json: @subscription.errors.full_messages, status: 422
+    end
+  end
+
+  def unsubscribe
+    @subscription = Subscription.new(
+    subscriber_id: params[:id],
+    subscribed_id: params[:user][:subscribed_id]
+  )
+    if @subscription.destroy!
+      @user = User.find(params[:id])
+      @subscribed_channel = User.find(params[:user][:subscribed_id])
+      @subscriptions = @user.subscribed_channels.map do |sub|
+        sub.id
+      end
+      @new_subscribers = @subscribed_channel.subscribers.map do |sub|
+        sub.id
+      end
+      render "/api/subscriptions/show"
+    else
+      render json: @subscription.errors.full_messages, status: 422
+    end
+  end
+
 
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :image)
+    params.require(:user).permit(:username, :password, :image, :subscribed_id)
   end
 
 

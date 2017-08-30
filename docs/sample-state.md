@@ -5,7 +5,7 @@
       id: 1,
       username: "test",
       video_ids: [],
-      likes: []
+      subscription_ids: []
     },
   },
   entities: {

@@ -9,9 +9,30 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
   attr_reader :password
 
-  has_many :videos
-  has_many :comments
-  has_many :likes
+  has_many :videos, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+
+  has_many :subscriptions_to,
+    class_name: :Subscription,
+    primary_key: :id,
+    foreign_key: :subscribed_id,
+    dependent: :destroy
+
+  has_many :subscribed_channels,
+    through: :subscriptions_to,
+    source: :subscribed
+
+  has_many :subscriptions_from,
+    class_name: :Subscription,
+    primary_key: :id,
+    foreign_key: :subscriber_id,
+    dependent: :destroy
+
+  has_many :subscribers,
+    through: :subscriptions_from,
+    source: :subscriber
+
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

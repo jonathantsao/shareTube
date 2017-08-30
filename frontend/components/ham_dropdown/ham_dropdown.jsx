@@ -15,6 +15,8 @@ class HamDropdown extends React.Component {
 
   render() {
     let channel;
+    let like;
+    let dislike;
     let hamSubs;
 
     if (this.props.currentUser) {
@@ -22,6 +24,22 @@ class HamDropdown extends React.Component {
         <li>
           <Link id="channel-link" to={`/users/${this.props.currentUser.id}`} >
             <div id="channel-icon"></div> <p>My channel</p>
+          </Link>
+        </li>
+      );
+
+      like = (
+        <li>
+          <Link id="like-link" to="/likes" >
+            <div id="like-link-icon"></div> <p>Liked Videos</p>
+          </Link>
+        </li>
+      );
+
+      dislike = (
+        <li>
+          <Link id="dislike-link" to="/dislikes" >
+            <div id="dislike-link-icon"></div> <p>Disliked Videos</p>
           </Link>
         </li>
       );
@@ -71,6 +89,9 @@ class HamDropdown extends React.Component {
                 <p>Recently uploaded</p>
               </Link>
             </li>
+            { like }
+            { dislike }
+
           </ul>
           <ul className="ham-dropdown-subscriptions">
 

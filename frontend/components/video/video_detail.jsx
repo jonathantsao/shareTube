@@ -173,6 +173,15 @@ class VideoDetail extends React.Component {
       }
 
 
+      const numSubscribers = this.props.subscribers.length;
+      let subscribeButtonText = "Subscribe";
+      this.props.subscriptions.forEach((subscription) => {
+        if (subscription.id === this.props.video.user_id) {
+          subscribeButtonText = "Unsubscribe";
+        }
+      });
+
+
       description = (
         <div className="video-description">
           <h1 id="video-detail-title">{this.props.video.title}</h1>
@@ -184,9 +193,19 @@ class VideoDetail extends React.Component {
                 <img id="video-user-icon" src={this.props.video.user.image}/>
               </Link>
 
-              <Link to={`/users/${this.props.video.user_id}`} id="video-detail-user">
-                {this.props.video.user.username}
-              </Link>
+              <div>
+                <Link to={`/users/${this.props.video.user_id}`} id="video-detail-user">
+                  {this.props.video.user.username}
+                </Link>
+                <div id="subscribers">
+                  <button onClick={this.handleToggleSubscribe}
+                    id="toggle-subscribe">
+                    { subscribeButtonText }
+                  </button>
+                  <p>{ numSubscribers }</p>
+                </div>
+              </div>
+
             </div>
             <div id="video-detail-views"><h3>{views}</h3></div>
           </div>

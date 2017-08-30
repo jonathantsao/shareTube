@@ -74,6 +74,26 @@
   opacity: 1;
 }
 
+#like-link-icon {
+  background: image-url("like.png") no-repeat;
+  background-size: contain;
+  opacity: 0.6;
+  height: 16px;
+  width: 16px;
+  float: left;
+  margin: 0px 12px 0px 10px;
+}
+
+#dislike-link-icon {
+  background: image-url("dislike.png") no-repeat;
+  background-size: contain;
+  opacity: 0.6;
+  height: 16px;
+  width: 16px;
+  float: left;
+  margin: 0px 11px 0px 10px;
+}
+
 #recent-icon ~ p {
   margin-left: 2px;
 }
@@ -141,6 +161,16 @@
 }
 
 #home-link:hover #home-icon {
+  filter: invert(100%);
+  opacity: 1;
+}
+
+#like-link:hover #like-link-icon {
+  filter: invert(100%);
+  opacity: 1;
+}
+
+#dislike-link:hover #dislike-link-icon {
   filter: invert(100%);
   opacity: 1;
 }

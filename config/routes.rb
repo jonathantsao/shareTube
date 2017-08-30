@@ -14,5 +14,7 @@ Rails.application.routes.draw do
   end
 
   get 'api/users', :to => 'api/users#find'
+  post 'api/users/:id/subscribe', :to => 'api/users#subscribe'
+  delete 'api/users/:id/unsubscribe', :to => 'api/users#unsubscribe'
 
 end

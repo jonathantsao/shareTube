@@ -2,6 +2,7 @@ import { RECEIVE_ERRORS, RECEIVE_USERNAME, RECEIVE_TOGGLE_DROPDOWN_HAM, RECEIVE_
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_HOT, RECEIVE_ALL_VIDEOS, RECEIVE_RECENT, RECEIVE_UPLOADS, UPLOAD_VIDEO, RECEIVE_SEARCH, RECEIVE_LIKES, RECEIVE_DISLIKES } from '../actions/video_actions';
 import { RECEIVE_COMMENTS } from '../actions/comment_actions';
+import { RECEIVE_SUBS } from '../actions/subscription_actions';
 import merge from 'lodash/merge';
 import union from 'lodash/union';
 
@@ -13,6 +14,7 @@ const initialState = {
   hamDropdown: true,
   userDropdown: false,
   video: null,
+  subscribers: [],
   hot: [],
   recent: [],
   all: [],
@@ -27,6 +29,10 @@ const uiReducer = (state = initialState, action) => {
   let newIds;
   let newState;
   switch(action.type) {
+    case RECEIVE_SUBS:
+      newState = merge({}, state);
+      newState.subscribers = action.subscribers;
+      return newState;
     case TOGGLE_LOADING:
       newState = merge({}, state);
       newState.loading = !state.loading;
@@ -38,6 +44,7 @@ const uiReducer = (state = initialState, action) => {
     case REMOVE_VIDEO:
       newState = merge({}, state);
       newState.video = null;
+      newState.subscribers = [];
       return newState;
     case RECEIVE_VIDEO:
       newState = merge({}, state);

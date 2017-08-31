@@ -121,8 +121,8 @@ class EditProfile extends React.Component {
           <h5 id="edit-form-greeting-2">Changes you make here show up across other ShareTube services like Drive, Photos, ShareTube* & others.</h5>
         </div>
         <div id="form-box">
-          <form id="edit-form">
-            <label htmlFor="photo-input" id="photo-label"><p>Select file to upload</p></label>
+          <form id="edit-form" action="/file-upload">
+            <label htmlFor="photo-input" id="photo-label"><p>Select or drop a file to upload</p></label>
             <input id="photo-input"
               onChange={this.updateFile} type="file"></input>
             <img id="user-profile" src={this.state.user_url} />

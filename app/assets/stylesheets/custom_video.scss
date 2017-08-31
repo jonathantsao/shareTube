@@ -1,0 +1,175 @@
+#video-player-box {
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 1%;
+}
+
+#video-controls-bar {
+  background: transparent;
+  padding: 0px 10px 10px 10px;
+  height: 20px;
+  color: #CCC;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#first-buttons {
+  display: flex;
+  align-items: center;
+}
+
+#volumeslider {
+  width: 100px;
+  background: #666;
+  cursor: pointer;
+  height: 5px;
+  width: 100px;
+  margin: 0px 5px 0px 5px;
+}
+
+#volumeslider::-webkit-progress-bar {
+
+}
+
+#volumeslider::-webkit-progress-value {
+  background: #128ee9;
+}
+
+#play-btn {
+  background: image-url("play-button-overlay.png") no-repeat;
+  background-size: contain;
+  width: 27px;
+  height: 20px;
+  cursor: pointer;
+  opacity: 0.6;
+  outline: none;
+  filter: invert(100%);
+}
+
+#pause-btn {
+  background: image-url("paused-button.svg") no-repeat;
+  background-size: contain;
+  width: 68%;
+  height: 64%;
+  margin: 0px;
+  opacity: 0.6;
+  filter: invert(100%);
+}
+
+#playpausebtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  width: 46px;
+  height: 36px;
+}
+
+#pause-btn:hover {
+  opacity: 1;
+}
+
+#play-btn:hover {
+  opacity: 1;
+}
+
+#mutebtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  width: 46px;
+  height: 36px;
+}
+
+#full-screen-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  width: 46px;
+  height: 36px;
+}
+
+#full-screen-btn:hover #fullscreen {
+  opacity: 1;
+}
+
+#sound-btn {
+  background: image-url("mute.png") no-repeat;
+  background-size: contain;
+  width: 78%;
+  height: 79%;
+  margin: 0px;
+  opacity: 0.6;
+  filter: invert(100%);
+}
+
+#mute-btn {
+  background: image-url("sound.svg") no-repeat;
+  background-size: contain;
+  width: 75%;
+  height: 82%;
+  margin: 0px;
+  opacity: 0.6;
+  filter: invert(100%);
+}
+
+#mute-btn:hover {
+  opacity: 1;
+}
+
+#sound-btn:hover {
+  opacity: 1;
+}
+
+#control-panel {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+#video-player-box:hover #control-panel{
+  opacity: 1;
+}
+
+
+
+#seekslider {
+  width: 100%;
+  margin: 0px;
+}
+
+#seekslider::-webkit-progress-bar {
+  height: 5px;
+  border-radius: 0px;
+}
+
+#seekslider::-webkit-progress-value {
+  background: #128ee9;
+  height: 5px;
+  border-radius: 0px;
+}
+
+#fullscreen {
+  background: image-url("fullscreen.png") no-repeat;
+  background-size: contain;
+  width: 78%;
+  height: 79%;
+  margin: 0px;
+  opacity: 0.6;
+  filter: invert(100%);
+}
+#curTimeText {
+  font-size: 13px;
+}
+
+#durTimeText {
+  font-size: 13px;
+}

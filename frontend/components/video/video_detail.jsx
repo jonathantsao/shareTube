@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import RelatedVideosIndexContainer from './related_videos_index_container';
 import CommentIndexContainer from '../comment/comment_index_container';
 import CommentFormContainer from '../comment/comment_form_container';
+import VideoPlayer from './video_player';
 
 class VideoDetail extends React.Component {
 
@@ -132,10 +133,7 @@ class VideoDetail extends React.Component {
     let videoHeight = this.state.height;
     if (this.props.video) {
       video = (
-        <video src={this.props.video.video_url}
-          autoPlay="autoPlay" controls className="video-player" height={videoHeight} >
-          Your browser does not support this video.
-        </video>
+        <VideoPlayer source={this.props.video.video_url}  height={videoHeight} />
       );
       let views = viewsParse(this.props.video.views);
 

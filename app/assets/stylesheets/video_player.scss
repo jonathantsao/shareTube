@@ -320,6 +320,32 @@
   width: 16px;
 }
 
+#toggle-unsubscribe {
+  background-color: #CCC;
+  border: 1px solid #CCC;
+  border-radius: 2px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  cursor: pointer;
+}
+
+#toggle-unsubscribe:hover {
+  background-color: #929292;
+  border: 1px solid #929292;
+}
+
+#toggle-unsubscribe h4 {
+  margin: 0px;
+  color: white;
+  font-size: 13px;
+  font-weight: 200;
+  margin-left: 5px;
+}
+
 #toggle-subscribe h4 {
   margin: 0px;
   color: white;

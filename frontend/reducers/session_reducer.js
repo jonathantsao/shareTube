@@ -4,7 +4,6 @@ import merge from 'lodash/merge';
 
 const initialState = {
   currentUser: null,
-  subscriptions: [],
 };
 
 const sessionReducer = (state = initialState, action) => {
@@ -16,7 +15,8 @@ const sessionReducer = (state = initialState, action) => {
       return newState;
     case RECEIVE_SUBS:
       newState = merge({}, state);
-      newState.subscriptions = action.subscriptions;
+      newState.currentUser.subscriptions = action.subscriptions;
+      newState.currentUser.subscribed_channels = action.subscribed_channels;
       return newState;
     default:
       return state;

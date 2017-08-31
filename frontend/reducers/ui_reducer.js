@@ -14,7 +14,6 @@ const initialState = {
   hamDropdown: true,
   userDropdown: false,
   video: null,
-  subscribers: [],
   hot: [],
   recent: [],
   all: [],
@@ -31,7 +30,7 @@ const uiReducer = (state = initialState, action) => {
   switch(action.type) {
     case RECEIVE_SUBS:
       newState = merge({}, state);
-      newState.subscribers = action.subscribers;
+      newState.video.user.subscribers = action.subscribers;
       return newState;
     case TOGGLE_LOADING:
       newState = merge({}, state);
@@ -49,6 +48,7 @@ const uiReducer = (state = initialState, action) => {
     case RECEIVE_VIDEO:
       newState = merge({}, state);
       newState.video = action.video;
+      newState.subscribers = action.video.subscribers;
       return newState;
     case CLEAR_ERRORS:
       newState = merge({}, state);

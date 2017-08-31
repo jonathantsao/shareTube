@@ -7,7 +7,8 @@ export const receiveSubs = (subs) => {
   return {
     type: RECEIVE_SUBS,
     subscriptions: subs.subscriptions,
-    subscribers: subs.subscribers
+    subscribers: subs.subscribers,
+    subscribed_channels: subs.subscribed_channels,
   };
 };
 

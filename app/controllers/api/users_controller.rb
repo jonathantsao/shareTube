@@ -50,18 +50,18 @@ class Api::UsersController < ApplicationController
       @new_subscribers = @subscribed_channel.subscribers.map do |sub|
         sub.id
       end
-      render "/api/subscriptions/show"
+      render json: { subscribers: @new_subscribers, subscriptions: @user.subscriptions_to, subscribed_channels: @subscriptions }
     else
       render json: @subscription.errors.full_messages, status: 422
     end
   end
 
   def unsubscribe
-    @subscription = Subscription.new(
+    @subscription = Subscription.find_by(
     subscriber_id: params[:id],
     subscribed_id: params[:user][:subscribed_id]
   )
-    if @subscription.destroy!
+    if @subscription.destroy
       @user = User.find(params[:id])
       @subscribed_channel = User.find(params[:user][:subscribed_id])
       @subscriptions = @user.subscribed_channels.map do |sub|
@@ -70,7 +70,7 @@ class Api::UsersController < ApplicationController
       @new_subscribers = @subscribed_channel.subscribers.map do |sub|
         sub.id
       end
-      render "/api/subscriptions/show"
+      render json: { subscribers: @new_subscribers, subscriptions: @user.subscriptions_to, subscribed_channels: @subscriptions }
     else
       render json: @subscription.errors.full_messages, status: 422
     end

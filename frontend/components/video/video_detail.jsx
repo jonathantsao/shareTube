@@ -117,7 +117,7 @@ class VideoDetail extends React.Component {
 
   handleUnsubscribe(e) {
     e.preventDefault();
-    this.props.unsubscribe(this.props.currentUserid, this.props.video.user_id);
+    this.props.unsubscribe(this.props.currentUser.id, this.props.video.user_id);
   }
 
   handleRedirect(e) {
@@ -146,7 +146,7 @@ class VideoDetail extends React.Component {
           id="dislike-button-disabled"></button>
       );
 
-      const numSubscribers = this.props.subscribers.length;
+      let numSubscribers = this.props.video.user.subscribers.length;
       let subscribeButton = (
         <div id="subscribers">
           <button onClick={this.handleRedirect}
@@ -182,15 +182,13 @@ class VideoDetail extends React.Component {
         let method = this.handleSubscribe;
         let subscribeButtonText = "Subscribe";
         let id = "toggle-subscribe";
-        if (this.props.subscriptions) {
-          this.props.subscriptions.forEach((subscription) => {
-            if (subscription.id === this.props.video.user_id) {
-              method = this.handleUnsubscribe;
-              subscribeButtonText = "Unsubscribe";
-              id = "toggle-unsubscribe";
-            }
-          });
-        }
+        this.props.currentUser.subscribed_channels.forEach((subscription) => {
+          if (subscription === this.props.video.user_id) {
+            method = this.handleUnsubscribe;
+            subscribeButtonText = "Unsubscribe";
+            id = "toggle-unsubscribe";
+          }
+        });
         subscribeButton = (
           <div id="subscribers">
             <button onClick={method}

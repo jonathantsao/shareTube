@@ -12,8 +12,6 @@ const mapStateToProps = (state) => {
     currentUser: state.session.currentUser,
     hamDropdown: state.ui.hamDropdown,
     video: state.ui.video,
-    subscriptions: state.session.subscriptions,
-    subscribers: state.ui.subscribers,
   };
 };
 

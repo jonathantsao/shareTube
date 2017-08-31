@@ -59,7 +59,6 @@ class VideoPlayer extends React.Component {
     const realMargin = marginLeft + 126;
     const clickX = e.pageX - realMargin;
     e.currentTarget.value = clickX;
-    debugger;
     this.vid.volume = clickX / 100;
   }
 

@@ -106,7 +106,7 @@ class VideoForm extends React.Component {
 
       return (
         <div className="video-form-container">
-          <form className="video-form-one">
+          <form className="video-form-one" action="/file-upload">
             { errors }
               <label htmlFor="input-file"
             className="file-input-label">

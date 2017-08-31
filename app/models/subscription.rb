@@ -1,6 +1,6 @@
 class Subscription < ApplicationRecord
   validates :subscriber, :subscribed, presence: true
-  validates :subcribed_id, uniqueness: { scope: [:subscriber_id] }
+  validates :subscribed_id, uniqueness: { scope: [:subscriber_id] }
 
   belongs_to :subscriber,
     class_name: :User,

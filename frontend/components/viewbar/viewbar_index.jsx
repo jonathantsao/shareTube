@@ -16,9 +16,12 @@ class ViewBarIndex extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.currentUser && (this.props.filter === "likes" || this.props.filter === "dislikes")) {
-      this.props.getVideos(this.props.filter, this.props.currentUser.id);
-    } else {
+    if (this.props.currentUser) {
+      if (this.props.filter === "likes" || this.props.filter === "dislikes") {
+        this.props.getVideos(this.props.filter, this.props.currentUser.id);
+      }
+    }
+    if (this.props.filter !== "likes" && this.props.filter !== "dislikes"){
       this.props.getVideos(this.props.filter);
     }
     window.addEventListener("resize", this.updateWidth);

@@ -304,3 +304,48 @@
   cursor: pointer;
   color: black;
 }
+
+#subscribers p {
+  margin: 0px;
+  border: 1px solid #E2E2E2;
+  padding: 3px 8px;
+  font-size: 13px;
+  color: #B4B4B4;
+}
+
+#subscribe-icon {
+  background: image-url("play-button.png") no-repeat;
+  background-size: 100%;
+  height: 11px;
+  width: 16px;
+}
+
+#toggle-subscribe h4 {
+  margin: 0px;
+  color: white;
+  font-size: 13px;
+  font-weight: 200;
+  margin-left: 5px;
+}
+
+#toggle-subscribe {
+  background-color: #128ee9;
+  border: 1px solid #128ee9;
+  border-radius: 2px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+}
+
+#toggle-subscribe:hover {
+  cursor: pointer;
+  background-color: #1080D2;
+  border: 1px solid #1080D2;
+}
+
+#subscribers {
+  display: flex;
+}

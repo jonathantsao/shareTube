@@ -5,6 +5,7 @@ import { getComments } from '../../actions/comment_actions';
 import { withRouter } from 'react-router-dom';
 import VideoDetail from './video_detail';
 import { likeItem, unlikeItem } from '../../actions/like_actions';
+import { subscribe, unsubscribe } from '../../actions/subscription_actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -25,6 +26,8 @@ const mapDispatchToProps = (dispatch) => {
     removeVideo: () => dispatch(removeVideo()),
     emotionVideo: (like) => dispatch(likeItem(like)),
     unemotionVideo: (likeId) => dispatch(unlikeItem(likeId)),
+    subscribe: (currentUserId, subId) => dispatch(subscribe(currentUserId, subId)),
+    unsubscribe: (currentUserId, subId) => dispatch(unsubscribe(currentUserId, subId)),
   };
 };
 

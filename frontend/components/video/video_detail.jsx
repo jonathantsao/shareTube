@@ -25,6 +25,9 @@ class VideoDetail extends React.Component {
     this.updateHeight = this.updateHeight.bind(this);
     this.handleLike = this.handleLike.bind(this);
     this.handleDislike = this.handleDislike.bind(this);
+    this.handleSubscribe = this.handleSubscribe.bind(this);
+    this.handleUnsubscribe = this.handleUnsubscribe.bind(this);
+    this.handleRedirect = this.handleRedirect.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -106,6 +109,21 @@ class VideoDetail extends React.Component {
     this.props.emotionVideo(dislike);
   }
 
+  handleSubscribe(e) {
+    e.preventDefault();
+    this.props.subscribe(this.props.currentUser.id, this.props.video.user_id);
+  }
+
+  handleUnsubscribe(e) {
+    e.preventDefault();
+    this.props.unsubscribe(this.props.currentUserid, this.props.video.user_id);
+  }
+
+  handleRedirect(e) {
+    e.preventDefault();
+    this.props.history.push("/login");
+  }
+
 
   render() {
     let video = <div></div>;
@@ -130,6 +148,18 @@ class VideoDetail extends React.Component {
           id="dislike-button-disabled"></button>
       );
 
+      const numSubscribers = this.props.subscribers.length;
+      let subscribeButton = (
+        <div id="subscribers">
+          <button onClick={this.handleRedirect}
+            id="toggle-subscribe">
+            <div id="subscribe-icon"></div>
+            <h4>Subscribe</h4>
+          </button>
+          <p>{ numSubscribers }</p>
+        </div>
+      );
+
       if (this.props.currentUser) {
         likeButton = (
           <button id="like-button" onClick={this.handleLike}></button>
@@ -150,6 +180,29 @@ class VideoDetail extends React.Component {
             );
           }
         });
+
+        let method = this.handleSubscribe;
+        let subscribeButtonText = "Subscribe";
+        let id = "toggle-subscribe";
+        if (this.props.subscriptions) {
+          this.props.subscriptions.forEach((subscription) => {
+            if (subscription.id === this.props.video.user_id) {
+              method = this.handleUnsubscribe;
+              subscribeButtonText = "Unsubscribe";
+              id = "toggle-unsubscribe";
+            }
+          });
+        }
+        subscribeButton = (
+          <div id="subscribers">
+            <button onClick={method}
+              id={id}>
+              <div id="subscribe-icon"></div>
+              <h4>{ subscribeButtonText }</h4>
+            </button>
+            <p>{ numSubscribers }</p>
+          </div>
+        );
       }
 
       const totalLikes = this.props.video.likes.length;
@@ -173,15 +226,6 @@ class VideoDetail extends React.Component {
       }
 
 
-      const numSubscribers = this.props.subscribers.length;
-      let subscribeButtonText = "Subscribe";
-      this.props.subscriptions.forEach((subscription) => {
-        if (subscription.id === this.props.video.user_id) {
-          subscribeButtonText = "Unsubscribe";
-        }
-      });
-
-
       description = (
         <div className="video-description">
           <h1 id="video-detail-title">{this.props.video.title}</h1>
@@ -197,13 +241,7 @@ class VideoDetail extends React.Component {
                 <Link to={`/users/${this.props.video.user_id}`} id="video-detail-user">
                   {this.props.video.user.username}
                 </Link>
-                <div id="subscribers">
-                  <button onClick={this.handleToggleSubscribe}
-                    id="toggle-subscribe">
-                    { subscribeButtonText }
-                  </button>
-                  <p>{ numSubscribers }</p>
-                </div>
+                { subscribeButton }
               </div>
 
             </div>

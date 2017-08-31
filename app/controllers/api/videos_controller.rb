@@ -3,18 +3,27 @@ class Api::VideosController < ApplicationController
 
   def index
     @filter = params[:video][:filter]
-    if params[:video][:user_id]
+    if @filter == "subscriptions"
+      user = User.find(params[:video][:user_id])
+      if user
+        @videos = user.subscribed_channels.map do |channel|
+          channel.videos.map { |video| video }
+        end
+        @videos = @videos.flatten
+      end
+
+    elsif @filter == "likes" || @filter == "dislikes"
       user = User.find(params[:video][:user_id])
       if @filter == "likes"
-        user_video_likes = user.likes.select do |like|
+        user_videos = user.likes.select do |like|
           like.likeable_type == "Video" && like.value == 1
         end
       elsif @filter == "dislikes"
-        user_video_likes = user.likes.select do |like|
+        user_videos = user.likes.select do |like|
           like.likeable_type == "Video" && like.value == -1
         end
       end
-      @videos = user_video_likes.map { |like| like.likeable }
+      @videos = user_videos.map { |like| like.likeable }
     elsif @filter == "all"
       @videos = Video.all
       @video_ids = @videos.map { |video| video.id }.shuffle!

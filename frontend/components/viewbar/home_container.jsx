@@ -8,6 +8,7 @@ const HomeContainer = ({ location }) => {
   const recent = path === "/recent" ? "first" : "";
   const likes = path === "/likes" ? "first" : "";
   const dislikes = path === "/dislikes" ? "first" : "";
+  const subscriptions = path === "/subscriptions" ? "first" : "";
   return (
     <div className="home-index">
       <div>
@@ -28,6 +29,10 @@ const HomeContainer = ({ location }) => {
 
       <div className={dislikes}>
         <ViewbarContainer filter="dislikes" />
+      </div>
+
+      <div className={subscriptions}>
+        <ViewbarContainer filter="subscriptions" />
       </div>
 
     </div>

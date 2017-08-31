@@ -9,6 +9,7 @@ export const UPLOAD_VIDEO = "UPLOAD_VIDEO";
 export const RECEIVE_SEARCH = "RECEIVE_SEARCH";
 export const RECEIVE_LIKES = "RECEIVE_LIKES";
 export const RECEIVE_DISLIKES = "RECEIVE_DISLIKES";
+export const RECEIVE_SUBSCRIPTIONS = "RECEIVE_SUBSCRIPTIONS";
 
 
 export const uploadVideo = (video) => {
@@ -40,6 +41,9 @@ export const receiveAllVideos = (res) => {
       break;
     case "search":
       type = RECEIVE_SEARCH;
+      break;
+    case "subscriptions":
+      type = RECEIVE_SUBSCRIPTIONS;
       break;
     case "uploads":
       type = RECEIVE_UPLOADS;

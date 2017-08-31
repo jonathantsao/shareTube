@@ -1,6 +1,6 @@
 import { RECEIVE_ERRORS, RECEIVE_USERNAME, RECEIVE_TOGGLE_DROPDOWN_HAM, RECEIVE_TOGGLE_DROPDOWN_USER, CHANGE_FORM, CHANGE_UPLOAD_PAGE, CLEAR_SESSION, CLEAR_UPLOAD, RECEIVE_VIDEO, REMOVE_VIDEO, CLEAR_ERRORS, CLEAR_SEARCH, TOGGLE_LOADING } from '../actions/ui_actions';
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
-import { RECEIVE_HOT, RECEIVE_ALL_VIDEOS, RECEIVE_RECENT, RECEIVE_UPLOADS, UPLOAD_VIDEO, RECEIVE_SEARCH, RECEIVE_LIKES, RECEIVE_DISLIKES } from '../actions/video_actions';
+import { RECEIVE_HOT, RECEIVE_ALL_VIDEOS, RECEIVE_RECENT, RECEIVE_UPLOADS, UPLOAD_VIDEO, RECEIVE_SEARCH, RECEIVE_LIKES, RECEIVE_DISLIKES, RECEIVE_SUBSCRIPTIONS } from '../actions/video_actions';
 import { RECEIVE_COMMENTS } from '../actions/comment_actions';
 import { RECEIVE_SUBS } from '../actions/subscription_actions';
 import merge from 'lodash/merge';
@@ -19,6 +19,7 @@ const initialState = {
   all: [],
   search: [],
   likes: [],
+  subscriptions: [],
   dislikes: [],
   loading: false,
 };
@@ -82,6 +83,10 @@ const uiReducer = (state = initialState, action) => {
     case RECEIVE_DISLIKES:
       newState = merge({}, state);
       newState.dislikes = action.video_ids;
+      return newState;
+    case RECEIVE_SUBSCRIPTIONS:
+      newState = merge({}, state);
+      newState.subscriptions = action.video_ids;
       return newState;
     case RECEIVE_SEARCH:
       newState = merge({}, state);

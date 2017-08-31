@@ -17,11 +17,11 @@ class ViewBarIndex extends React.Component {
 
   componentDidMount() {
     if (this.props.currentUser) {
-      if (this.props.filter === "likes" || this.props.filter === "dislikes") {
+      if (this.props.filter === "likes" || this.props.filter === "dislikes" || this.props.filter === "subscriptions") {
         this.props.getVideos(this.props.filter, this.props.currentUser.id);
       }
     }
-    if (this.props.filter !== "likes" && this.props.filter !== "dislikes"){
+    if (this.props.filter !== "likes" && this.props.filter !== "dislikes" && this.props.filter !== "subscriptions"){
       this.props.getVideos(this.props.filter);
     }
     window.addEventListener("resize", this.updateWidth);
@@ -81,6 +81,9 @@ class ViewBarIndex extends React.Component {
       case "dislikes":
         viewbarTitleText = "Disliked Videos";
         break;
+      case "subscriptions":
+        viewbarTitleText = "Your Subscriptions";
+        break;
     }
     const viewbarTitle = (
       <h4 className="viewbar-title">{ viewbarTitleText }</h4>
@@ -138,7 +141,7 @@ class ViewBarIndex extends React.Component {
   }
 
   render() {
-    if (this.props.filter === "likes" || this.props.filter === "dislikes") {
+    if (this.props.filter === "likes" || this.props.filter === "dislikes" || this.props.filter === "subscriptions") {
       if (!this.props.currentUser) return <div></div>;
       if (this.props.videoIds) {
         if (this.props.videoIds.length === 0) {

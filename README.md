@@ -48,7 +48,7 @@ Several carousels were created for the home page using the `nuka-carousel` Node 
 
 Using the filter functionality in the backend, each carousel receives a different set of videos, which represents a different category. Furthermore, on the left dropdown menu, users can toggle through each category to display the category at the top of the list.
 
-<p align="center"><img src="./app/assets/images/home-page.gif" width="300px"></img></p>
+<p align="center"><img src="./app/assets/images/home.gif" width="400px"></img></p>
 
 
 ## Future Directions

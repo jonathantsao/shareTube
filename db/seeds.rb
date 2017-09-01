@@ -6,23 +6,4 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user1 = User.create!(username: "demo@demo.com", password: "password")
-user2 = User.create!(username: "othertest", password: "password")
-user3 = User.create!(username: "jonathantsao", password: "password")
-
-video1 = Video.create!(title: "Volleyball", description: "fun", views: 20, user_id: user1.id, video: "https://s3.us-east-2.amazonaws.com/sharetube-pro/volleyball1.mov")
-
-video2 = Video.create!(title: "Cute Cousin", description: "interesting", views: 40, user_id: user1.id, video: "https://s3.us-east-2.amazonaws.com/sharetube-pro/life.mp4")
-
-
-video4 = Video.create!(title: "old video", description: "test", views: 2, user_id: user3.id, video: "https://s3.us-east-2.amazonaws.com/sharetube-pro/v6.mp4")
-
-video5 = Video.create!(title: "Volleyball Again", description: "again..", views: 12452, user_id: user2.id, video: "https://s3.us-east-2.amazonaws.com/sharetube-pro/vball.MOV")
-
-video6 = Video.create!(title: "Biology Fun", description: "k..", views: 1252, user_id: user2.id, video: "https://s3.us-east-2.amazonaws.com/sharetube-pro/biology.mp4")
-
-video7 = Video.create!(title: "Seaworld", description: "sea animal", views: 12452, user_id: user3.id, video: "https://s3.us-east-2.amazonaws.com/sharetube-pro/seaworld.mp4")
-
-video8 = Video.create!(title: "Soap Bubbles..", description: "what..", views: 12, user_id: user3.id, video: "https://s3.us-east-2.amazonaws.com/sharetube-pro/soap.mp4")
-
-video8 = Video.create!(title: "Earth Video", description: "I love nature so much..", views: 122, user_id: user2.id, video: "https://s3.us-east-2.amazonaws.com/sharetube-pro/earth.mp4")
+Video.find_by(title: "what").destroy

@@ -19,7 +19,7 @@ ShareTube is a web application modeled after YouTube built using Ruby on Rails a
 - [ ] Adequate and appropriate seeds to demonstrate application features
 
 #### Bonus Features
-- [ ] Subscriptions
+- [x] Subscriptions
   - Users should have the ability to subscribe to subscribe to other users
 - [x] Scrolling
   - Lists videos sideways
@@ -87,6 +87,6 @@ ShareTube is a web application modeled after YouTube built using Ruby on Rails a
 
 ### Bonus Phase: Subscriptions, scrolling, OAuth
 #### Objective: Users can subscribe, videos are displayed horizontally, implement 0Auth API
-- [ ] Create association in users model for subscriptions
+- [x] Create association in users model for subscriptions
 - [x] Develop sideways scrolling for video display on home page
 - [ ] Utilize OAuth with google

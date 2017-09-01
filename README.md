@@ -46,8 +46,9 @@ The filtering functionality that provides "hot", "recent", "liked" videos are co
 
 Several carousels were created for the home page using the `nuka-carousel` Node Package. This allows for the animation of the carousel when toggling left and right.
 
+Using the filter functionality in the backend, each carousel receives a different set of videos, which represents a different category. Furthermore, on the left dropdown menu, users can toggle through each category to display the category at the top of the list.
 
-Using the filter functionality in the backend, each carousel represents a different category, and therefore a different filter.
+<p align="center"><img src="./app/assets/images/home-page.gif" width="300px"></img></p>
 
 
 ## Future Directions
@@ -66,10 +67,6 @@ An implementation I would like to explore is having a user history. My prospecti
 
 Part of what makes YouTube such a frequently visited site is its ability to offer recommendations to users. Usually, this is implemented using factors such as watch history, subscriptions, liked videos, etc. I plan to generate a simple relevance index that is able to used to generate recommendations to a user.
 
-## Playlists
-
-I want users to be able to generate playlists. I would do so by creating a new join table between the user who owns the playlist and the videos that are in the playlist.
-
-## Thumbnail GIFS
+### Thumbnail GIFS
 
 One of YouTube's recent additions was the playing of a GIF of the video when a user hovers over a thumbnail. Currently, my app uses PaperClip to autogenerate a thumbnail for the video. I would write a configuration for PaperClip to extract multiple thumbnails, create a GIF, and assign it to the video model.

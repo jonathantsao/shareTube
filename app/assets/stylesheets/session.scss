@@ -92,6 +92,26 @@ hr {
   font-size: 14px;
 }
 
+#user-back-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+#go-back {
+  background: image-url("caret.png") no-repeat;
+  background-size: contain;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+#go-back:hover {
+  opacity: 1;
+}
+
 .process-form-greeting h1 {
   padding-top: 16px;
   padding-bottom: 0px;

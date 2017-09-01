@@ -4,8 +4,15 @@ class Video < ApplicationRecord
     against: { title: 'A', description: 'B' },
     using: {
       dmetaphone: { any_word:  true },
-      tsearch: { dictionary: "english", any_word: true, prefix: true },
+      tsearch: { dictionary: "english", prefix: true },
       trigram: { threshold: 0.1 }
+    }
+
+  pg_search_scope :suggest_search,
+    against: :title,
+    using: {
+      tsearch: { prefix: true, any_word: true },
+      dmetaphone: { sort_only: true }
     }
 
   validates :title, :description, :user_id, :video, :views, presence: true

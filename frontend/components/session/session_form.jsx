@@ -11,6 +11,7 @@ class SessionForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
+    this.handleGoBack = this.handleGoBack.bind(this);
   }
 
 
@@ -32,6 +33,13 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.processForm(this.state);
+  }
+
+  handleGoBack() {
+    this.setState({
+      password: "",
+    });
+    this.props.goBackForm();
   }
 
 
@@ -106,7 +114,11 @@ class SessionForm extends React.Component {
     </div>) :
     (<div className="process-form-greeting">
       <h1>Welcome</h1>
-      <p>{this.state.username}</p>
+      <div id="user-back-line">
+        <p>{this.state.username}</p>
+        <div id="go-back" onClick={this.handleGoBack}></div>
+      </div>
+
     </div>);
 
     return(

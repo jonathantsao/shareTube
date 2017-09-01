@@ -83,7 +83,8 @@ class VideoForm extends React.Component {
     this.props.createVideo(formData).then(
       (newVideoId) => {
         return this.props.history.push(`/videos/${newVideoId}`);
-      }
+      },
+      () => this.props.toggleLoading()
     );
   }
 

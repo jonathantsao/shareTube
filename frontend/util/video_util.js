@@ -46,3 +46,11 @@ export const searchVideos = (filter, search_query) => {
     data: { video: { filter, search_query } }
   });
 };
+
+export const searchBar = (search_query) => {
+  return $.ajax({
+    method: "GET",
+    url: "/api/videos/search",
+    data: { video: { search_query } },
+  });
+};

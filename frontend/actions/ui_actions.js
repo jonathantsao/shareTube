@@ -13,10 +13,17 @@ export const RECEIVE_VIDEO = "RECEIVE_VIDEO";
 export const REMOVE_VIDEO = "REMOVE_VIDEO";
 export const CLEAR_SEARCH = "CLEAR_SEARCH";
 export const TOGGLE_LOADING = "TOGGLE_LOADING";
+export const GO_BACK_FORM = "GO_BACK_FORM";
 
 export const toggleLoading = () => {
   return {
     type: TOGGLE_LOADING,
+  };
+};
+
+export const goBackForm = () => {
+  return {
+    type: GO_BACK_FORM,
   };
 };
 

@@ -10,12 +10,20 @@ export const RECEIVE_SEARCH = "RECEIVE_SEARCH";
 export const RECEIVE_LIKES = "RECEIVE_LIKES";
 export const RECEIVE_DISLIKES = "RECEIVE_DISLIKES";
 export const RECEIVE_SUBSCRIPTIONS = "RECEIVE_SUBSCRIPTIONS";
+export const RECEIVE_VIDEO_TITLES = "RECEIVE_VIDEO_TITLES";
 
 
 export const uploadVideo = (video) => {
   return {
     type: UPLOAD_VIDEO,
     video
+  };
+};
+
+export const receiveVideoTitles = (videoList) => {
+  return {
+    type: RECEIVE_VIDEO_TITLES,
+    videoList,
   };
 };
 
@@ -78,4 +86,9 @@ export const createVideo = (video) => (dispatch) => {
       dispatch(uploadVideo(newVideo));
       return newVideo.id;
     }, ((errors) => dispatch(receiveErrors(errors.responseJSON))));
+};
+
+export const searchBar = (search_query) => (dispatch) => {
+  return APIUtil.searchBar(search_query)
+    .then((videoList) => dispatch(receiveVideoTitles(videoList)));
 };

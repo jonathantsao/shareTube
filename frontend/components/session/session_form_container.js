@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import SessionForm from './session_form';
 import { withRouter } from 'react-router-dom';
 import { login, signup } from '../../actions/session_actions';
-import { verifyUsername, checkUsername, changeForm, clearSession } from '../../actions/ui_actions';
+import { verifyUsername, checkUsername, changeForm, clearSession, goBackForm } from '../../actions/ui_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -21,6 +21,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       processDemo: user => dispatch(login(user)),
       sendUsername: username => dispatch(verifyUsername(username)),
       changeForm: () => dispatch(changeForm()),
+      goBackForm: () => dispatch(goBackForm()),
     };
   } else if (ownProps.location.pathname === "/signup") {
     return {
@@ -29,6 +30,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       processDemo: user => dispatch(login(user)),
       sendUsername: username => dispatch(checkUsername(username)),
       changeForm: () => dispatch(changeForm()),
+      goBackForm: () => dispatch(goBackForm()),
     };
   }
 };

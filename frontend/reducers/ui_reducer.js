@@ -1,6 +1,6 @@
-import { RECEIVE_ERRORS, RECEIVE_USERNAME, RECEIVE_TOGGLE_DROPDOWN_HAM, RECEIVE_TOGGLE_DROPDOWN_USER, CHANGE_FORM, CHANGE_UPLOAD_PAGE, CLEAR_SESSION, CLEAR_UPLOAD, RECEIVE_VIDEO, REMOVE_VIDEO, CLEAR_ERRORS, CLEAR_SEARCH, TOGGLE_LOADING } from '../actions/ui_actions';
+import { RECEIVE_ERRORS, RECEIVE_USERNAME, RECEIVE_TOGGLE_DROPDOWN_HAM, RECEIVE_TOGGLE_DROPDOWN_USER, CHANGE_FORM, CHANGE_UPLOAD_PAGE, CLEAR_SESSION, CLEAR_UPLOAD, RECEIVE_VIDEO, REMOVE_VIDEO, CLEAR_ERRORS, CLEAR_SEARCH, TOGGLE_LOADING, GO_BACK_FORM } from '../actions/ui_actions';
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
-import { RECEIVE_HOT, RECEIVE_ALL_VIDEOS, RECEIVE_RECENT, RECEIVE_UPLOADS, UPLOAD_VIDEO, RECEIVE_SEARCH, RECEIVE_LIKES, RECEIVE_DISLIKES, RECEIVE_SUBSCRIPTIONS } from '../actions/video_actions';
+import { RECEIVE_HOT, RECEIVE_ALL_VIDEOS, RECEIVE_RECENT, RECEIVE_UPLOADS, UPLOAD_VIDEO, RECEIVE_SEARCH, RECEIVE_LIKES, RECEIVE_DISLIKES, RECEIVE_SUBSCRIPTIONS, RECEIVE_VIDEO_TITLES } from '../actions/video_actions';
 import { RECEIVE_COMMENTS } from '../actions/comment_actions';
 import { RECEIVE_SUBS } from '../actions/subscription_actions';
 import merge from 'lodash/merge';
@@ -22,6 +22,7 @@ const initialState = {
   subscriptions: [],
   dislikes: [],
   loading: false,
+  videoTitles: []
 };
 
 const uiReducer = (state = initialState, action) => {
@@ -29,6 +30,10 @@ const uiReducer = (state = initialState, action) => {
   let newIds;
   let newState;
   switch(action.type) {
+    case RECEIVE_VIDEO_TITLES:
+      newState = merge({}, state);
+      newState.videoTitles = action.videoTitles;
+      return newState;
     case RECEIVE_SUBS:
       newState = merge({}, state);
       newState.video.user.subscribers = action.subscribers;
@@ -95,6 +100,10 @@ const uiReducer = (state = initialState, action) => {
     case RECEIVE_ERRORS:
       newState = merge({}, state);
       newState.errors = action.errors;
+      return newState;
+    case GO_BACK_FORM:
+      newState = merge({}, state, { sessionPage: 1});
+      newState.errors = [];
       return newState;
     case CHANGE_FORM:
       newState = merge({}, state, { sessionPage: 1 });

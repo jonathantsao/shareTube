@@ -1,6 +1,7 @@
 import React from 'react';
 import ViewbarContainer from './viewbar_container';
 import { withRouter } from 'react-router-dom';
+import Advertisement from './ad';
 
 const HomeContainer = ({ location }) => {
   const path = location.pathname;
@@ -11,6 +12,8 @@ const HomeContainer = ({ location }) => {
   const subscriptions = path === "/subscriptions" ? "first" : "";
   return (
     <div className="home-index">
+      <Advertisement />
+
       <div>
         <ViewbarContainer filter="all" />
       </div>

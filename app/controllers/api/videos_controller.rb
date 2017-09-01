@@ -82,6 +82,11 @@ class Api::VideosController < ApplicationController
     end
   end
 
+  def search
+    @videos = Video.suggest_search(params[:video][:search_query])
+    render :search
+  end
+
   private
 
   def video_params

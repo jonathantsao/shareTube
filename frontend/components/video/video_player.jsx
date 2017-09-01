@@ -30,6 +30,10 @@ class VideoPlayer extends React.Component {
     this.vid.addEventListener("timeupdate", this.seekTimeUpdate, false);
   }
 
+  componentWillUnmount() {
+    this.vid.removeEventListener("timeupdate", this.seekTimeUpdate, false);
+  }
+
   playPause(e) {
     e.preventDefault();
     if (this.vid.paused) {

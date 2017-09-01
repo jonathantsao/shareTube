@@ -1,0 +1,14 @@
+#ad {
+  background: image-url("ad.jpg") no-repeat;
+  background-size: cover;
+  width: 506px;
+  height: 357px;
+  margin: 0px;
+  margin-bottom: 25px;
+}
+
+#ad-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

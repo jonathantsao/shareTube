@@ -35,6 +35,7 @@ class VideoDetail extends React.Component {
     if (this.props.match.params.videoId !== nextProps.match.params.videoId) {
       this.props.getVideo(nextProps.match.params.videoId);
       this.props.getComments(nextProps.match.params.videoId);
+      window.scrollTo(0, 0);
     }
   }
 
@@ -47,6 +48,7 @@ class VideoDetail extends React.Component {
       document.querySelector("video").controlsList.add("nodownload");
     });
     window.addEventListener("resize", this.updateHeight);
+    window.scrollTo(0, 0);
   }
 
   componentWillUnmount() {
@@ -189,6 +191,9 @@ class VideoDetail extends React.Component {
             id = "toggle-unsubscribe";
           }
         });
+        if (this.props.currentUser.id === this.props.video.user_id) {
+          method = "";
+        }
         subscribeButton = (
           <div id="subscribers">
             <button onClick={method}
@@ -267,6 +272,8 @@ class VideoDetail extends React.Component {
         </div>
       );
       let date = parseDate(this.props.video.upload_time);
+      let showMore = <div id="more-toggle"></div>;
+        // <button id="more-toggle">SHOW MORE</button>
       details = (
         <div className="video-details">
           <h4 id="video-date">Published on {date}</h4>
@@ -276,7 +283,7 @@ class VideoDetail extends React.Component {
           <h3 id="license">License - Standard ShareTube License</h3>
         </div>
 
-          <button id="more-toggle">SHOW MORE</button>
+          { showMore }
         </div>
       );
     }
@@ -284,6 +291,8 @@ class VideoDetail extends React.Component {
     if (this.props.video) {
       form = <CommentFormContainer videoId={this.props.video.id}/>;
     }
+
+
 
     return (
       <div className="video-show-page">

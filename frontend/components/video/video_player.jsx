@@ -18,7 +18,6 @@ class VideoPlayer extends React.Component {
     this.toggleFullScreen = this.toggleFullScreen.bind(this);
     this.clickSeek = this.clickSeek.bind(this);
     this.setVolumeManual = this.setVolumeManual.bind(this);
-
   }
 
   componentWillReceiveProps(nextProps) {
@@ -57,6 +56,7 @@ class VideoPlayer extends React.Component {
       e.currentTarget.style.background = "image-url(play-button-overlay.png)";
     }
   }
+
 
   vidSeek(e) {
     const seekTo = this.vid.duration * (e.currentTarget.value / 100);
@@ -162,7 +162,7 @@ class VideoPlayer extends React.Component {
 
     return(
       <div id="video-player-box">
-        <video id="video" autoPlay="autoPlay" src={this.props.source} height={this.props.height}>
+        <video id="video" autoPlay="autoPlay" src={this.props.source} height={this.props.height} onClick={this.playPause}>
 
         </video>
         <div id="control-panel">

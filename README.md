@@ -12,6 +12,8 @@ Videos are uploaded and stored using an attachment library called `PaperClip` an
 
 A custom video player was made using the standard HTML video element and React lifecycle method. A challenge I faced was writing the functionality behind the volume bar. Standard click handlers in React are only able to select the HTML element itself, but have limited access to the relative position of the click within the element.
 
+<p align="center"><img src="./app/assets/images/video.gif" width="400px"></img></p>
+
 <!-- ### Comments, Likes, Subscriptions
 
 #### Comments

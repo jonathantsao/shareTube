@@ -21,6 +21,14 @@ class VideoPlayer extends React.Component {
 
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.videoId !== nextProps.match.params.videoId) {
+      this.setState({
+        paused: false,
+      });
+    }
+  }
+
   componentDidMount() {
     this.vid = document.getElementById("video");
     this.seekSlider = document.getElementById("seekslider");
@@ -77,7 +85,7 @@ class VideoPlayer extends React.Component {
 
   seekTimeUpdate() {
     const nt = this.vid.currentTime * (100 / this.vid.duration);
-    this.seekSlider.value = nt;
+    this.seekSlider.value = nt.toFixed(4);
     let currentMin = Math.floor(this.vid.currentTime / 60);
     let currentSec = Math.floor(this.vid.currentTime - currentMin * 60);
     let durationMin = Math.floor(this.vid.duration / 60);

@@ -43,7 +43,7 @@ class RelatedVideosIndex extends React.Component {
 
       return (
         <div className="related-videos-index">
-          <h4 id="related-videos-text">Related videos</h4>
+          <h4 id="related-videos-text">More videos</h4>
           <ul className="related-videos-index-list">
             { videoListWithItems }
           </ul>

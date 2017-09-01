@@ -135,7 +135,7 @@ class VideoDetail extends React.Component {
     let videoHeight = this.state.height;
     if (this.props.video) {
       video = (
-        <VideoPlayer source={this.props.video.video_url}  height={videoHeight} />
+        <VideoPlayer source={this.props.video.video_url}  height={videoHeight} match={this.props.match}/>
       );
       let views = viewsParse(this.props.video.views);
 

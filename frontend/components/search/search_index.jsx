@@ -41,11 +41,17 @@ class SearchIndex extends React.Component {
   }
 
   handleFilterHot() {
+    this.setState({
+      dropdown: false
+    });
     const searchQuery = this.props.location.search.split("=").slice(1).join("");
     this.props.searchVideos("search hot", searchQuery);
   }
 
   handleFilterRecent() {
+    this.setState({
+      dropdown: false
+    });
     const searchQuery = this.props.location.search.split("=").slice(1).join("");
     this.props.searchVideos("search recent", searchQuery);
   }

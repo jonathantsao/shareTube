@@ -111,7 +111,9 @@ export const getVideo = (videoId) => (dispatch) => {
 
 export const verifyUsername = (username) => (dispatch) => {
   return APIUtil.verifyUsername(username)
-    .then(() => dispatch(receiveUsername()),
+    .then((data) => {
+      return dispatch(receiveUsername());
+    },
     (errors) => dispatch(receiveErrors(errors.responseJSON)));
 };
 

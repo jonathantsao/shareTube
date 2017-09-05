@@ -46,6 +46,10 @@ class SessionForm extends React.Component {
   handleDemo(e){
     e.preventDefault();
 
+    // this.setState({
+    //   username: "demo@demo.com",
+    //   password: "password",
+    // }, this.props.processDemo(this.state));
     setTimeout(() => {
       this.setState({
         username: "demo@demo.com",

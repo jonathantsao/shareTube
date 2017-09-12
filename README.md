@@ -1,6 +1,6 @@
 # ShareTube
 
-[ShareTube Live](http://sharetube.herokuapp.com/?#/)
+[ShareTube Live](http://sharetube.herokuapp.com/#/)
 
 ShareTube is a full-stack web application modeled after YouTube. It is built using Ruby on Rails, a Postgresql database, and React.js with a Redux framework on the frontend.
 

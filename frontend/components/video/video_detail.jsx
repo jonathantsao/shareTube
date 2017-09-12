@@ -29,6 +29,13 @@ class VideoDetail extends React.Component {
     this.handleSubscribe = this.handleSubscribe.bind(this);
     this.handleUnsubscribe = this.handleUnsubscribe.bind(this);
     this.handleRedirect = this.handleRedirect.bind(this);
+    this.renderVideo = this.renderVideo.bind(this);
+    this.renderDetails = this.renderDetails.bind(this);
+    this.renderDescription = this.renderDescription.bind(this);
+    this.renderLikeWidth = this.renderLikeWidth.bind(this);
+    this.renderDislikeWidth = this.renderDislikeWidth.bind(this);
+    this.renderLikeButton = this.renderLikeButton.bind(this);
+    this.renderDislikeButton = this.renderDislikeButton.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -79,13 +86,12 @@ class VideoDetail extends React.Component {
     if (!this.props.currentUser) {
       this.props.history.push("/login");
     }
-    let like;
     for (let i = 0; i < this.props.video.likes.length; i++) {
       if ((this.props.video.likes[i].user_id === this.props.currentUser.id) && this.props.video.likes[i].value === -1) {
         return this.props.unemotionVideo(this.props.video.likes[i].id);
       }
     }
-    like = {
+    let like = {
       user_id: this.props.currentUser.id,
       video_id: this.props.video.id,
       value: 1,
@@ -98,13 +104,12 @@ class VideoDetail extends React.Component {
     if (!this.props.currentUser) {
       this.props.history.push("/");
     }
-    let dislike;
     for (let i = 0; i < this.props.video.likes.length; i++) {
       if ((this.props.video.likes[i].user_id === this.props.currentUser.id) && this.props.video.likes[i].value === 1) {
         return this.props.unemotionVideo(this.props.video.likes[i].id);
       }
     }
-    dislike = {
+    let dislike = {
       user_id: this.props.currentUser.id,
       video_id: this.props.video.id,
       value: -1,
@@ -127,26 +132,122 @@ class VideoDetail extends React.Component {
     this.props.history.push("/login");
   }
 
-
-  render() {
+  renderVideo() {
+    const videoHeight = this.state.height;
     let video = <div></div>;
-    let description = <div></div>;
-    let details = <div></div>;
-    let videoHeight = this.state.height;
     if (this.props.video) {
       video = (
         <VideoPlayer source={this.props.video.video_url}  height={videoHeight} match={this.props.match}/>
       );
+    }
+    return video;
+  }
+
+  renderDetails() {
+    const showMore = <div id="more-toggle"></div>;
+      // <button id="more-toggle">SHOW MORE</button>
+    let details = <div></div>;
+    if (this.props.video) {
+      const date = parseDate(this.props.video.upload_time);
+      details = (
+        <div className="video-details">
+          <h4 id="video-date">Published on {date}</h4>
+
+          <div id="video-description-text">
+            <p>{this.props.video.description}</p>
+            <h3 id="license">License - Standard ShareTube License</h3>
+          </div>
+          { showMore }
+        </div>
+      );
+    }
+    return details;
+  }
+
+  renderLikeWidth() {
+    let likeWidth;
+    const totalLikes = this.props.video.likes.length;
+    if (totalLikes > 0) {
+      let likes = 0;
+      this.props.video.likes.forEach((like) => {
+        if (like.value === 1) {
+          likes += 1;
+        }
+      });
+      likes = 100 * likes / totalLikes;
+      likeWidth = { width: `${likes}%` };
+    } else {
+      likeWidth = { width: "0%" };
+    }
+    return likeWidth;
+  }
+
+  renderDislikeWidth() {
+    const totalLikes = this.props.video.likes.length;
+    let dislikeWidth;
+    if (totalLikes > 0) {
+      let likes = 0;
+      this.props.video.likes.forEach((like) => {
+        if (like.value === 1) {
+          likes += 1;
+        }
+      });
+      likes = 100 * likes / totalLikes;
+      let dislikes = 100 - likes;
+      dislikeWidth = { width: `${dislikes}%` };
+    } else {
+      dislikeWidth = { width: "100%" };
+    }
+    return dislikeWidth;
+  }
+
+  renderLikeButton() {
+    let likeButton = (
+      <button disabled
+        id="like-button-disabled"></button>
+    );
+    if (this.props.currentUser) {
+      likeButton = (
+        <button id="like-button" onClick={this.handleLike}></button>
+      );
+      this.props.video.likes.forEach((like) => {
+        if (like.user_id === this.props.currentUser.id && like.value === 1) {
+          likeButton = (
+            <button id="like-button-disabled" disabled></button>
+          );
+        }
+      });
+    }
+    return likeButton;
+  }
+
+  renderDislikeButton() {
+    let dislikeButton = (
+      <button disabled
+        id="dislike-button-disabled"></button>
+    );
+    if (this.props.currentUser) {
+      dislikeButton = (
+        <button id="dislike-button" onClick={this.handleDislike}></button>
+      );
+      this.props.video.likes.forEach((like) => {
+        if (like.user_id === this.props.currentUser.id && like.value === -1) {
+          dislikeButton = (
+            <button id="dislike-button-disabled" disabled></button>
+          );
+        }
+      });
+    }
+    return dislikeButton;
+  }
+
+  renderDescription() {
+    let description = <div></div>;
+    if (this.props.video) {
       let views = viewsParse(this.props.video.views);
 
-      let likeButton = (
-        <button disabled
-          id="like-button-disabled"></button>
-      );
-      let dislikeButton = (
-        <button disabled
-          id="dislike-button-disabled"></button>
-      );
+      const likeButton = this.renderLikeButton();
+      const dislikeButton = this.renderDislikeButton();
 
       let numSubscribers = this.props.video.user.subscribers.length;
       let subscribeButton = (
@@ -159,27 +260,10 @@ class VideoDetail extends React.Component {
           <p>{ numSubscribers }</p>
         </div>
       );
+      let likeWidth = this.renderLikeWidth();
+      let dislikeWidth = this.renderDislikeWidth();
 
       if (this.props.currentUser) {
-        likeButton = (
-          <button id="like-button" onClick={this.handleLike}></button>
-        );
-
-        dislikeButton = (
-          <button id="dislike-button" onClick={this.handleDislike}></button>
-        );
-
-        this.props.video.likes.forEach((like) => {
-          if (like.user_id === this.props.currentUser.id && like.value === 1) {
-            likeButton = (
-              <button id="like-button-disabled" disabled></button>
-            );
-          } else if (like.user_id === this.props.currentUser.id && like.value === -1) {
-            dislikeButton = (
-              <button id="dislike-button-disabled" disabled></button>
-            );
-          }
-        });
 
         let method = this.handleSubscribe;
         let subscribeButtonText = "Subscribe";
@@ -204,26 +288,6 @@ class VideoDetail extends React.Component {
             <p>{ numSubscribers }</p>
           </div>
         );
-      }
-
-      const totalLikes = this.props.video.likes.length;
-      let dislikeWidth;
-      let likeWidth;
-
-      if (totalLikes > 0) {
-        let likes = 0;
-        this.props.video.likes.forEach((like) => {
-          if (like.value === 1) {
-            likes += 1;
-          }
-        });
-        likes = 100 * likes / totalLikes;
-        likeWidth = { width: `${likes}%` };
-        let dislikes = 100 - likes;
-        dislikeWidth = { width: `${dislikes}%` };
-      } else {
-        likeWidth = { width: "0%" };
-        dislikeWidth = { width: "100%" };
       }
 
 
@@ -271,29 +335,15 @@ class VideoDetail extends React.Component {
           </div>
         </div>
       );
-      let date = parseDate(this.props.video.upload_time);
-      let showMore = <div id="more-toggle"></div>;
-        // <button id="more-toggle">SHOW MORE</button>
-      details = (
-        <div className="video-details">
-          <h4 id="video-date">Published on {date}</h4>
-
-        <div id="video-description-text">
-          <p>{this.props.video.description}</p>
-          <h3 id="license">License - Standard ShareTube License</h3>
-        </div>
-
-          { showMore }
-        </div>
-      );
     }
-    let form = <div></div>;
-    if (this.props.video) {
-      form = <CommentFormContainer videoId={this.props.video.id}/>;
-    }
+    return description;
+  }
 
-
-
+  render() {
+    const video = this.renderVideo();
+    let description = this.renderDescription();
+    const details = this.renderDetails();
+    const form = this.props.video ? <CommentFormContainer videoId={this.props.video.id}/> : <div></div>;
     return (
       <div className="video-show-page">
         <div className="video-show-page-left">
@@ -323,7 +373,6 @@ class VideoDetail extends React.Component {
     </div>
     );
   }
-
 }
 
 export default VideoDetail;

@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom';
 const mapStateToProps = (state) => {
   return {
     currentUser: state.session.currentUser,
+    subscriptions: state.session.subscriptions,
     hamDropdown: state.ui.hamDropdown,
   };
 };

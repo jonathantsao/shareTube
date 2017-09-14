@@ -18,6 +18,11 @@ class Api::SubscriptionsController < ApplicationController
     end
   end
 
+  def index
+    @subscriptions = Subscription.where(subscriber_id: params[:user_id]).order(created_at: :desc).map do |sub|
+      sub.subscribed
+    end
+  end
 
 
   private

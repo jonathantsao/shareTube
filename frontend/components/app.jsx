@@ -9,6 +9,7 @@ import VideoFormContainer from './video/form_container';
 import VideoDetailContainer from './video/video_detail_container';
 import EditProfileContainer from './session/edit_profile_container';
 import SearchIndexContainer from './search/search_index_container';
+import ChannelContainer from './channel/channel_container';
 
 const App = () => (
   <div className="page">
@@ -26,6 +27,7 @@ const App = () => (
         <Route path="/videos/:videoId" component={VideoDetailContainer} />
         <ProtectedRoute path="/users/:userId/edit" component={EditProfileContainer} />
         <Route path="/search" component={SearchIndexContainer} />
+        <Route path="/users/:userId" component={ChannelContainer} />
         <Route path="/" component={HomeContainer} />
       </Switch>
     </div>

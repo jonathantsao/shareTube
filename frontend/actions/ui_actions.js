@@ -1,5 +1,6 @@
 import * as APIUtil from '../util/session_api_util';
 import * as VideoUtil from '../util/video_util';
+import * as UserUtil from '../util/user_util';
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const RECEIVE_USERNAME = "RECEIVE_USERNAME";
 export const RECEIVE_TOGGLE_DROPDOWN_HAM = 'RECEIVE_TOGGLE_DROPDOWN_HAM';
@@ -14,10 +15,18 @@ export const REMOVE_VIDEO = "REMOVE_VIDEO";
 export const CLEAR_SEARCH = "CLEAR_SEARCH";
 export const TOGGLE_LOADING = "TOGGLE_LOADING";
 export const GO_BACK_FORM = "GO_BACK_FORM";
+export const RECEIVE_CHANNEL = "RECEIVE_CHANNEL";
 
 export const toggleLoading = () => {
   return {
     type: TOGGLE_LOADING,
+  };
+};
+
+export const receiveChannel = (user) => {
+  return {
+    type: RECEIVE_CHANNEL,
+    user
   };
 };
 
@@ -106,6 +115,13 @@ export const getVideo = (videoId) => (dispatch) => {
   return VideoUtil.getVideo(videoId)
     .then((video) => {
       return dispatch(receiveVideo(video));
+    });
+};
+
+export const getChannel = (id) => (dispatch) => {
+  return UserUtil.getChannel(id)
+    .then((user) => {
+      return dispatch(receiveChannel(user));
     });
 };
 

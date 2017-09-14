@@ -9,3 +9,5 @@ json.subscriptions do
     json.extract! sub, :id, :subscriber_id, :subscribed_id
   end
 end
+
+json.videos user.video_ids

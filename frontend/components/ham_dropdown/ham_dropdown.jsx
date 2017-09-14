@@ -19,6 +19,7 @@ class HamDropdown extends React.Component {
     let dislike;
     let hamSubs;
     let subscriptions;
+    let subscription_text;
 
     if (this.props.currentUser) {
       channel = (
@@ -58,34 +59,38 @@ class HamDropdown extends React.Component {
             </li>
           );
         });
+
+        if (Object.keys(this.props.subscriptions).length > 0) {
+          subscription_text = <p id="subscriptions-list">Subscriptions</p>;
+        }
+
       }
     }
-
     let home;
+    if (this.props.location.pathname === "/") {
+      home = (
+        <li id="home-page-hover">
+          <Link to="/">
+            <div id="home-icon"></div>
+            <p>Home</p>
+          </Link>
+        </li>
+      );
+    } else {
+      home = (
+        <li>
+          <Link id="home-link" to="/">
+            <div id="home-icon"></div>
+            <p>Home</p>
+          </Link>
+        </li>
+      );
+    }
     const path = this.props.location.pathname;
 
     if (this.props.hamDropdown && (
       path !== "/login" && path !== "/signup" )
     ) {
-      if (this.props.location.pathname === "/") {
-        home = (
-          <li id="home-page-hover">
-            <Link to="/">
-              <div id="home-icon"></div>
-              <p>Home</p>
-            </Link>
-          </li>
-        );
-      } else {
-        home = (
-          <li>
-            <Link id="home-link" to="/">
-              <div id="home-icon"></div>
-              <p>Home</p>
-            </Link>
-          </li>
-        );
-      }
 
       return (
         <section className="ham-dropdown-menu">
@@ -110,7 +115,7 @@ class HamDropdown extends React.Component {
 
           </ul>
           <ul className="ham-dropdown-subscriptions">
-            <p id="subscriptions-list">Subscriptions</p>
+            { subscription_text }
             { subscriptions }
           </ul>
 
@@ -140,7 +145,7 @@ class HamDropdown extends React.Component {
 
           </ul>
           <ul className="ham-dropdown-subscriptions">
-            <p id="subscriptions-list">Subscriptions</p>
+            { subscription_text }
             { subscriptions }
           </ul>
 

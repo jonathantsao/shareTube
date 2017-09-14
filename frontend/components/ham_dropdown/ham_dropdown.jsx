@@ -18,6 +18,7 @@ class HamDropdown extends React.Component {
     let like;
     let dislike;
     let hamSubs;
+    let subscriptions;
 
     if (this.props.currentUser) {
       channel = (
@@ -43,6 +44,21 @@ class HamDropdown extends React.Component {
           </Link>
         </li>
       );
+      if (this.props.subscriptions) {
+        subscriptions = Object.keys(this.props.subscriptions).map((sub) => {
+          return (
+            <li key={`key-${sub}`}>
+              <Link className="sub-link" to={`/users/${sub}`} >
+                <img className="sub-link-image"
+                  src={this.props.subscriptions[sub].image_url} />
+                <p className="sub-username">
+                  {this.props.subscriptions[sub].user}
+                </p>
+              </Link>
+            </li>
+          );
+        });
+      }
     }
 
     let home;
@@ -94,7 +110,8 @@ class HamDropdown extends React.Component {
 
           </ul>
           <ul className="ham-dropdown-subscriptions">
-
+            <p id="subscriptions-list">Subscriptions</p>
+            { subscriptions }
           </ul>
 
         </section>
@@ -123,7 +140,8 @@ class HamDropdown extends React.Component {
 
           </ul>
           <ul className="ham-dropdown-subscriptions">
-
+            <p id="subscriptions-list">Subscriptions</p>
+            { subscriptions }
           </ul>
 
         </section>

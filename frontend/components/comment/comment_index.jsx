@@ -16,7 +16,6 @@ class CommentIndex extends React.Component {
   }
 
   render() {
-
     if (Object.keys(this.props.comments).length === 0) {
       return <div></div>;
     } else {
@@ -35,11 +34,8 @@ class CommentIndex extends React.Component {
           </ul>
         </div>
       );
-
     }
   }
-
-
 }
 
 export default CommentIndex;

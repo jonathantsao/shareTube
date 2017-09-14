@@ -149,17 +149,14 @@ class VideoPlayer extends React.Component {
 
   render() {
     let playpausebtn = <div id="pause-btn"></div>;
-
     if (this.state.paused) {
       playpausebtn = <div id="play-btn"></div>;
     }
 
     let mutebtn = <div id="mute-btn"></div>;
-
     if (this.state.muted) {
       mutebtn = <div id="sound-btn"></div>;
     }
-
     return(
       <div id="video-player-box">
         <video id="video" autoPlay="autoPlay" src={this.props.source} height={this.props.height} onClick={this.playPause}>

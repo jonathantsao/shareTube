@@ -100,7 +100,34 @@ class HamDropdown extends React.Component {
         </section>
       );
     } else {
-      return <div></div>;
+      return (
+        <section className="ham-dropdown-menu closed">
+          <ul className="ham-dropdown-list">
+            { home }
+            { channel }
+            <li>
+              <Link id="hot-link" to="/hot">
+                <div id="hot-icon"></div>
+                <p>Hot</p>
+              </Link>
+            </li>
+
+            <li>
+              <Link id="recent-link" to="/recent">
+                <div id="recent-icon"></div>
+                <p>Recently uploaded</p>
+              </Link>
+            </li>
+            { like }
+            { dislike }
+
+          </ul>
+          <ul className="ham-dropdown-subscriptions">
+
+          </ul>
+
+        </section>
+      );
     }
   }
 }

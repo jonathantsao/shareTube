@@ -23,6 +23,7 @@ class CommentForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRedirect = this.handleRedirect.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
+    this.renderButton = this.renderButton.bind(this);
   }
 
   componentDidMount() {
@@ -87,42 +88,45 @@ class CommentForm extends React.Component {
     this.props.editComment(comment);
   }
 
+  renderButton() {
+    let button = <div></div>;
+    let submitButton;
+    let cancelButton;
+    let cancelMethod = this.handleCancel;
+    if (this.state.body === "") {
+      submitButton = (<button id="submit-comment-disabled" disabled>Comment</button>);
+    } else {
+      let submitText = "Comment";
+      let submitMethod = this.handleSubmit;
+      if (this.props.type === "edit") {
+        submitText = "Save";
+        submitMethod = this.handleEdit;
+        cancelMethod = this.handleEdit;
+      }
+      submitButton = (<button id="submit-comment"
+      type="submit"
+        onClick={submitMethod}>{submitText}</button>);
+    }
+    cancelButton = (<button id="cancel-comment"
+    onClick={cancelMethod}>Cancel</button>);
+
+    if (this.state.dropdown) {
+      button = (
+        <div id="comment-dropdown">
+          { cancelButton }
+          { submitButton }
+        </div>
+      );
+    }
+    return button;
+  }
+
   render() {
 
     if (this.props.videoId || this.props.comment) {
       let form;
       let iconText;
-      let button = <div></div>;
-
-      let submitButton;
-      let cancelButton;
-      let cancelMethod = this.handleCancel;
-      if (this.state.body === "") {
-        submitButton = (<button id="submit-comment-disabled" disabled>Comment</button>);
-      } else {
-        let submitText = "Comment";
-        let submitMethod = this.handleSubmit;
-
-        if (this.props.type === "edit") {
-          submitText = "Save";
-          submitMethod = this.handleEdit;
-          cancelMethod = this.handleEdit;
-        }
-        submitButton = (<button id="submit-comment"
-        type="submit"
-          onClick={submitMethod}>{submitText}</button>);
-      }
-      cancelButton = (<button id="cancel-comment"
-      onClick={cancelMethod}>Cancel</button>);
-
-      if (this.state.dropdown) {
-        button = (
-          <div id="comment-dropdown">
-            { cancelButton }
-            { submitButton }
-          </div>
-        );
-      }
+      let button = this.renderButton();
       if (this.props.currentUser) {
         iconText = (
           <Link className="comment-index-user-icon"
@@ -165,9 +169,7 @@ class CommentForm extends React.Component {
     } else {
       return <div></div>;
     }
-
   }
-
 }
 
 export default CommentForm;

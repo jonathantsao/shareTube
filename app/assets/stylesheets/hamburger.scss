@@ -10,6 +10,9 @@
   border-right: 1px solid #E8E8E8;
   border-bottom: 1px solid #E8E8E8;
   overflow-y: auto;
+  left: 0;
+  -webkit-transition: all 1s ease-in;
+  transition: all 1s ease-in;
 }
 
 
@@ -199,4 +202,9 @@
   border-style: inset;
   border-width: 1px;
   visibility: visible;
+}
+
+.closed {
+  left: -250px;
+  overflow: hidden;
 }

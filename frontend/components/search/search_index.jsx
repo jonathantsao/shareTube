@@ -62,9 +62,7 @@ class SearchIndex extends React.Component {
   }
 
   render() {
-
     let videoIndex = <div></div>;
-
     if (this.props.videoIds.length > 0) {
       const videos = this.props.videoIds.map((videoId) => {
         return this.props.videos[videoId];

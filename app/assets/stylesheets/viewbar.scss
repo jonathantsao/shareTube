@@ -24,13 +24,12 @@
   width: calc(100% - 231px);
   display: flex;
   justify-content: center;
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
 }
 
-.viewbar-container-full {
-  height: 245px;
+.full {
   width: 100%;
-  display: flex;
-  justify-content: center;
 }
 
 .viewbar-index {

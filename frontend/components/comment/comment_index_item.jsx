@@ -117,9 +117,7 @@ class CommentIndexItem extends React.Component {
           }
         }
       });
-
     }
-    let editDropdown = <div></div>;
 
     if (this.state.dropdown) {
       return (
@@ -127,9 +125,6 @@ class CommentIndexItem extends React.Component {
           comment={this.props.comment}/>
       );
     }
-
-
-
 
     const comment = this.props.comment;
     return (

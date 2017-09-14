@@ -12,6 +12,7 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
     this.handleGoBack = this.handleGoBack.bind(this);
+    this.handleNext = this.handleNext.bind(this);
   }
 
 
@@ -76,10 +77,15 @@ class SessionForm extends React.Component {
     );
   }
 
+  handleNext(e) {
+    e.preventDefault();
+    this.props.sendUsername(this.state.username);
+  }
+
   lastButton() {
     if (this.props.page === 1) {
       return (
-        <button id="submit-form-button" type="submit" onClick={() => this.props.sendUsername(this.state.username)}>Next</button>
+        <button id="submit-form-button" type="submit" onClick={this.handleNext}>Next</button>
       );
     } else {
       const buttonText = this.props.formType === "login" ? "Sign In" : "Sign Up";

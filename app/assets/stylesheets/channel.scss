@@ -1,0 +1,101 @@
+#channel-banner {
+  width: 1300px;
+  height: 270px;
+}
+
+.channel-page {
+  margin-top: 30px;
+  height: 100%;
+  width: calc(100% - 231px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  float: right;
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+  background-color: whitesmoke;
+}
+
+.full-page {
+  width: 100%;
+}
+
+#user-info {
+  width: 1300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0px;
+}
+
+#user-info-thumbnail {
+  width: 85px;
+  height: 85px;
+}
+
+#user-info-text {
+  width: 1000px;
+  height: 85px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#user-info-username {
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+  font-size: 26px;
+  color: rgba(17, 17, 17, 0.65)
+}
+
+#user-info-subs {
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+  font-size: 15px;
+  color: rgba(17, 17, 17, 0.6);
+}
+
+#subscribed-button {
+  background-color: #E3E3E3;
+  border: 1px solid #E3E3E3;
+  color: hsla(0, 0%, 6.7%, .6);
+  font-size: 16px;
+  width: 150px;
+  padding: 15px 10px;
+  border-radius: 4px;
+}
+
+#subscribed-button:hover {
+  cursor: pointer;
+}
+
+
+#subscribe-button {
+  background-color: #128ee9;
+  border: 1px solid #128ee9;
+  color: white;
+  font-size: 16px;
+  width: 150px;
+  padding: 15px 10px;
+  border-radius: 4px;
+}
+
+#subscribe-button:hover {
+  cursor: pointer;
+}
+
+.channel {
+  width: 1340px !important;
+}
+
+.channel-index {
+  width: 1264px !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+}
+
+.channel-title {
+  color: rgba(17, 17, 17, 0.65) !important;
+}

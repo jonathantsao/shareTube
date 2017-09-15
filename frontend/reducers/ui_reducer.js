@@ -1,4 +1,4 @@
-import { RECEIVE_ERRORS, RECEIVE_USERNAME, RECEIVE_TOGGLE_DROPDOWN_HAM, RECEIVE_TOGGLE_DROPDOWN_USER, CHANGE_FORM, CHANGE_UPLOAD_PAGE, CLEAR_SESSION, CLEAR_UPLOAD, RECEIVE_VIDEO, REMOVE_VIDEO, CLEAR_ERRORS, CLEAR_SEARCH, TOGGLE_LOADING, GO_BACK_FORM, RECEIVE_CHANNEL } from '../actions/ui_actions';
+import { RECEIVE_ERRORS, RECEIVE_USERNAME, RECEIVE_TOGGLE_DROPDOWN_HAM, RECEIVE_TOGGLE_DROPDOWN_USER, CHANGE_FORM, CHANGE_UPLOAD_PAGE, CLEAR_SESSION, CLEAR_UPLOAD, RECEIVE_VIDEO, REMOVE_VIDEO, CLEAR_ERRORS, CLEAR_SEARCH, TOGGLE_LOADING, GO_BACK_FORM, RECEIVE_CHANNEL, REMOVE_CHANNEL } from '../actions/ui_actions';
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_HOT, RECEIVE_ALL_VIDEOS, RECEIVE_RECENT, RECEIVE_UPLOADS, UPLOAD_VIDEO, RECEIVE_SEARCH, RECEIVE_LIKES, RECEIVE_DISLIKES, RECEIVE_SUBSCRIPTIONS, RECEIVE_VIDEO_TITLES } from '../actions/video_actions';
 import { RECEIVE_COMMENTS } from '../actions/comment_actions';
@@ -30,6 +30,10 @@ const uiReducer = (state = initialState, action) => {
   let newIds;
   let newState;
   switch(action.type) {
+    case REMOVE_CHANNEL:
+      newState = merge({}, state);
+      newState.viewedUser = null;
+      return newState;
     case RECEIVE_CHANNEL:
       newState = merge({}, state);
       newState.viewedUser = action.user;
@@ -40,7 +44,11 @@ const uiReducer = (state = initialState, action) => {
       return newState;
     case RECEIVE_SUBS:
       newState = merge({}, state);
-      newState.video.user.subscribers = action.subscribers;
+      if (newState.video) {
+        newState.video.user.subscribers = action.subscribers;
+      } else {
+        newState.viewedUser.subscribers = action.subscribers;
+      }
       return newState;
     case TOGGLE_LOADING:
       newState = merge({}, state);

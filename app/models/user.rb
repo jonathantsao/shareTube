@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_attached_file :image, :styles => { :small => "100x100#"}, default_url: "https://s3.us-east-2.amazonaws.com/sharetube-dev/users/images/000/000/037/small/default.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
+  has_attached_file :cover, :styles => { :banner => "1300x270#"}, default_url: "https://s3.us-east-2.amazonaws.com/sharetube-dev/users/covers/000/000/041/banner/banner.jpg"
+  validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
+
   after_initialize :ensure_session_token
   attr_reader :password
 

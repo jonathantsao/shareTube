@@ -11,3 +11,4 @@ json.subscriptions do
 end
 
 json.videos user.video_ids
+json.banner user.cover.url(:banner)

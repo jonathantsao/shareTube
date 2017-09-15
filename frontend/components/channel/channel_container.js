@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getChannel, receiveHamDropdown } from '../../actions/ui_actions';
+import { getChannel, receiveHamDropdown, removeChannel } from '../../actions/ui_actions';
 import { getVideos } from '../../actions/video_actions';
+import { subscribe, unsubscribe } from '../../actions/subscription_actions';
 import Channel from './channel';
 
 
@@ -19,6 +20,9 @@ const mapDispatchToProps = (dispatch) => {
     getChannel: (channelId) => dispatch(getChannel(channelId)),
     toggleHamDropdown: () => dispatch(receiveHamDropdown()),
     getVideos: (filter) => dispatch(getVideos(filter)),
+    subscribe: (currentUserId, subId) => dispatch(subscribe(currentUserId, subId)),
+    unsubscribe: (currentUserId, subId) => dispatch(unsubscribe(currentUserId, subId)),
+    removeChannel: () => dispatch(removeChannel()),
   };
 };
 

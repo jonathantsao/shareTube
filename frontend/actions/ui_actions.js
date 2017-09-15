@@ -16,6 +16,7 @@ export const CLEAR_SEARCH = "CLEAR_SEARCH";
 export const TOGGLE_LOADING = "TOGGLE_LOADING";
 export const GO_BACK_FORM = "GO_BACK_FORM";
 export const RECEIVE_CHANNEL = "RECEIVE_CHANNEL";
+export const REMOVE_CHANNEL = "REMOVE_CHANNEL";
 
 export const toggleLoading = () => {
   return {
@@ -27,6 +28,12 @@ export const receiveChannel = (user) => {
   return {
     type: RECEIVE_CHANNEL,
     user
+  };
+};
+
+export const removeChannel = () => {
+  return {
+    type: REMOVE_CHANNEL,
   };
 };
 

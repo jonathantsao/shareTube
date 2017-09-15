@@ -11,6 +11,7 @@ const initialState = {
 const sessionReducer = (state = initialState, action) => {
   Object.freeze(state);
   let newState;
+  let subs;
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
       newState = merge({}, initialState, state, { currentUser: action.user });
@@ -19,10 +20,18 @@ const sessionReducer = (state = initialState, action) => {
       newState = merge({}, state);
       newState.currentUser.subscriptions = action.subscriptions;
       newState.currentUser.subscribed_channels = action.subscribed_channels;
+      subs = {};
+      action.subscribed_channels.forEach((channel) => {
+        subs[channel] = {
+          user: action.subscribed_users[channel].username,
+          image_url: action.subscribed_users[channel].image,
+        };
+      });
+      newState.subscriptions = subs;
       return newState;
     case RECEIVE_SUBSCRIPTIONS:
       newState = merge({}, state);
-      const subs = {};
+      subs = {};
       Object.values(action.videos_list).forEach((video) => {
         subs[video.user_id] = {
           user: video.user.username,

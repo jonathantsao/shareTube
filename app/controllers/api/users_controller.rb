@@ -51,7 +51,15 @@ class Api::UsersController < ApplicationController
       @new_subscribers = @subscribed_channel.subscribers.map do |sub|
         sub.id
       end
-      render json: { subscribers: @new_subscribers, subscriptions: @user.subscriptions_to, subscribed_channels: @subscriptions }
+      @subscribed_channels = {}
+      @user.subscribed_channels.each do |sub|
+        id = sub.id
+        @subscribed_channels[id] = {
+          username: sub.username,
+          image: sub.image.url(:small)
+          }
+      end
+      render json: { subscribers: @new_subscribers, subscriptions: @user.subscriptions_to, subscribed_channels: @subscriptions, subscribed_users: @subscribed_channels }
     else
       render json: @subscription.errors.full_messages, status: 422
     end
@@ -71,7 +79,15 @@ class Api::UsersController < ApplicationController
       @new_subscribers = @subscribed_channel.subscribers.map do |sub|
         sub.id
       end
-      render json: { subscribers: @new_subscribers, subscriptions: @user.subscriptions_to, subscribed_channels: @subscriptions }
+      @subscribed_channels = {}
+      @user.subscribed_channels.each do |sub|
+        id = sub.id
+        @subscribed_channels[id] = {
+          username: sub.username,
+          image: sub.image.url(:small)
+          }
+      end
+      render json: { subscribers: @new_subscribers, subscriptions: @user.subscriptions_to, subscribed_channels: @subscriptions, subscribed_users: @subscribed_channels }
     else
       render json: @subscription.errors.full_messages, status: 422
     end

@@ -12,3 +12,11 @@ end
 
 json.videos user.video_ids
 json.banner user.cover.url(:banner)
+json.subscribed_users do
+  user.subscribed_channels.each do |sub|
+    json.set! sub.id do
+      json.image sub.image.url(:small)
+      json.username sub.username
+    end
+  end
+end

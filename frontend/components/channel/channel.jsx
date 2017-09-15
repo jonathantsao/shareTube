@@ -22,10 +22,16 @@ class Channel extends React.Component {
     this.props.getVideos("all");
     const id = this.props.match.params.userId;
     this.props.getChannel(id);
+    if (this.props.hamDropdown) {
+      this.props.toggleHamDropdown();
+    }
   }
 
   componentWillUnmount() {
     this.props.removeChannel();
+    if (!this.props.hamDropdown) {
+      this.props.toggleHamDropdown();
+    }
   }
 
   componentWillReceiveProps(nextProps) {

@@ -9,6 +9,7 @@ export const receiveSubs = (subs) => {
     subscriptions: subs.subscriptions,
     subscribers: subs.subscribers,
     subscribed_channels: subs.subscribed_channels,
+    subscribed_users: subs.subscribed_users,
   };
 };
 

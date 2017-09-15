@@ -59,6 +59,9 @@ class Channel extends React.Component {
           old_image_url: nextProps.viewedUser.banner,
         });
       });
+      if (this.props.hamDropdown) {
+        this.props.toggleHamDropdown();
+      }
     }
   }
 

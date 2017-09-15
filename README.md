@@ -52,14 +52,16 @@ Using the filter functionality in the backend, each carousel receives a differen
 
 <p align="center"><img src="./app/assets/images/home.gif" width="400px"></img></p>
 
+### Channel Pages
+
+YouTube's site has channels with extensive information about a particular user's activity. User channels were implemented into ShareTube, allowing users to be able to see another user's profile, cover photo, and uploads.
+
+![Channel Page](/app/assets/images/channel.png)
 
 ## Future Directions
 
 With the features already implemented, I plan to continue working on the project with the following features.
 
-### Channel Pages
-
- YouTube's site has channels with extensive information about a particular user's activity. I plan to add channels, allowing users to be able to see information about another user, such as their liked videos, subscriptions, recent uploads, etc.
 
 ### History
 

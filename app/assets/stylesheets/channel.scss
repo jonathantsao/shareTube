@@ -3,6 +3,55 @@
   height: 270px;
 }
 
+#channel-banner-self {
+  width: 1300px;
+  height: 270px;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+#channel-banner-self:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+#banner-input {
+  width: 1300px;
+  height: 270px;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  opacity: 0;
+  z-index: 1;
+  right: calc((100% - 1300px)/2);  
+  position: absolute;
+  top: 80px;
+}
+
+#banner-input:hover ~ #channel-banner-self {
+  opacity: 0.6;
+}
+
+#banner-input:hover ~ #banner-input-text {
+  z-index: 0;
+  opacity: 0.8;
+}
+
+#banner-input-text {
+  width: 1300px;
+  height: 100px;
+  position: absolute;
+  margin: 0 auto;
+  top: 80px;
+  right: calc((100% - 1300px)/2);
+  font-size: 31px;
+  opacity: 0;
+  text-align: center;
+  padding: 85px 0px;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
 .channel-page {
   margin-top: 30px;
   height: 100%;
@@ -11,8 +60,8 @@
   flex-direction: column;
   align-items: center;
   float: right;
-  transition: all 1s ease;
-  -webkit-transition: all 1s ease;
+  transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
   background-color: whitesmoke;
 }
 
@@ -41,6 +90,42 @@
   justify-content: center;
 }
 
+#submit-banner {
+  background-color: #128ee9;
+  border: 1px solid #128ee9;
+  color: white;
+  font-size: 16px;
+  width: 100px;
+  padding: 9px;
+  border-radius: 4px;
+}
+
+#banner-buttons {
+  height: 85px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#cancel-banner {
+  background-color: #E3E3E3;
+  border: 1px solid #E3E3E3;
+  color: hsla(0, 0%, 6.7%, .6);
+  font-size: 16px;
+  width: 100px;
+  padding: 9px;
+  border-radius: 4px;
+}
+
+#cancel-banner:hover {
+  cursor: pointer;
+}
+
+#submit-banner:hover {
+  cursor: pointer;
+}
+
 #user-info-username {
   width: 100%;
   padding: 0px;
@@ -63,7 +148,7 @@
   color: hsla(0, 0%, 6.7%, .6);
   font-size: 16px;
   width: 150px;
-  padding: 15px 10px;
+  padding: 10px;
   border-radius: 4px;
 }
 
@@ -78,7 +163,7 @@
   color: white;
   font-size: 16px;
   width: 150px;
-  padding: 15px 10px;
+  padding: 10px;
   border-radius: 4px;
 }
 

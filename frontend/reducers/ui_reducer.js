@@ -133,7 +133,7 @@ const uiReducer = (state = initialState, action) => {
       newState.errors = [];
       return newState;
     case RECEIVE_CURRENT_USER:
-      newState = merge({}, state, initialState);
+      newState = merge({}, state);
       newState.errors = [];
       newState.loading = false;
       return newState;

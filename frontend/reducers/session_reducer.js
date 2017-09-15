@@ -32,12 +32,14 @@ const sessionReducer = (state = initialState, action) => {
     case RECEIVE_SUBSCRIPTIONS:
       newState = merge({}, state);
       subs = {};
-      Object.values(action.videos_list).forEach((video) => {
-        subs[video.user_id] = {
-          user: video.user.username,
-          image_url: video.user.image,
-        };
-      });
+      if (action.videos_list) {
+        Object.values(action.videos_list).forEach((video) => {
+          subs[video.user_id] = {
+            user: video.user.username,
+            image_url: video.user.image,
+          };
+        })
+      }
       newState.subscriptions = subs;
       return newState;
     default:

@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getChannel, receiveHamDropdown, removeChannel } from '../../actions/ui_actions';
+import { getChannel, receiveHamDropdown, removeChannel, provideErrors, clearErrors } from '../../actions/ui_actions';
 import { getVideos } from '../../actions/video_actions';
+import { editProfile } from '../../actions/session_actions';
 import { subscribe, unsubscribe } from '../../actions/subscription_actions';
 import Channel from './channel';
 
@@ -23,6 +24,9 @@ const mapDispatchToProps = (dispatch) => {
     subscribe: (currentUserId, subId) => dispatch(subscribe(currentUserId, subId)),
     unsubscribe: (currentUserId, subId) => dispatch(unsubscribe(currentUserId, subId)),
     removeChannel: () => dispatch(removeChannel()),
+    provideErrors: (errors) => dispatch(receiveErrors(errors)),
+    clearErrors: () => dispatch(clearErrors()),
+    editProfile: (formData, id) => dispatch(editProfile(formData, id)),
   };
 };
 
